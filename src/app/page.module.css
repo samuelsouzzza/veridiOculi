@@ -4,4 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0 8%;
+  background-image: url('/imgs/bg-01.svg');
+}
+.boxMessage {
+  width: 35%;
+  color: #fff;
 }

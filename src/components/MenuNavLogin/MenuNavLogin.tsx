@@ -9,9 +9,9 @@ export const MenuNavLogin = () => {
     <nav className={styles.container}>
       <div className={styles.boxLogo}>
         <Image
-          src='/imgs/logo.png'
+          src='/imgs/logoLabel.svg'
           alt='Logo Veridi Oculi'
-          width={50}
+          width={220}
           height={70}
           sizes='100vh'
           quality={80}
