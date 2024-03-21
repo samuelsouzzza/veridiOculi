@@ -57,6 +57,9 @@
 .btnSecondary:hover {
   background-color: #3aa6002a;
 }
+.btnSecondary.active {
+  border-bottom: 2px solid #39a600;
+}
 .subtitle {
   margin: 1% 0;
 }

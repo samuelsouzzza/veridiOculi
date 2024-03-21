@@ -1,11 +1,20 @@
+'use client';
 import styles from './MenuNavHome.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import React from 'react';
 
 export const MenuNavHome = () => {
+  const [active, setActive] = React.useState('home');
+
+  function handleActive(tab: string) {
+    if (tab === active) return;
+    setActive(tab);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.boxLogo}>
@@ -22,13 +31,25 @@ export const MenuNavHome = () => {
         </Link>
       </div>
       <div className={styles.box}>
-        <Link href={'#'} className='btnSecondary'>
+        <Link
+          href={'#'}
+          className={`btnSecondary ${active === 'home' ? 'active' : ''}`}
+          onClick={() => handleActive('home')}
+        >
           Página Inicial
         </Link>
-        <Link href={'#'} className='btnSecondary'>
+        <Link
+          href={'#'}
+          className={`btnSecondary ${active === 'newAnalysis' ? 'active' : ''}`}
+          onClick={() => handleActive('newAnalysis')}
+        >
           Nova Análise
         </Link>
-        <Link href={'#'} className='btnSecondary'>
+        <Link
+          href={'#'}
+          className={`btnSecondary ${active === 'myAnalysis' ? 'active' : ''}`}
+          onClick={() => handleActive('myAnalysis')}
+        >
           Minhas Análises
         </Link>
         <Button icon text='Minha conta' className='btnSecondary'>
