@@ -1,20 +1,26 @@
 'use client';
 
 import React from 'react';
-import { Container } from './Button.styles';
+import styles from './Button.module.css';
 
 type ButtonProps = React.ComponentProps<'button'> & {
-  text: string;
+  text?: string;
   primary?: boolean;
-  ref?: React.Ref<any>;
+  icon?: boolean;
 };
 
-export const Button = ({ primary, text, ...props }: ButtonProps) => {
+export const Button = ({
+  children,
+  primary,
+  text,
+  icon,
+  ...props
+}: ButtonProps) => {
   return (
     <>
-      <Container primary={primary} {...props}>
-        {text}
-      </Container>
+      <button {...props}>
+        {icon ? children : text} {icon ? text : false}
+      </button>
     </>
   );
 };

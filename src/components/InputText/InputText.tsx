@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Container, Input } from './InputText.styles.ts';
+import styles from './InputText.module.css';
 
 type InputTextProps = React.ComponentProps<'input'> & {
   label?: string;
@@ -12,11 +12,11 @@ export const InputText = ({
   ...props
 }: InputTextProps) => {
   return (
-    <Container>
+    <div className={styles.container}>
       <label htmlFor={label}>
         {label}
-        <Input id={label} {...props} />
+        <input className={styles.input} id={label} {...props} />
       </label>
-    </Container>
+    </div>
   );
 };

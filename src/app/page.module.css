@@ -6,6 +6,9 @@
   align-items: center;
   gap: 0 8%;
   background-image: url('/imgs/bg-01.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .boxMessage {
   width: 35%;

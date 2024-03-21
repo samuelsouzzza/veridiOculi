@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
 }
 .btnPrimary,
 .btnSecondary {
@@ -18,6 +23,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2%;
+  margin: 1% 0;
 }
 
 .btnPrimary {
@@ -29,9 +36,12 @@
   background-color: #39a600cc;
 }
 .btnSecondary {
-  background-color: #fff;
   color: green;
+  border: none;
 }
 .btnSecondary:hover {
-  background-color: #39a60011;
+  background-color: #3aa6002a;
+}
+.subtitle {
+  margin: 1% 0;
 }
