@@ -12,15 +12,17 @@ export const MenuNavLogin = ({ login }: MenuNavLoginProps) => {
   return (
     <nav className={styles.container}>
       <div className={styles.boxLogo}>
-        <Image
-          src='/imgs/logoLabel.svg'
-          alt='Logo Veridi Oculi'
-          width={220}
-          height={70}
-          sizes='100vh'
-          quality={80}
-          priority
-        />
+        <Link href={'/'}>
+          <Image
+            src='/imgs/logoLabel.svg'
+            alt='Logo Veridi Oculi'
+            width={220}
+            height={70}
+            sizes='100vh'
+            quality={80}
+            priority
+          />
+        </Link>
       </div>
       <div className={styles.box}>
         <Link className='btnSecondary' href={'#'}>

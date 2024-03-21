@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styles from './Button.module.css';
 
 type ButtonProps = React.ComponentProps<'button'> & {
   text?: string;

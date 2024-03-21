@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Home',
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function homePage() {
-  return <h1>Página Home</h1>;
+  return <MenuNavHome />;
 }
