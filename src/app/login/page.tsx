@@ -1,4 +1,8 @@
+import styles from './page.module.css';
 import { Metadata } from 'next';
+import { MenuNavLogin } from '@/components/MenuNavLogin/MenuNavLogin';
+import BoxFormLogin from '@/components/BoxFormLogin/BoxFormLogin';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Login',
@@ -6,5 +10,18 @@ export const metadata: Metadata = {
 };
 
 export default function loginPage() {
-  return <h1>Página de login</h1>;
+  return (
+    <div className={styles.container}>
+      <MenuNavLogin login />
+      <div className={styles.box}>
+        <BoxFormLogin />
+        <Image
+          src='/imgs/logoLabel.svg'
+          width={325}
+          height={200}
+          alt='Logo Veridi Oculi com legenda'
+        />
+      </div>
+    </div>
+  );
 }

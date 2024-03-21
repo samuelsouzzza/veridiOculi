@@ -23,7 +23,7 @@ export const FormNewRegister = () => {
         <InputText label='E-Mail' type='text' required />
         <InputText label='Nova senha' type='password' required />
         <InputText label='Confirmar senha' type='password' required />
-        <div className={styles.spanAll}>
+        <div className='spanAll'>
           <Button
             text='Cadastrar'
             onClick={enterRegister}
@@ -36,7 +36,7 @@ export const FormNewRegister = () => {
             className='btnSecondary'
             onClick={enterRegister}
           >
-            <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faGoogle} />
           </Button>
         </div>
       </form>

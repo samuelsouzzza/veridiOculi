@@ -6,11 +6,7 @@ type InputTextProps = React.ComponentProps<'input'> & {
   label?: string;
 };
 
-export const InputText = ({
-  label,
-
-  ...props
-}: InputTextProps) => {
+export const InputText = ({ label, ...props }: InputTextProps) => {
   return (
     <div className={styles.container}>
       <label htmlFor={label}>

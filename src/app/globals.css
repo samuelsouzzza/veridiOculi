@@ -10,6 +10,21 @@
   font-style: normal;
   font-variation-settings: 'wdth' 100;
 }
+.spanAll {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.linkSimple {
+  text-decoration: none;
+  color: #333;
+  transition: 0.5s;
+}
+.linkSimple:hover {
+  color: #39a600;
+}
 .btnPrimary,
 .btnSecondary {
   width: 100%;
