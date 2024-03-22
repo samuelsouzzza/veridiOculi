@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Home',
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function homePage() {
-  return <MenuNavHome />;
+  return (
+    <div className={styles.container}>
+      <MenuNavHome />
+    </div>
+  );
 }
