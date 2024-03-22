@@ -2,9 +2,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-image: url('/imgs/bg-02.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 100%;
+  flex-direction: column;
+  padding: 0 1%;
+}
+.container > section {
+  margin: 1% 0;
+}
+.initial {
+  display: flex;
+  align-items: center;
+  height: 85vh;
+  width: 100%;
+  /* background-color: #ccc; */
+}
+.boxSlider {
+  height: 100%;
+}
+.about {
+  height: 45vh;
+  width: 100%;
+  /* background-color: #ccc; */
+  display: flex;
+  justify-content: center;
+}
+.boxAbout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 50%;
+}
+.boxAbout > p {
+  text-align: justify;
 }
