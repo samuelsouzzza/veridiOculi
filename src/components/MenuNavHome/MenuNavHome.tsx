@@ -7,8 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import React from 'react';
 
-export const MenuNavHome = () => {
-  const [active, setActive] = React.useState('home');
+type MenuNavHomeProps = {
+  activeRoute: string;
+};
+
+export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
+  const [active, setActive] = React.useState(activeRoute);
 
   function handleActive(tab: string) {
     if (tab === active) return;
@@ -32,23 +36,25 @@ export const MenuNavHome = () => {
       </div>
       <div className={styles.box}>
         <Link
-          href={'#'}
+          href={'/home'}
           className={`btnSecondary ${active === 'home' ? 'active' : ''}`}
           onClick={() => handleActive('home')}
         >
           Página Inicial
         </Link>
         <Link
-          href={'#'}
-          className={`btnSecondary ${active === 'newAnalysis' ? 'active' : ''}`}
-          onClick={() => handleActive('newAnalysis')}
+          href={'/new-analysis'}
+          className={`btnSecondary ${
+            active === 'new-analysis' ? 'active' : ''
+          }`}
+          onClick={() => handleActive('new-analysis')}
         >
           Nova Análise
         </Link>
         <Link
-          href={'#'}
-          className={`btnSecondary ${active === 'myAnalysis' ? 'active' : ''}`}
-          onClick={() => handleActive('myAnalysis')}
+          href={'/my-analysis'}
+          className={`btnSecondary ${active === 'my-analysis' ? 'active' : ''}`}
+          onClick={() => handleActive('my-analysis')}
         >
           Minhas Análises
         </Link>
