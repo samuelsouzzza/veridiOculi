@@ -9,7 +9,7 @@
 .container > section {
   margin: 5%;
 }
-.container > section > p {
+.container > section p {
   text-align: justify;
 }
 .initial,
@@ -32,7 +32,7 @@
   height: 60vh;
 }
 .team {
-  height: 70vh;
+  height: auto;
   width: 100%;
 }
 .boxAbout,

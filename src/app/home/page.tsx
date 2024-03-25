@@ -5,6 +5,7 @@ import { Slider } from '@/components/Slider/Slider';
 import Image from 'next/image';
 import { CardTeam } from '@/components/CardTeam/CardTeam';
 import { Member } from '@/@types/@types';
+import { Footer } from '@/components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Home',
@@ -131,9 +132,17 @@ export default function homePage() {
               );
             })}
           </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo id
+            tempora soluta esse nostrum? Qui inventore assumenda architecto
+            excepturi nisi atque. Quod, totam similique porro neque aspernatur
+            earum voluptates quaerat saepe laborum deleniti rerum possimus
+            repellat, qui dolor nostrum pariatur sapiente impedit magni minima?
+            Molestiae soluta sunt nobis. Repellendus, voluptates.
+          </p>
         </div>
       </section>
-      {/* <section>Oi</section> */}
+      <Footer />
     </div>
   );
 }
