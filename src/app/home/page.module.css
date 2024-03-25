@@ -9,7 +9,7 @@
 .container > section {
   margin: 5%;
 }
-.container > section p {
+.container > section > p {
   text-align: justify;
 }
 .initial,
@@ -34,7 +34,6 @@
 .team {
   height: 70vh;
   width: 100%;
-  background-color: red;
 }
 .boxAbout,
 .boxImpact,
@@ -44,4 +43,12 @@
   justify-content: flex-start;
   flex-direction: column;
   width: 50%;
+}
+.boxCards {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5%;
+  margin: 5% 0;
 }

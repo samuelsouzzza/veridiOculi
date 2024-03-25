@@ -3,6 +3,8 @@ import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
 import styles from './page.module.css';
 import { Slider } from '@/components/Slider/Slider';
 import Image from 'next/image';
+import { CardTeam } from '@/components/CardTeam/CardTeam';
+import { Member } from '@/@types/@types';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Home',
@@ -11,7 +13,48 @@ export const metadata: Metadata = {
 
 export default function homePage() {
   const imgs = ['/imgs/bg-01.svg', '/imgs/bg-01.svg'];
-
+  const members: Member[] = [
+    {
+      id: 1,
+      profile: '/imgs/team/valmir_vetor.png',
+      name: 'Valmir Cardoso',
+      office: 'Dev Back-End',
+      links: {
+        github: '#',
+        linkedin: '#',
+      },
+    },
+    {
+      id: 2,
+      profile: '/imgs/team/valmir_vetor.png',
+      name: 'Samuel Souza',
+      office: 'Dev Back-End',
+      links: {
+        github: '#',
+        linkedin: '#',
+      },
+    },
+    {
+      id: 3,
+      profile: '/imgs/team/valmir_vetor.png',
+      name: 'Luan França',
+      office: 'Dev Back-End',
+      links: {
+        github: '#',
+        linkedin: '#',
+      },
+    },
+    {
+      id: 4,
+      profile: '/imgs/team/valmir_vetor.png',
+      name: 'Ricardo Matsumura',
+      office: 'Dev Back-End',
+      links: {
+        github: '#',
+        linkedin: '#',
+      },
+    },
+  ];
   return (
     <div className={styles.container}>
       <MenuNavHome activeRoute='home' />
@@ -75,9 +118,22 @@ export default function homePage() {
       <section className={styles.team}>
         <div className={styles.boxTeam}>
           <h1 className='title'>Nossa equipe</h1>
+          <div className={styles.boxCards}>
+            {members.map((m) => {
+              return (
+                <CardTeam
+                  key={m.id}
+                  profile={m.profile}
+                  name={m.name}
+                  office={m.office}
+                  links={m.links}
+                />
+              );
+            })}
+          </div>
         </div>
       </section>
-      <section>Oi</section>
+      {/* <section>Oi</section> */}
     </div>
   );
 }

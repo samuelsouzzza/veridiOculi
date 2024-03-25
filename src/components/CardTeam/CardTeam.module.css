@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  min-width: 220px;
+  background-color: #fff;
+  max-height: max-content;
+  box-shadow: 1px 1px 10px 1px #cccccccc;
+  border-radius: 5px;
+  padding: 3%;
+}
+.boxImg {
+  width: 100%;
+}
+.profileImg {
+  border-radius: 50%;
+}
+.boxDescription {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.boxDescription > span {
+  color: #333;
+}
+.boxIcons {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+}
+.boxIcons svg {
+  color: #333;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 5% 0;
+}
+.boxIcons svg:hover {
+  color: #39a600;
+}
