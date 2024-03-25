@@ -16,9 +16,7 @@ export default function homePage() {
     <div className={styles.container}>
       <MenuNavHome activeRoute='home' />
       <section className={styles.initial}>
-        <div className={styles.boxSlider}>
-          <Slider slides={imgs} />
-        </div>
+        <Slider slides={imgs} />
       </section>
       <section className={styles.about}>
         <div className={styles.boxAbout}>
@@ -47,8 +45,39 @@ export default function homePage() {
           </p>
         </div>
       </section>
-      <section className={styles.initial}>Oi</section>
-      <section className={styles.initial}>Oi</section>
+      <section className={styles.impact}>
+        <div className={styles.boxImpact}>
+          <Image
+            src={'/imgs/chave-inglesa.png'}
+            width={60}
+            height={60}
+            alt='Logo da Veridi Oculi'
+          />
+          <h1 className='title'>Impacto do Projeto</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+            earum quam incidunt voluptatum animi libero rerum quae, aut,
+            doloremque exercitationem magni. Eligendi, aspernatur molestiae
+            itaque dolore natus repellendus fuga quis minus hic eveniet ipsa,
+            dolorum necessitatibus reprehenderit doloremque et quidem minima
+            repellat tempora sunt earum?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+            earum quam incidunt voluptatum animi libero rerum quae, aut,
+            doloremque exercitationem magni. Eligendi, aspernatur molestiae
+            itaque dolore natus repellendus fuga quis minus hic eveniet ipsa,
+            dolorum necessitatibus reprehenderit doloremque et quidem minima
+            repellat tempora sunt earum?
+          </p>
+        </div>
+      </section>
+      <section className={styles.team}>
+        <div className={styles.boxTeam}>
+          <h1 className='title'>Nossa equipe</h1>
+        </div>
+      </section>
+      <section>Oi</section>
     </div>
   );
 }

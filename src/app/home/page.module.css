@@ -7,32 +7,41 @@
   padding: 0 1%;
 }
 .container > section {
-  margin: 1% 0;
+  margin: 5%;
 }
-.initial {
-  display: flex;
-  align-items: center;
-  height: 85vh;
+.container > section p {
+  text-align: justify;
+}
+.initial,
+.about,
+.impact,
+.team {
   width: 100%;
-  /* background-color: #ccc; */
-}
-.boxSlider {
-  height: 100%;
-}
-.about {
-  height: 45vh;
-  width: 100%;
-  /* background-color: #ccc; */
   display: flex;
   justify-content: center;
 }
-.boxAbout {
+.initial {
+  align-items: center;
+  height: 85vh;
+  margin: 5% 0 0 0 !important;
+}
+.about {
+  height: 45vh;
+}
+.impact {
+  height: 60vh;
+}
+.team {
+  height: 70vh;
+  width: 100%;
+  background-color: red;
+}
+.boxAbout,
+.boxImpact,
+.boxTeam {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   width: 50%;
-}
-.boxAbout > p {
-  text-align: justify;
 }
