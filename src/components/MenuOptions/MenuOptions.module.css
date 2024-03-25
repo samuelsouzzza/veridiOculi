@@ -1,0 +1,16 @@
+.container {
+  background-color: #fff;
+  height: auto;
+  min-width: 200px;
+  width: auto;
+  box-shadow: 1px 1px 10px 1px #33333333;
+  border-radius: 5px;
+  top: 80px;
+  right: 2%;
+  position: fixed;
+  padding: 1%;
+}
+.container > ul {
+  text-decoration: none;
+  list-style: none;
+}
