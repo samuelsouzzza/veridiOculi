@@ -17,42 +17,42 @@ export default function homePage() {
   const members: Member[] = [
     {
       id: 1,
-      profile: '/imgs/team/valmir_vetor.png',
+      profile: '/imgs/team/valmir_cardoso.png',
       name: 'Valmir Cardoso',
       office: 'Dev Back-End',
       links: {
-        github: '#',
-        linkedin: '#',
+        github: 'https://github.com/valmirc17',
+        linkedin: 'https://linkedin.com/in/valmirc17',
       },
     },
     {
       id: 2,
-      profile: '/imgs/team/valmir_vetor.png',
+      profile: '/imgs/team/samuel_souzzza.jpg',
       name: 'Samuel Souza',
-      office: 'Dev Back-End',
+      office: 'Dev Front-End',
       links: {
-        github: '#',
-        linkedin: '#',
+        github: 'https://github.com/samuelsouzzza',
+        linkedin: 'https://linkedin.com/in/samuelsouzzza',
       },
     },
     {
       id: 3,
-      profile: '/imgs/team/valmir_vetor.png',
+      profile: '/imgs/team/luan_franca.jpg',
       name: 'Luan França',
-      office: 'Dev Back-End',
+      office: 'Designer UX/UI',
       links: {
-        github: '#',
-        linkedin: '#',
+        github: 'https://github.com/luangmf',
+        linkedin: 'https://linkedin.com/in/luangmf',
       },
     },
     {
       id: 4,
-      profile: '/imgs/team/valmir_vetor.png',
+      profile: '/imgs/team/ricardo_matsumura.png',
       name: 'Ricardo Matsumura',
-      office: 'Dev Back-End',
+      office: 'CEO & Dev Back-End',
       links: {
-        github: '#',
-        linkedin: '#',
+        github: 'https://github.com/fuzilo',
+        linkedin: 'https://linkedin.com/in/ricardo-matsumura-09726a133',
       },
     },
   ];

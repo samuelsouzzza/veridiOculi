@@ -3,7 +3,7 @@
   min-width: 220px;
   background-color: #fff;
   max-height: max-content;
-  box-shadow: 1px 1px 10px 1px #cccccccc;
+  /* box-shadow: 1px 1px 10px 1px #cccccccc; */
   border-radius: 5px;
   padding: 3%;
 }
@@ -24,11 +24,10 @@
   color: #333;
 }
 .boxIcons {
-  /* background-color: red; */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333;
 }
 .boxIcons svg {

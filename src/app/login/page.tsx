@@ -16,7 +16,7 @@ export default function loginPage() {
       <div className={styles.box}>
         <BoxFormLogin />
         <Image
-          src='/imgs/logoLabel.svg'
+          src='/imgs/logoLabelWhite.svg'
           width={325}
           height={200}
           alt='Logo Veridi Oculi com legenda'

@@ -16,7 +16,7 @@ export default function registerPage() {
       <div className={styles.box}>
         <FormNewRegister />
         <Image
-          src='/imgs/logoLabel.svg'
+          src='/imgs/logoLabelWhite.svg'
           width={325}
           height={200}
           alt='Logo Veridi Oculi com legenda'
