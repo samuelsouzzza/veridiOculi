@@ -24,10 +24,16 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
   }
 
   React.useEffect(() => {
-    window.addEventListener('click', (e) => {
-      // if (e.currentTarget !== refMenu.current) setShowOptions(false);
-      alert(refMenu.current);
-    });
+    function handleClickOutside(event: MouseEvent) {
+      if (refMenu.current && !refMenu.current.contains(event.target as Node)) {
+        setShowOptions(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   return (
@@ -74,7 +80,7 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
             icon
             text='Minha conta'
             className='btnSecondary'
-            onClick={() => setShowOptions(!showOptions)}
+            onClick={() => setShowOptions(true)}
           >
             <FontAwesomeIcon icon={faUser} />
           </Button>
