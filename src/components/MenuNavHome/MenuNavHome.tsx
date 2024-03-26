@@ -75,17 +75,16 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
         >
           Minhas Análises
         </Link>
-        <div>
-          <Button
-            icon
-            text='Minha conta'
-            className='btnSecondary'
-            onClick={() => setShowOptions(true)}
-          >
-            <FontAwesomeIcon icon={faUser} />
-          </Button>
-          {showOptions && <MenuOptions ref={refMenu} />}
-        </div>
+
+        <Button
+          icon
+          text='Minha conta'
+          className='btnSecondary'
+          onClick={() => setShowOptions(true)}
+        >
+          <FontAwesomeIcon icon={faUser} />
+        </Button>
+        {showOptions && <MenuOptions ref={refMenu} />}
       </div>
     </div>
   );
