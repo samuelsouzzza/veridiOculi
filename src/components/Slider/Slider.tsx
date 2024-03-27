@@ -6,7 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
+  faCircle as faCircleFull,
 } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 
 type SliderProps = {
   slides: string[];
@@ -16,6 +18,10 @@ export const Slider = ({ slides }: SliderProps) => {
   const [active, setActive] = React.useState(0);
   const [position, setPosition] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
+
+  function fullCircle(n: number) {
+    setActive(n);
+  }
 
   React.useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -53,14 +59,31 @@ export const Slider = ({ slides }: SliderProps) => {
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
         ) : (
-          <div />
+          <div style={{ width: '45px' }} />
         )}
+        <div className={styles.count}>
+          {slides.map((s, i) => {
+            return i === active ? (
+              <FontAwesomeIcon
+                key={i}
+                icon={faCircleFull}
+                onClick={() => fullCircle(i)}
+              />
+            ) : (
+              <FontAwesomeIcon
+                key={i}
+                icon={faCircle}
+                onClick={() => fullCircle(i)}
+              />
+            );
+          })}
+        </div>
         {active >= 0 && active + 1 < slides.length ? (
           <button onClick={slideNext}>
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
         ) : (
-          <div />
+          <div style={{ width: '45px' }} />
         )}
       </div>
       <div
@@ -83,9 +106,6 @@ export const Slider = ({ slides }: SliderProps) => {
             </div>
           );
         })}
-      </div>
-      <div className={styles.count}>
-        {active + 1}/{slides.length}
       </div>
     </section>
   );

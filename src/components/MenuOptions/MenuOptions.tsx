@@ -30,7 +30,7 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
             </Link>
           </li>
           <li>
-            <Link className='btnSecondary' style={styleOption} href={'#'}>
+            <Link className='btnSecondary' style={styleOption} href={'/'}>
               <FontAwesomeIcon icon={faX} />
               <span>Sair</span>
             </Link>
