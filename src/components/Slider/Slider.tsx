@@ -63,16 +63,10 @@ export const Slider = ({ slides }: SliderProps) => {
         )}
         <div className={styles.count}>
           {slides.map((s, i) => {
-            return i === active ? (
+            return (
               <FontAwesomeIcon
                 key={i}
-                icon={faCircleFull}
-                onClick={() => fullCircle(i)}
-              />
-            ) : (
-              <FontAwesomeIcon
-                key={i}
-                icon={faCircle}
+                icon={active === i ? faCircleFull : faCircle}
                 onClick={() => fullCircle(i)}
               />
             );
