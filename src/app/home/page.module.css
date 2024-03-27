@@ -22,6 +22,7 @@
 }
 .initial {
   align-items: center;
+  justify-content: stretch;
   height: 85vh;
   margin: 5% 0 0 0 !important;
 }

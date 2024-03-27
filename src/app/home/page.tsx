@@ -13,7 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default function homePage() {
-  const imgs = ['/imgs/bg-01.svg', '/imgs/bg-01.svg'];
+  const imgs = [
+    '/imgs/bg-01.svg',
+    '/imgs/bg-01.svg',
+    '/imgs/bg-01.svg',
+    '/imgs/bg-01.svg',
+  ];
   const members: Member[] = [
     {
       id: 1,

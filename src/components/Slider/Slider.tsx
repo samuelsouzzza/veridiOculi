@@ -1,25 +1,40 @@
 'use client';
 import React from 'react';
 import styles from './Slider.module.css';
-
-type SliderProps = {
-  slides: string[];
-};
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+
+type SliderProps = {
+  slides: string[];
+};
+
 export const Slider = ({ slides }: SliderProps) => {
   const [active, setActive] = React.useState(0);
   const [position, setPosition] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    function slideNextOrReset() {
+      if (active === slides.length - 1) setActive(0);
+      else slideNext();
+    }
+
+    timeoutId = setTimeout(slideNextOrReset, 5000);
+
     if (contentRef.current) {
       const { width } = contentRef.current.getBoundingClientRect();
       setPosition(-(width * active));
     }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [active]);
 
   function slidePrev() {
@@ -58,10 +73,12 @@ export const Slider = ({ slides }: SliderProps) => {
         {slides.map((slide) => {
           return (
             <div className={styles.item} key={Math.random()}>
-              <img
+              <Image
                 className={styles.image}
                 src={`http://localhost:3000/${slide}`}
                 alt='Imagem da publicação'
+                width={300}
+                height={300}
               />
             </div>
           );
