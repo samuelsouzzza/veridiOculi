@@ -20,7 +20,7 @@ export const CardTeam = ({ profile, name, office, links }: CardTeamProps) => {
           src={profile}
           //   width={500}
           //   height={500}
-          alt={'Foto de um membro da equipoe'}
+          alt={'Foto de um membro da equipe'}
         />
       </div>
       <div className={styles.boxDescription}>

@@ -3,7 +3,7 @@
   min-width: 220px;
   background-color: #fff;
   max-height: max-content;
-  /* box-shadow: 1px 1px 10px 1px #cccccccc; */
+  box-shadow: 1px 1px 10px 1px #cccccccc;
   border-radius: 5px;
   padding: 3%;
 }
@@ -12,6 +12,8 @@
 }
 .profileImg {
   border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 .boxDescription {
   width: 100%;
