@@ -5,3 +5,15 @@
   height: 100vh;
   background-color: #fff;
 }
+.view {
+  margin: 5% 0 0 0;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 80%;
+  height: 75vh;
+}
+.view form {
+  width: 100%;
+}

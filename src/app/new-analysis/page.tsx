@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import styles from './page.module.css';
 import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
+import React from 'react';
+import { FormNewAnalysis } from '@/components/FormNewAnalysis/FormNewAnalysis';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Nova análise',
@@ -11,7 +13,9 @@ export default function newanalysisPage() {
   return (
     <div className={styles.container}>
       <MenuNavHome activeRoute='new-analysis' />
-      Nova análises
+      <div className={styles.view}>
+        <FormNewAnalysis />
+      </div>
     </div>
   );
 }

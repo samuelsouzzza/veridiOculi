@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
 
@@ -53,27 +54,21 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
       </div>
       <div className={styles.box}>
         <Link
-          href={'/home'}
-          className={`btnSecondary ${active === 'home' ? 'active' : ''}`}
-          onClick={() => handleActive('home')}
-        >
-          Página Inicial
-        </Link>
-        <Link
           href={'/new-analysis'}
           className={`btnSecondary ${
             active === 'new-analysis' ? 'active' : ''
           }`}
           onClick={() => handleActive('new-analysis')}
         >
-          Nova Análise
+          <FontAwesomeIcon icon={faPlus} /> Nova Análise
         </Link>
         <Link
-          href={'/my-analysis'}
-          className={`btnSecondary ${active === 'my-analysis' ? 'active' : ''}`}
-          onClick={() => handleActive('my-analysis')}
+          href={'/historic'}
+          className={`btnSecondary ${active === 'historic' ? 'active' : ''}`}
+          onClick={() => handleActive('historic')}
         >
-          Minhas Análises
+          <FontAwesomeIcon icon={faClockRotateLeft} />
+          Histórico
         </Link>
 
         <Button
