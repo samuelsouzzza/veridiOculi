@@ -23,8 +23,17 @@ export const FormNewAnalysis = () => {
     }
   }
 
+  function deleteImg(id: number) {
+    if (selectedImgs) {
+      let arr = [...selectedImgs];
+      arr?.splice(id, 1);
+      setSelectedImgs(arr);
+    }
+  }
+
   function sendForm() {
     alert('Formulário enviado');
+    console.log(selectedImgs);
   }
 
   return (
@@ -34,9 +43,15 @@ export const FormNewAnalysis = () => {
         label='Selecione as imagens para a análise'
         selectedImgs={selectedImgs ? selectedImgs : null}
         onChange={loadImgs}
+        onDelete={deleteImg}
+        accept='image/*'
       />
-      {selectedImgs && (
-        <Button text='Enviar para análise' className='btnPrimary' />
+      {selectedImgs && selectedImgs.length > 0 && (
+        <Button
+          type='submit'
+          text='Enviar para análise'
+          className='btnPrimary'
+        />
       )}
     </form>
   );
