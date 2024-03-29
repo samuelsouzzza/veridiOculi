@@ -4,9 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
-
 .container > label {
   display: flex;
   flex-direction: column;
@@ -18,6 +17,7 @@
   cursor: pointer;
   transition: 0.3s;
   gap: 5% 0;
+  font-weight: bold;
 }
 .container > label:hover {
   background-color: #39a60033;
@@ -26,9 +26,19 @@
   font-size: 5rem;
   color: #39a60066;
 }
-
 .file {
   display: none;
+}
+.count {
+  margin: 2% 0;
+  width: 100%;
+  text-align: right;
+}
+.count > svg {
+  margin: 0 0.5%;
+}
+.count.blink {
+  animation: blink 0.3s infinite ease-in-out;
 }
 .previewContainer {
   width: 100%;
@@ -36,7 +46,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1%;
-  margin: 2% 0;
+  margin: 1% 0;
+  color: #333;
 }
 .boxImg {
   position: relative;
@@ -69,4 +80,13 @@
   border: 1px solid #ccc;
   object-fit: contain;
   border-radius: 5%;
+}
+
+@keyframes blink {
+  from {
+    color: initial;
+  }
+  to {
+    color: #39a60066;
+  }
 }

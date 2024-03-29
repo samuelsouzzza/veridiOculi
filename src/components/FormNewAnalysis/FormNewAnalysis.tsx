@@ -14,6 +14,10 @@ export const FormNewAnalysis = () => {
     const { files } = e.target;
 
     if (files !== null && files.length > 0) {
+      if (files.length > 3) {
+        alert('Escolha no máximo 3 fotos no plano grátis!');
+        return;
+      }
       setSelectedImgs(
         Array.from(files).map((file) => ({
           preview: URL.createObjectURL(file),
@@ -49,7 +53,7 @@ export const FormNewAnalysis = () => {
       {selectedImgs && selectedImgs.length > 0 && (
         <Button
           type='submit'
-          text='Enviar para análise'
+          text={`Analisar ${selectedImgs.length} imagens`}
           className='btnPrimary'
         />
       )}
