@@ -3,8 +3,13 @@ import { InputFile } from '../InputFile/InputFile';
 import { Button } from '../Button/Button';
 import { IImgsForAnalysis } from '@/@types/@types';
 import React from 'react';
+import { UseGlobalContext } from '@/global/GlobalContext';
+import { faWarning } from '@fortawesome/free-solid-svg-icons';
+import { ModalActions } from '../ModalActions/ModalActions';
 
 export const FormNewAnalysis = () => {
+  const { modalActions, setModalActions } = UseGlobalContext();
+
   const [selectedImgs, setSelectedImgs] = React.useState<
     IImgsForAnalysis[] | null
   >(null);
@@ -12,10 +17,16 @@ export const FormNewAnalysis = () => {
   function loadImgs(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     const { files } = e.target;
+    setModalActions(null);
 
     if (files !== null && files.length > 0) {
       if (files.length > 3) {
-        alert('Escolha no máximo 3 fotos no plano grátis!');
+        setModalActions({
+          message:
+            'No plano gratuito você só pode analisar, no máximo, 3 (três) imagens por vez',
+          icon: faWarning,
+          type: 'ok',
+        });
         return;
       }
       setSelectedImgs(
@@ -41,22 +52,31 @@ export const FormNewAnalysis = () => {
   }
 
   return (
-    <form action={sendForm}>
-      <InputFile
-        id='idInputImgsNewAnalysis'
-        label='Selecione as imagens para a análise'
-        selectedImgs={selectedImgs ? selectedImgs : null}
-        onChange={loadImgs}
-        onDelete={deleteImg}
-        accept='image/*'
-      />
-      {selectedImgs && selectedImgs.length > 0 && (
-        <Button
-          type='submit'
-          text={`Analisar ${selectedImgs.length} imagens`}
-          className='btnPrimary'
+    <>
+      {modalActions && (
+        <ModalActions
+          message={modalActions?.message}
+          icon={modalActions?.icon}
+          type={modalActions?.type}
         />
       )}
-    </form>
+      <form onSubmit={sendForm}>
+        <InputFile
+          id='idInputImgsNewAnalysis'
+          label='Selecione as imagens para a análise'
+          selectedImgs={selectedImgs ? selectedImgs : null}
+          onChange={loadImgs}
+          onDelete={deleteImg}
+          accept='image/*'
+        />
+        {selectedImgs && selectedImgs.length > 0 && (
+          <Button
+            type='submit'
+            text={`Analisar ${selectedImgs.length} imagens`}
+            className='btnPrimary'
+          />
+        )}
+      </form>
+    </>
   );
 };

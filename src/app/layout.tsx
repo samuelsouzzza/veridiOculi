@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { GlobalContextProvider } from '@/global/GlobalContext';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi',
@@ -15,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
-      <body>{children}</body>
+      <GlobalContextProvider>
+        <body>{children}</body>
+      </GlobalContextProvider>
     </html>
   );
 }
