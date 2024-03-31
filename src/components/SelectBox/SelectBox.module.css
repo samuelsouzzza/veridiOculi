@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+}
+.container > label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1%;
+}
+.input {
+  border: 1px solid #3aa60066;
+  height: 35px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.input > option {
+  cursor: pointer;
+}

@@ -14,6 +14,7 @@ export default function newanalysisPage() {
     <div className={styles.container}>
       <MenuNavHome activeRoute='new-analysis' />
       <div className={styles.view}>
+        <h1 className='title'>Nova análise</h1>
         <FormNewAnalysis />
       </div>
     </div>

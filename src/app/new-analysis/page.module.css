@@ -4,13 +4,15 @@
   justify-content: center;
   height: 100vh;
   background-color: #fff;
+  padding: 5% 0 0 0;
 }
 .view {
-  margin: 5% 0 0 0;
+  /* margin: 5% 0 0 0; */
   padding: 1%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
   width: 80%;
   height: 75vh;
 }

@@ -1,4 +1,5 @@
 'use client';
+import styles from './FormNewAnalysis.module.css';
 import { InputFile } from '../InputFile/InputFile';
 import { Button } from '../Button/Button';
 import { IImgsForAnalysis } from '@/@types/@types';
@@ -7,6 +8,7 @@ import { UseGlobalContext } from '@/global/GlobalContext';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
+import { SelectBox } from '../SelectBox/SelectBox';
 
 export const FormNewAnalysis = () => {
   const { modalActions, setModalActions } = UseGlobalContext();
@@ -76,7 +78,19 @@ export const FormNewAnalysis = () => {
           onOk={modalActions?.onOk}
         />
       )}
-      <form onSubmit={sendForm}>
+      <form onSubmit={sendForm} className={styles.container}>
+        <div className={styles.boxSelect}>
+          <SelectBox
+            id='speciesSelect'
+            label='Espécie foco'
+            options={['Embaúba', 'Pau Brasil', 'Ypê Rosa']}
+          />
+          <SelectBox
+            id='resolutionSelect'
+            label='Resolução'
+            options={['Baixa', 'Média', 'Alta']}
+          />
+        </div>
         <InputFile
           id='idInputImgsNewAnalysis'
           label='Selecione as imagens para análise'
