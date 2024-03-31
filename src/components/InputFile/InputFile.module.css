@@ -52,6 +52,7 @@
 .boxImg {
   position: relative;
   margin: 2%;
+  animation: fadeIn 0.3s normal;
 }
 .delImg {
   border: 1px solid #33333333;
@@ -81,12 +82,20 @@
   object-fit: contain;
   border-radius: 5%;
 }
-
 @keyframes blink {
   from {
     color: initial;
   }
   to {
     color: #39a60066;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

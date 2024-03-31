@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function historicPage() {
   return (
     <div className={styles.container}>
-      <MenuNavHome activeRoute='my-analysis' />
+      <MenuNavHome activeRoute='historic' />
       Histórico
     </div>
   );

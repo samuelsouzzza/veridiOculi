@@ -4,7 +4,8 @@ import { Button } from '../Button/Button';
 import { IImgsForAnalysis } from '@/@types/@types';
 import React from 'react';
 import { UseGlobalContext } from '@/global/GlobalContext';
-import { faWarning } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
 
 export const FormNewAnalysis = () => {
@@ -24,11 +25,12 @@ export const FormNewAnalysis = () => {
         setModalActions({
           message:
             'No plano gratuito você só pode analisar, no máximo, 3 (três) imagens por vez',
-          icon: faWarning,
+          icon: faExclamation,
           type: 'ok',
         });
         return;
       }
+
       setSelectedImgs(
         Array.from(files).map((file) => ({
           preview: URL.createObjectURL(file),
@@ -46,9 +48,14 @@ export const FormNewAnalysis = () => {
     }
   }
 
-  function sendForm() {
-    alert('Formulário enviado');
-    console.log(selectedImgs);
+  function sendForm(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setModalActions({
+      message: 'Suas imagens foram enviadas para a análise',
+      icon: faCheck,
+      type: 'ok',
+    });
   }
 
   return (
@@ -63,7 +70,7 @@ export const FormNewAnalysis = () => {
       <form onSubmit={sendForm}>
         <InputFile
           id='idInputImgsNewAnalysis'
-          label='Selecione as imagens para a análise'
+          label='Selecione as imagens para análise'
           selectedImgs={selectedImgs ? selectedImgs : null}
           onChange={loadImgs}
           onDelete={deleteImg}

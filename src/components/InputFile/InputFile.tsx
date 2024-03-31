@@ -5,7 +5,7 @@ import { IImgsForAnalysis } from '@/@types/@types';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX, faPersonPraying } from '@fortawesome/free-solid-svg-icons';
-import { faFolderOpen } from '@fortawesome/free-regular-svg-icons';
+import { faFolder } from '@fortawesome/free-regular-svg-icons';
 
 type InputFileProps = React.ComponentProps<'input'> & {
   id: string;
@@ -33,7 +33,7 @@ export const InputFile = ({
         Plano grátis • {selectedImgs?.length ? selectedImgs.length : 0}/3 fotos
       </p>
       <label htmlFor={id}>
-        <FontAwesomeIcon icon={faFolderOpen} />
+        <FontAwesomeIcon icon={faFolder} />
         <p>{label}</p>
       </label>
       <input className={styles.file} id={id} type='file' multiple {...props} />
