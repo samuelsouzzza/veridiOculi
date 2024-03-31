@@ -44,9 +44,8 @@ export const FormNewAnalysis = () => {
 
   function deleteImg(id: number) {
     if (selectedImgs) {
-      let arr = [...selectedImgs];
-      arr?.splice(id, 1);
-      setSelectedImgs(arr);
+      const updatedImgs = selectedImgs.filter((img) => img.id !== id);
+      setSelectedImgs(updatedImgs);
     }
   }
 
