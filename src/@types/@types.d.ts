@@ -6,6 +6,7 @@ export interface Member {
   links: { github: string; linkedin: string };
 }
 export interface IImgsForAnalysis {
+  id: number;
   preview: string;
   raw: File | null;
 }

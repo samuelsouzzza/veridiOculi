@@ -27,12 +27,14 @@ export const FormNewAnalysis = () => {
             'No plano gratuito você só pode analisar, no máximo, 3 (três) imagens por vez',
           icon: faExclamation,
           type: 'ok',
+          onOk: cleanForm,
         });
         return;
       }
 
       setSelectedImgs(
-        Array.from(files).map((file) => ({
+        Array.from(files).map((file, i) => ({
+          id: Date.now() + i,
           preview: URL.createObjectURL(file),
           raw: file,
         }))
@@ -48,13 +50,20 @@ export const FormNewAnalysis = () => {
     }
   }
 
+  function cleanForm() {
+    setModalActions(null);
+    setSelectedImgs(null);
+  }
+
   function sendForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setModalActions({
-      message: 'Suas imagens foram enviadas para a análise',
+      message:
+        'Suas imagens foram enviadas para análise, acesse a guia "Histórico" para visualizar',
       icon: faCheck,
       type: 'ok',
+      onOk: cleanForm,
     });
   }
 
@@ -65,6 +74,7 @@ export const FormNewAnalysis = () => {
           message={modalActions?.message}
           icon={modalActions?.icon}
           type={modalActions?.type}
+          onOk={modalActions?.onOk}
         />
       )}
       <form onSubmit={sendForm}>

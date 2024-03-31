@@ -10,12 +10,14 @@ export type ModalActionsProps = React.ComponentProps<'div'> & {
   icon: IconDefinition;
   message: string;
   type: 'yes-no' | 'ok';
+  onOk: () => void | null;
 };
 
 export const ModalActions = ({
   icon,
   message,
   type,
+  onOk,
   ...props
 }: ModalActionsProps) => {
   const { setModalActions } = UseGlobalContext();
@@ -34,8 +36,12 @@ export const ModalActions = ({
             />
           ) : (
             <div className={styles.boxButtons}>
-              <Button text='Não' className='btnSecondary' />
-              <Button text='Sim' className='btnPrimary' />
+              <Button
+                text='Não'
+                className='btnSecondary'
+                onClick={() => setModalActions(null)}
+              />
+              <Button text='Sim' className='btnPrimary' onClick={onOk} />
             </div>
           )}
         </div>
