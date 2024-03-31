@@ -54,7 +54,7 @@
   z-index: 1;
   bottom: 5%;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
   gap: 0 0.5%;
   font-size: 0.75rem;
