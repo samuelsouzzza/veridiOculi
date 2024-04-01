@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { getTotalSizeImgs } from '@/utils/getTotalSizeImgs';
+import { fetchDimensionsImages } from '@/utils/fetchDimensionsImages';
 
 type InputFileProps = React.ComponentProps<'input'> & {
   id: string;
@@ -25,6 +26,24 @@ export const InputFile = ({
 }: InputFileProps) => {
   const limitImgs = 3;
 
+  const [dimensions, setDimensions] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const fetchDimensions = async () => {
+      if (selectedImgs && selectedImgs.length > 0) {
+        const dimensionsArray = await Promise.all(
+          selectedImgs.map(async (img) => {
+            const dimension = await fetchDimensionsImages({ src: img.preview });
+            return dimension;
+          })
+        );
+        setDimensions(dimensionsArray);
+      }
+    };
+
+    fetchDimensions();
+  }, [selectedImgs]);
+
   return (
     <div className={styles.container}>
       <label htmlFor={id}>
@@ -39,7 +58,7 @@ export const InputFile = ({
       </p>
       <div className={styles.previewContainer}>
         {selectedImgs && selectedImgs.length > 0 ? (
-          selectedImgs?.map((img) => (
+          selectedImgs?.map((img, i) => (
             <div key={img.id} className={styles.boxImg}>
               <span className={styles.delImg} onClick={() => onDelete(img.id)}>
                 <FontAwesomeIcon icon={faX} />
@@ -52,7 +71,12 @@ export const InputFile = ({
                 height={300}
                 priority
               />
-              <p>{img.raw?.name}</p>
+              <p>{img.raw?.name}</p>{' '}
+              {dimensions && (
+                <p>
+                  {dimensions[i].width}x{dimensions[i].height}
+                </p>
+              )}
             </div>
           ))
         ) : (
