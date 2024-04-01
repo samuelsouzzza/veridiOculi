@@ -8,6 +8,7 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { getTotalSizeImgs } from '@/utils/getTotalSizeImgs';
 import { fetchDimensionsImages } from '@/utils/fetchDimensionsImages';
+import { getResolutionImg } from '@/utils/getResolutionImg';
 
 type InputFileProps = React.ComponentProps<'input'> & {
   id: string;
@@ -53,8 +54,7 @@ export const InputFile = ({
       <input className={styles.file} id={id} type='file' multiple {...props} />
       <p className={styles.statsFiles}>
         {selectedImgs?.length ? selectedImgs.length : 0}/{limitImgs + ' '}
-        fotos •{' '}
-        {selectedImgs ? getTotalSizeImgs(selectedImgs) + ' Mb' : 0 + ' Mb'}
+        fotos • {selectedImgs ? `${getTotalSizeImgs(selectedImgs)} Mb` : '0 Mb'}
       </p>
       <div className={styles.previewContainer}>
         {selectedImgs && selectedImgs.length > 0 ? (
@@ -73,9 +73,17 @@ export const InputFile = ({
               />
               <p>{img.raw?.name}</p>{' '}
               {dimensions && (
-                <p>
-                  {dimensions[i].width}x{dimensions[i].height}
-                </p>
+                <>
+                  <p>
+                    {dimensions[i]?.width}x{dimensions[i]?.height}{' '}
+                    <span className={styles.resolution}>
+                      {getResolutionImg(
+                        dimensions[i]?.width,
+                        dimensions[i]?.height
+                      )}
+                    </span>
+                  </p>
+                </>
               )}
             </div>
           ))
