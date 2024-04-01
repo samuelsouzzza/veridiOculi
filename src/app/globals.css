@@ -77,11 +77,16 @@ img {
 .btnSecondary.active {
   background-color: #3aa6002a;
 }
-.title {
+.title,
+.subtitle {
   margin: 2% 0;
   font-weight: 700;
   font-size: 2rem;
+  width: 100%;
+}
+.title {
+  text-align: center;
 }
 .subtitle {
-  margin: 1% 0;
+  text-align: left;
 }

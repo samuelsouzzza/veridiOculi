@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 2%;
+  margin: 1% 0;
 }
 .container > label {
   display: flex;
@@ -29,17 +29,10 @@
 .file {
   display: none;
 }
-.count {
-  margin: 2% 0;
+.statsFiles {
   width: 100%;
   text-align: right;
-}
-.count > svg {
-  margin: 0 0.5%;
-  color: #39a600;
-}
-.count.blink {
-  animation: blink 0.3s infinite ease-in-out;
+  margin: 1% 0;
 }
 .previewContainer {
   width: 100%;
@@ -53,7 +46,20 @@
 .boxImg {
   position: relative;
   margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   animation: fadeIn 0.3s normal;
+  max-width: 200px;
+}
+.boxImg > p {
+  text-align: center;
+  width: 100%;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 .delImg {
   border: 1px solid #33333333;

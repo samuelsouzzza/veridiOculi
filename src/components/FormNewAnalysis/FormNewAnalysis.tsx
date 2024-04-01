@@ -102,7 +102,7 @@ export const FormNewAnalysis = () => {
         {selectedImgs && selectedImgs.length > 0 && (
           <Button
             type='submit'
-            text={`Analisar ${selectedImgs.length} imagens`}
+            text={`Analisar ${selectedImgs.length} imagem(ens)`}
             className='btnPrimary'
           />
         )}

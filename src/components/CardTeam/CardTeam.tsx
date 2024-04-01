@@ -18,8 +18,8 @@ export const CardTeam = ({ profile, name, office, links }: CardTeamProps) => {
         <img
           className={styles.profileImg}
           src={profile}
-          //   width={500}
-          //   height={500}
+          // width={300}
+          // height={300}
           alt={'Foto de um membro da equipe'}
         />
       </div>

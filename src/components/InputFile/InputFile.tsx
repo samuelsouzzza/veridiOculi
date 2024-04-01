@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
-import { faGratipay } from '@fortawesome/free-brands-svg-icons';
+import { getTotalSizeImgs } from '@/utils/getTotalSizeImgs';
 
 type InputFileProps = React.ComponentProps<'input'> & {
   id: string;
@@ -27,24 +27,16 @@ export const InputFile = ({
 
   return (
     <div className={styles.container}>
-      <p
-        className={`${styles.count} ${
-          selectedImgs?.length === 3 ? styles.blink : ''
-        }`}
-      >
-        <FontAwesomeIcon icon={faGratipay} />
-        Plano gratuito • {selectedImgs?.length ? selectedImgs.length : 0}/
-        {limitImgs + ' '}
-        fotos
-        {selectedImgs?.length === limitImgs
-          ? ' | Atualize para o plano premium para subir imagens ilimitadas'
-          : ''}
-      </p>
       <label htmlFor={id}>
         <FontAwesomeIcon icon={faFolder} />
         <p>{label}</p>
       </label>
       <input className={styles.file} id={id} type='file' multiple {...props} />
+      <p className={styles.statsFiles}>
+        {selectedImgs?.length ? selectedImgs.length : 0}/{limitImgs + ' '}
+        fotos •{' '}
+        {selectedImgs ? getTotalSizeImgs(selectedImgs) + ' Mb' : 0 + ' Mb'}
+      </p>
       <div className={styles.previewContainer}>
         {selectedImgs && selectedImgs.length > 0 ? (
           selectedImgs?.map((img) => (
@@ -60,6 +52,7 @@ export const InputFile = ({
                 height={300}
                 priority
               />
+              <p>{img.raw?.name}</p>
             </div>
           ))
         ) : (
