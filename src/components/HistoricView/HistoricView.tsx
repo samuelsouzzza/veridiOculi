@@ -1,14 +1,15 @@
 'use client';
 import styles from './HistoricView.module.css';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { IReports } from '@/@types/@types';
+import Link from 'next/link';
 
 type HistoricViewProps = {
   data: IReports[];
 };
 
 export function HistoricView({ data }: HistoricViewProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <div className={styles.view}>
@@ -23,17 +24,19 @@ export function HistoricView({ data }: HistoricViewProps) {
         </div>
         {data.map((d) => {
           return (
-            <div
-              key={d.id}
-              className={styles.rowBody}
-              onClick={() => router.push(`/historic/${d.id}`)}
-            >
-              <div className={styles.colBody}>{d.id}</div>
-              <div className={styles.colBody}>{d.dt_report}</div>
-              <div className={styles.colBody}>{d.data.species_name}</div>
-              <div className={styles.colBody}>{d.data.accuracy}</div>
-              <div className={styles.colBody}>Concluído</div>
-            </div>
+            <Link href={`historic/${d.id}`} className={styles.linkRow}>
+              <div
+                key={d.id}
+                className={styles.rowBody}
+                // onClick={() => router.push(`/historic/${d.id}`)}
+              >
+                <div className={styles.colBody}>{d.id}</div>
+                <div className={styles.colBody}>{d.dt_report}</div>
+                <div className={styles.colBody}>{d.data.species_name}</div>
+                <div className={styles.colBody}>{d.data.accuracy}</div>
+                <div className={styles.colBody}>Concluído</div>
+              </div>
+            </Link>
           );
         })}
       </div>

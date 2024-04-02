@@ -15,12 +15,20 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
       <div className={styles.container} ref={ref} {...props}>
         <ul>
           <li>
-            <Link className='btnSecondary' style={styleOption} href={'#'}>
+            <Link
+              className='btnSecondary'
+              style={styleOption}
+              href={'/myaccount'}
+            >
               <span>Meu perfil</span>
             </Link>
           </li>
           <li>
-            <Link className='btnSecondary' style={styleOption} href={'#'}>
+            <Link
+              className='btnSecondary'
+              style={styleOption}
+              href={'/settings'}
+            >
               <span>Configurações</span>
             </Link>
           </li>

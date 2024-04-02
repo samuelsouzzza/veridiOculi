@@ -24,6 +24,13 @@
   font-weight: 700;
 }
 
+.linkRow {
+  text-decoration: none;
+  color: #333;
+}
+.linkRow:visited {
+  color: #333;
+}
 .rowBody {
   cursor: pointer;
   transition: 0.3s;
