@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import styles from './page.module.css';
 import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
-import FetchHistoric from '@/components/FetchHistoric/FetchHistoric';
+import FetchHistoric from '@/components/HistoricView/FetchHistoric';
 
 export const metadata: Metadata = {
   title: 'Veridi Oculi • Histórico',

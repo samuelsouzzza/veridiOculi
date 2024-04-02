@@ -1,9 +1,14 @@
-import styles from './FetchHistoric.module.css';
+'use client';
+import styles from './HistoricView.module.css';
+import { useRouter } from 'next/navigation';
 import { IReports } from '@/@types/@types';
 
-export default async function FetchHistoric() {
-  const response = await fetch('http://localhost:5000/historic');
-  const json = (await response.json()) as IReports[];
+type HistoricViewProps = {
+  data: IReports[];
+};
+
+export function HistoricView({ data }: HistoricViewProps) {
+  const router = useRouter();
 
   return (
     <div className={styles.view}>
@@ -16,9 +21,13 @@ export default async function FetchHistoric() {
           <div className={styles.colHead}>Acurácia</div>
           <div className={styles.colHead}>Status</div>
         </div>
-        {json.map((d) => {
+        {data.map((d) => {
           return (
-            <div key={d.id} className={styles.rowBody}>
+            <div
+              key={d.id}
+              className={styles.rowBody}
+              onClick={() => router.push(`/historic/${d.id}`)}
+            >
               <div className={styles.colBody}>{d.id}</div>
               <div className={styles.colBody}>{d.dt_report}</div>
               <div className={styles.colBody}>{d.data.species_name}</div>
