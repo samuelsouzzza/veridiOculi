@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1345524,
+    "id_user": 44,
+    "dt_report": "2024/06/28",
+    "data": {
+      "species_name": "Embaúba",
+      "accuracy": 0.98,
+      "coordenates": {
+        "start_X": 1426,
+        "end_X": 1629,
+        "start_Y": 1001,
+        "end_Y": 1225
+      }
+    }
+  },
+  {
+    "id": 1345525,
+    "id_user": 38,
+    "dt_report": "2024/07/02",
+    "data": {
+      "species_name": "Pau-brasil",
+      "accuracy": 0.95,
+      "coordenates": {
+        "start_X": 1234,
+        "end_X": 1456,
+        "start_Y": 789,
+        "end_Y": 1012
+      }
+    }
+  },
+  {
+    "id": 1345526,
+    "id_user": 44,
+    "dt_report": "2024/07/05",
+    "data": {
+      "species_name": "Aroeira",
+      "accuracy": 0.92,
+      "coordenates": {
+        "start_X": 1789,
+        "end_X": 1987,
+        "start_Y": 1345,
+        "end_Y": 1556
+      }
+    }
+  },
+  {
+    "id": 1345527,
+    "id_user": 21,
+    "dt_report": "2024/07/10",
+    "data": {
+      "species_name": "Ipê-amarelo",
+      "accuracy": 0.97,
+      "coordenates": {
+        "start_X": 1678,
+        "end_X": 1890,
+        "start_Y": 1123,
+        "end_Y": 1367
+      }
+    }
+  },
+  {
+    "id": 1345528,
+    "id_user": 44,
+    "dt_report": "2024/07/15",
+    "data": {
+      "species_name": "Jatobá",
+      "accuracy": 0.94,
+      "coordenates": {
+        "start_X": 2001,
+        "end_X": 2200,
+        "start_Y": 1456,
+        "end_Y": 1698
+      }
+    }
+  },
+  {
+    "id": 1345529,
+    "id_user": 44,
+    "dt_report": "2024/07/20",
+    "data": {
+      "species_name": "Jacarandá",
+      "accuracy": 0.96,
+      "coordenates": {
+        "start_X": 1345,
+        "end_X": 1543,
+        "start_Y": 876,
+        "end_Y": 1102
+      }
+    }
+  },
+  {
+    "id": 1345530,
+    "id_user": 88,
+    "dt_report": "2024/07/25",
+    "data": {
+      "species_name": "Angico",
+      "accuracy": 0.91,
+      "coordenates": {
+        "start_X": 2100,
+        "end_X": 2301,
+        "start_Y": 1567,
+        "end_Y": 1811
+      }
+    }
+  }
+]
