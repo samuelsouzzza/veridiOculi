@@ -10,3 +10,18 @@ export interface IImgsForAnalysis {
   preview: string;
   raw: File | null;
 }
+export interface IReports {
+  id: number;
+  id_user: number;
+  dt_report: string;
+  data: {
+    species_name: string;
+    accuracy: number;
+    coordenates: {
+      start_X: number;
+      end_X: number;
+      start_Y: number;
+      end_Y: number;
+    };
+  };
+}
