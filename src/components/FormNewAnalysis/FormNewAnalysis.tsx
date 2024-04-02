@@ -85,11 +85,6 @@ export const FormNewAnalysis = () => {
             label='Espécie foco'
             options={['Embaúba', 'Pau Brasil', 'Ypê Rosa']}
           />
-          <SelectBox
-            id='resolutionSelect'
-            label='Resolução'
-            options={['Baixa', 'Média', 'Alta']}
-          />
         </div>
         <InputFile
           id='idInputImgsNewAnalysis'

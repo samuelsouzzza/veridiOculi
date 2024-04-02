@@ -12,7 +12,7 @@
 
 .rowHead,
 .rowBody {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: 100%;
   display: grid;
   justify-content: center;
@@ -36,9 +36,13 @@
 .colBody {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0 2%;
   border-radius: 5px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 .colHead {
   height: 25px;
