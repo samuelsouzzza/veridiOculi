@@ -16,7 +16,7 @@ export const FormNewRegister = () => {
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Crie a sua conta</h3>
-      <form className={styles.form} action='#'>
+      <form className={styles.form} action={'#'}>
         <InputText label='Nome' type='text' required />
         <InputText label='Sobrenome' type='text' required />
         <InputText label='CPF' type='text' required />
@@ -26,16 +26,11 @@ export const FormNewRegister = () => {
         <div className='spanAll'>
           <Button
             text='Cadastrar'
-            onClick={enterRegister}
             className='btnPrimary'
+            onClick={enterRegister}
           />
           <p>Ou</p>
-          <Button
-            icon
-            text='Cadastrar com o Google'
-            className='btnSecondary'
-            onClick={enterRegister}
-          >
+          <Button icon text='Cadastrar com o Google' className='btnSecondary'>
             <FontAwesomeIcon icon={faGoogle} />
           </Button>
         </div>

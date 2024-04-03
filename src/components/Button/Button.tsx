@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-type ButtonProps = React.ComponentProps<'button'> & {
+type ButtonProps = React.ComponentProps<'a'> & {
   text?: string;
   primary?: boolean;
   icon?: boolean;
@@ -16,10 +16,8 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <>
-      <button {...props}>
-        {icon ? children : text} {icon ? text : false}
-      </button>
-    </>
+    <a {...props}>
+      {icon ? children : text} {icon ? text : false}
+    </a>
   );
 };
