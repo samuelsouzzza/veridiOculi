@@ -12,16 +12,13 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons';
 
 type SliderProps = {
   slides: string[];
+  autoPlay?: boolean;
 };
 
-export const Slider = ({ slides }: SliderProps) => {
+export const Slider = ({ slides, autoPlay }: SliderProps) => {
   const [active, setActive] = React.useState(0);
   const [position, setPosition] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
-
-  function fullCircle(n: number) {
-    setActive(n);
-  }
 
   React.useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -31,7 +28,7 @@ export const Slider = ({ slides }: SliderProps) => {
       else slideNext();
     }
 
-    timeoutId = setTimeout(slideNextOrReset, 5000);
+    if (autoPlay) timeoutId = setTimeout(slideNextOrReset, 5000);
 
     if (contentRef.current) {
       const { width } = contentRef.current.getBoundingClientRect();
@@ -67,7 +64,7 @@ export const Slider = ({ slides }: SliderProps) => {
               <FontAwesomeIcon
                 key={i}
                 icon={active === i ? faCircleFull : faCircle}
-                onClick={() => fullCircle(i)}
+                onClick={() => setActive(i)}
               />
             );
           })}
