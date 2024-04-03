@@ -1,6 +1,5 @@
 'use client';
 import styles from './HistoricView.module.css';
-// import { useRouter } from 'next/navigation';
 import { IReports } from '@/@types/@types';
 import Link from 'next/link';
 
@@ -9,8 +8,6 @@ type HistoricViewProps = {
 };
 
 export function HistoricView({ data }: HistoricViewProps) {
-  // const router = useRouter();
-
   return (
     <div className={styles.view}>
       <h1 className='subtitle'>Meu histórico</h1>
@@ -25,11 +22,7 @@ export function HistoricView({ data }: HistoricViewProps) {
         {data.map((d) => {
           return (
             <Link href={`historic/${d.id}`} className={styles.linkRow}>
-              <div
-                key={d.id}
-                className={styles.rowBody}
-                // onClick={() => router.push(`/historic/${d.id}`)}
-              >
+              <div key={d.id} className={styles.rowBody}>
                 <div className={styles.colBody}>{d.id}</div>
                 <div className={styles.colBody}>{d.dt_report}</div>
                 <div className={styles.colBody}>{d.data.species_name}</div>

@@ -23,8 +23,6 @@
   background-color: #39a60066;
 }
 img {
-  /* width: auto;
-  height: auto; */
   max-width: 100%;
 }
 .spanAll {
@@ -38,9 +36,13 @@ img {
   text-decoration: none;
   color: #333;
   transition: 0.5s;
+  width: 100%;
 }
 .linkSimple:hover {
   color: #39a600;
+}
+.linkSimple > svg {
+  margin-right: 1%;
 }
 .btnPrimary,
 .btnSecondary {
