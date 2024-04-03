@@ -13,9 +13,10 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons';
 type SliderProps = {
   slides: string[];
   autoPlay?: boolean;
+  contain?: boolean;
 };
 
-export const Slider = ({ slides, autoPlay }: SliderProps) => {
+export const Slider = ({ slides, autoPlay, contain }: SliderProps) => {
   const [active, setActive] = React.useState(0);
   const [position, setPosition] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -92,8 +93,9 @@ export const Slider = ({ slides, autoPlay }: SliderProps) => {
                 // src={`http://localhost:3000/${slide}`}
                 src={`${slide}`}
                 alt='Imagem da publicação'
-                width={300}
-                height={300}
+                width={500}
+                height={500}
+                style={{ objectFit: contain ? 'contain' : 'cover' }}
               />
             </div>
           );

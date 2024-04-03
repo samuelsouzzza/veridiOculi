@@ -14,8 +14,8 @@ type PageParams = {
 
 export default function historicIdPage({ params }: PageParams) {
   const arrExamplesSlides = [
+    '/imgs/team/luan_franca.jpg',
     '/example.webp',
-    '/imgs/bg-01.svg',
     '/imgs/bg-01.svg',
     '/imgs/bg-01.svg',
     '/imgs/bg-01.svg',
@@ -32,9 +32,17 @@ export default function historicIdPage({ params }: PageParams) {
           </Link>
           <h1 className='subtitle'>Análise #{params.id}</h1>
           <div className={styles.boxImgs}>
-            <Slider slides={arrExamplesSlides} />
+            <Slider slides={arrExamplesSlides} contain />
           </div>
-          <h1>Foto 01</h1>
+          <h1 className={styles.speciesName}>Embaúba</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
+            quidem veniam, magni laboriosam beatae incidunt qui ab cupiditate,
+            molestiae architecto repellat assumenda sint. Iste enim sapiente
+            placeat magni laboriosam porro excepturi consequuntur fugit
+            veritatis, quas doloremque. Dolores quam consequatur, eum
+            perspiciatis expedita quidem placeat nihil?
+          </p>
         </div>
       </div>
     </>
