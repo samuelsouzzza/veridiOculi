@@ -14,7 +14,9 @@ export interface IReports {
   id: number;
   id_user: number;
   dt_report: string;
+  status: string;
   data: {
+    path: string;
     species_name: string;
     accuracy: number;
     coordenates: {
@@ -23,5 +25,5 @@ export interface IReports {
       start_Y: number;
       end_Y: number;
     };
-  };
+  }[];
 }

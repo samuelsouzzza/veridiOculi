@@ -22,19 +22,19 @@ export function HistoricView({ data }: HistoricViewProps) {
         <div className={styles.rowHead} onClick={reverseHistoric}>
           <div className={styles.colHead}>Id</div>
           <div className={styles.colHead}>Data</div>
-          <div className={styles.colHead}>Espécie Foco</div>
-          <div className={styles.colHead}>Acurácia</div>
-          <div className={styles.colHead}>Status</div>
+          <div className={styles.colHead}>Qtd Imagens</div>
         </div>
-        {historic.map((h) => {
+        {historic.map((h, i) => {
           return (
-            <Link href={`historic/${h.id}`} className={styles.linkRow}>
-              <div key={h.id} className={styles.rowBody}>
+            <Link
+              key={h.id}
+              href={`historic/${h.id}`}
+              className={styles.linkRow}
+            >
+              <div className={styles.rowBody}>
                 <div className={styles.colBody}>{h.id}</div>
                 <div className={styles.colBody}>{h.dt_report}</div>
-                <div className={styles.colBody}>{h.data.species_name}</div>
-                <div className={styles.colBody}>{h.data.accuracy}</div>
-                <div className={styles.colBody}>Concluído</div>
+                <div className={styles.colBody}>{h.data.length}</div>
               </div>
             </Link>
           );
