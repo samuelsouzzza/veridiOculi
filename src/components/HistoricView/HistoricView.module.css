@@ -21,6 +21,7 @@
 
 .rowHead {
   font-weight: 700;
+  cursor: pointer;
 }
 .rowBody {
   border-bottom: 1px solid #39a60033;
