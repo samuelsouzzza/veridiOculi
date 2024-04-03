@@ -1,15 +1,48 @@
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  padding: 10% 10%;
 }
 .view {
-  height: 75vh;
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2% 10%;
+  justify-content: flex-end;
+  /* align-items: center; */
 }
+.boxImgs {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
+  /* gap: 1%; */
+  margin: 1% 0;
+  /* padding: 2%; */
+  /* background-color: red; */
+} /*
+.itemImg {
+  position: relative;
+  margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: fadeIn 0.3s normal;
+  max-width: 100%;
+} */
+/* .boxImgs {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+.itemImg {
+  flex: 1;
+  width: 100%;
+  object-fit: contain;
+} */

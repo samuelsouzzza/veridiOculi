@@ -92,7 +92,8 @@ export const Slider = ({ slides }: SliderProps) => {
             <div className={styles.item} key={Math.random()}>
               <Image
                 className={styles.image}
-                src={`http://localhost:3000/${slide}`}
+                // src={`http://localhost:3000/${slide}`}
+                src={`${slide}`}
                 alt='Imagem da publicação'
                 width={300}
                 height={300}
