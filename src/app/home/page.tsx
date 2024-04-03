@@ -65,7 +65,7 @@ export default function homePage() {
     <div className={styles.container}>
       <MenuNavHome activeRoute='home' />
       <section className={styles.initial}>
-        <Slider slides={imgs} />
+        <Slider slides={imgs} autoPlay />
       </section>
       <section className={styles.about}>
         <div className={styles.boxAbout}>

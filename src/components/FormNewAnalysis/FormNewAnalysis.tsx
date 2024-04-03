@@ -78,7 +78,7 @@ export const FormNewAnalysis = () => {
           onOk={modalActions?.onOk}
         />
       )}
-      <form onSubmit={sendForm} className={styles.container}>
+      <form className={styles.container}>
         <div className={styles.boxSelect}>
           <SelectBox
             id='speciesSelect'
@@ -96,9 +96,9 @@ export const FormNewAnalysis = () => {
         />
         {selectedImgs && selectedImgs.length > 0 && (
           <Button
-            type='submit'
             text={`Analisar ${selectedImgs.length} imagem(ens)`}
             className='btnPrimary'
+            onClick={sendForm}
           />
         )}
       </form>
