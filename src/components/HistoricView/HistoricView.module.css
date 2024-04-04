@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
+  padding: 2% 10%;
+}
 .view {
   height: 75vh;
   width: 100%;

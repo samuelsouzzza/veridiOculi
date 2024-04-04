@@ -53,7 +53,7 @@
   height: 100%;
   position: relative;
   z-index: 1;
-  bottom: 5%;
+  bottom: 10%;
   display: flex;
   align-items: flex-end;
   justify-content: center;

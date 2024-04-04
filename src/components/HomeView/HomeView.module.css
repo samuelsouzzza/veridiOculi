@@ -7,7 +7,7 @@
   padding: 0 1%;
 }
 .container > section {
-  margin: 5%;
+  margin: 3%;
 }
 .container > section p {
   text-align: justify;
@@ -31,7 +31,7 @@
   height: 45vh;
 }
 .impact {
-  height: 60vh;
+  height: auto;
 }
 .team {
   height: auto;

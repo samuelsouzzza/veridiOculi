@@ -4,6 +4,7 @@ import { Slider } from '../Slider/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { IReports } from '@/@types/@types';
+import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 
 type HistoricIdViewProps = {
   data: IReports;
@@ -21,6 +22,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
 
   return (
     <div className={styles.container}>
+      <MenuNavHome activeRoute='historic' />
       <div className={styles.view}>
         <Link href={'/historic'} className='linkSimple'>
           <FontAwesomeIcon icon={faChevronLeft} />

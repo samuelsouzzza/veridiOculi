@@ -1,7 +1,4 @@
-import styles from './page.module.css';
-import { MenuNavLogin } from '@/components/MenuNavLogin/MenuNavLogin';
-import { FormNewRegister } from '@/components/FormNewRegister/FormNewRegister';
-import Image from 'next/image';
+import RegisterView from '@/components/RegisterView/RegisterView';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,18 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function registerPage() {
-  return (
-    <div className={styles.container}>
-      <MenuNavLogin />
-      <div className={styles.box}>
-        <FormNewRegister />
-        <Image
-          src='/imgs/logoLabelWhite.svg'
-          width={325}
-          height={200}
-          alt='Logo Veridi Oculi com legenda'
-        />
-      </div>
-    </div>
-  );
+  return <RegisterView />;
 }
