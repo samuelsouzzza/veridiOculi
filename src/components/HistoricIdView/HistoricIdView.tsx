@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { IReports } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
+import Image from 'next/image';
 
 type HistoricIdViewProps = {
   data: IReports;
@@ -32,15 +33,33 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
         <div className={styles.boxImgs}>
           <Slider slides={arrExamplesSlides} contain />
         </div>
-        <h1 className={styles.speciesName}>{data.data[0].species_name}</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quidem
-          veniam, magni laboriosam beatae incidunt qui ab cupiditate, molestiae
-          architecto repellat assumenda sint. Iste enim sapiente placeat magni
-          laboriosam porro excepturi consequuntur fugit veritatis, quas
-          doloremque. Dolores quam consequatur, eum perspiciatis expedita quidem
-          placeat nihil?
-        </p>
+        {data.data.map((d) => {
+          return (
+            <div className={styles.containerItemAnalysis}>
+              <h1 className={styles.speciesName}>{d.species_name}</h1>
+              <div className={styles.boxItem}>
+                <Image
+                  src={d.path}
+                  width={500}
+                  height={300}
+                  alt='Imagem analisada'
+                  className={styles.itemImg}
+                />
+                <div className={styles.boxGraph}>
+                  <p>Gráfico</p>
+                </div>
+              </div>
+              {/* <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
+                quidem veniam, magni laboriosam beatae incidunt qui ab
+                cupiditate, molestiae architecto repellat assumenda sint. Iste
+                enim sapiente placeat magni laboriosam porro excepturi
+                consequuntur fugit veritatis, quas doloremque. Dolores quam
+                consequatur, eum perspiciatis expedita quidem placeat nihil?
+              </p> */}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

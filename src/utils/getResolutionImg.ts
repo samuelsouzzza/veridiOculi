@@ -4,5 +4,5 @@ export const getResolutionImg = (w: number, h: number): string | undefined => {
   else if (w >= 3840 && w < 5120 && h >= 2160 && h < 2880) return '4K';
   else if (w >= 5120 && w < 7680 && h >= 2880 && h < 4320) return '5K';
   else if (w >= 7680 && w < 15360 && h >= 4320 && h < 8640) return '8K';
-  else return undefined; // Return undefined if resolution doesn't match any condition
+  else return;
 };
