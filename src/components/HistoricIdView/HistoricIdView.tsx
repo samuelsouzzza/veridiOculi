@@ -6,6 +6,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { IReports } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Image from 'next/image';
+import AccuracyGraph from '../AccuracyGraph/AccuracyGraph';
 
 type HistoricIdViewProps = {
   data: IReports;
@@ -46,7 +47,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
                   className={styles.itemImg}
                 />
                 <div className={styles.boxGraph}>
-                  <p>Gráfico</p>
+                  <AccuracyGraph />
                 </div>
               </div>
               {/* <p>
