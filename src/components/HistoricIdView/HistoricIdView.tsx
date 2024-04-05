@@ -29,7 +29,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
         </div>
         {data.data.map((d) => {
           return (
-            <div className={styles.containerItemAnalysis}>
+            <div key={d.id} className={styles.containerItemAnalysis}>
               <h1 className={styles.speciesName}>{d.species_name}</h1>
               <div className={styles.boxItem}>
                 <Image

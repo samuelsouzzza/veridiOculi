@@ -16,6 +16,7 @@ export interface IReports {
   dt_report: string;
   status: string;
   data: {
+    id: number;
     path: string;
     species_name: string;
     accuracy: number;
