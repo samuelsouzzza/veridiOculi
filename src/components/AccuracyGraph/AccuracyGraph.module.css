@@ -1,0 +1,15 @@
+.boxGraph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  max-height: 200px;
+}
+.graph {
+  max-width: 200px;
+}
+.boxGraph > p {
+  font-size: 5rem;
+  color: #39a600;
+}

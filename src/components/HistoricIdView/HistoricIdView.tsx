@@ -13,14 +13,7 @@ type HistoricIdViewProps = {
 };
 
 export default function HistoricIdView({ data }: HistoricIdViewProps) {
-  const arrExamplesSlides = [
-    '/example.webp',
-    '/imgs/team/luan_franca.jpg',
-    '/example.webp',
-    '/imgs/bg-01.svg',
-    '/imgs/bg-01.svg',
-    '/imgs/bg-01.svg',
-  ];
+  const slides = data.data.map((d) => d.path);
 
   return (
     <div className={styles.container}>
@@ -32,7 +25,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
         </Link>
         <h1 className='subtitle'>Análise #{data.id}</h1>
         <div className={styles.boxImgs}>
-          <Slider slides={arrExamplesSlides} contain />
+          <Slider slides={slides} contain />
         </div>
         {data.data.map((d) => {
           return (
@@ -47,17 +40,9 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
                   className={styles.itemImg}
                 />
                 <div className={styles.boxGraph}>
-                  <AccuracyGraph />
+                  <AccuracyGraph accuracy={d.accuracy} />
                 </div>
               </div>
-              {/* <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-                quidem veniam, magni laboriosam beatae incidunt qui ab
-                cupiditate, molestiae architecto repellat assumenda sint. Iste
-                enim sapiente placeat magni laboriosam porro excepturi
-                consequuntur fugit veritatis, quas doloremque. Dolores quam
-                consequatur, eum perspiciatis expedita quidem placeat nihil?
-              </p> */}
             </div>
           );
         })}
