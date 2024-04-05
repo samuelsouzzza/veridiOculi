@@ -3,6 +3,7 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import styles from './AccuracyGraph.module.css';
+import PercentageCount from '../PercentageCount/PercentageCount';
 
 type AccuracyGraphProps = {
   accuracy: number;
@@ -28,8 +29,8 @@ const AccuracyGraph = ({ accuracy }: AccuracyGraphProps) => {
 
   return (
     <div className={styles.boxGraph}>
-      <Doughnut data={data} options={options} className={styles.graph}/>
-      <p>{accuracy * 100}%</p>
+      <Doughnut data={data} options={options} className={styles.graph} />
+      <PercentageCount number={accuracy * 100} />
     </div>
   );
 };

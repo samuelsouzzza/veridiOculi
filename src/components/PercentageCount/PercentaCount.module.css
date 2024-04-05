@@ -1,0 +1,7 @@
+.box {
+  display: flex;
+}
+.box > p {
+  font-size: 5rem;
+  color: #39a600;
+}
