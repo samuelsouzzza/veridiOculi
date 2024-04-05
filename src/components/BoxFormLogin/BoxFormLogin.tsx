@@ -1,5 +1,4 @@
 'use client';
-
 import styles from './BoxFormLogin.module.css';
 import { InputText } from '../InputText/InputText';
 import { Button } from '../Button/Button';

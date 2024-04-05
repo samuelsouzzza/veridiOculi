@@ -50,7 +50,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: fadeIn 0.3s normal;
   max-width: 200px;
 }
 .boxImg > p {
@@ -92,13 +91,4 @@
   border: 1px solid #ccc;
   object-fit: contain;
   border-radius: 5%;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }

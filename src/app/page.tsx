@@ -7,10 +7,12 @@ export default function Home() {
     <main className={styles.main}>
       <MenuNavLogin />
       <div className={styles.boxMessage}>
-        <h1>Análises com acurácia elevada</h1>
-        <p>
+        <h1 className='subtitle' style={{ fontSize: '3rem' }}>
+          Veridi Oculi
+        </h1>
+        <p style={{ fontSize: '1.25rem' }}>
           Ajudando a identificar espécies raras com o foco na preservação dos
-          biomas. As possibilidades de análise são diversas e rastreamento de
+          biomas. As possibilidades de análise são diversas no rastreamento de
           espécies em extinção.
         </p>
       </div>

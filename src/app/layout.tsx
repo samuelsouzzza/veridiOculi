@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '../global/globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { GlobalContextProvider } from '@/global/GlobalContext';
 import ProvidersNProgress from '../global/NProgress';

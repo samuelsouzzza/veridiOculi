@@ -6,7 +6,7 @@ export const BoxLandingNewRegister = () => {
   return (
     <div className={styles.container}>
       <section>
-        <h1>Faça sua primeira análise no VeridiOculi</h1>
+        <h1>Faça sua primeira análise </h1>
         <p>Junte-se à nossa plataforma</p>
       </section>
       <Link className='btnPrimary' href={'/register'}>

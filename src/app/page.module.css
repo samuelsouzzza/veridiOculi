@@ -5,10 +5,17 @@
   justify-content: center;
   align-items: center;
   gap: 0 8%;
-  background-image: url('/imgs/bg-01.svg');
+  background-image: url('/imgs/bg-01-compress.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.boxMessage > h1 {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 5px #33333333;
+}
+.boxMessage > p {
+  text-shadow: 1px 1px 5px #33333333;
 }
 .boxMessage {
   width: 35%;

@@ -11,7 +11,7 @@ export default function LoginView() {
         <BoxFormLogin />
         <Image
           src='/imgs/logoLabelWhite.svg'
-          width={325}
+          width={400}
           height={200}
           alt='Logo Veridi Oculi com legenda'
         />

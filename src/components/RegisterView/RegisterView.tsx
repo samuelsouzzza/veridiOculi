@@ -9,12 +9,6 @@ export default function RegisterView() {
       <MenuNavLogin />
       <div className={styles.box}>
         <FormNewRegister />
-        <Image
-          src='/imgs/logoLabelWhite.svg'
-          width={325}
-          height={200}
-          alt='Logo Veridi Oculi com legenda'
-        />
       </div>
     </div>
   );
