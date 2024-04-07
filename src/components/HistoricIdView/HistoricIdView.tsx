@@ -1,20 +1,23 @@
 import styles from './HistoricIdView.module.css';
 import Link from 'next/link';
-import { Slider } from '../Slider/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faArrowDown,
+  faFileCsv,
+} from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { IReports } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Image from 'next/image';
 import AccuracyGraph from '../AccuracyGraph/AccuracyGraph';
+import { Button } from '../Button/Button';
 
 type HistoricIdViewProps = {
   data: IReports;
 };
 
 export default function HistoricIdView({ data }: HistoricIdViewProps) {
-  const slides = data.data.map((d) => d.path);
-
   return (
     <div className={styles.container}>
       <MenuNavHome activeRoute='historic' />
@@ -23,9 +26,25 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
           <FontAwesomeIcon icon={faChevronLeft} />
           Voltar
         </Link>
-        <h1 className='subtitle'>Análise #{data.id}</h1>
+        <div className={styles.boxTitle}>
+          <h1 className='subtitle'>Análise #{data.id}</h1>
+          <span>
+            <FontAwesomeIcon icon={faCalendar} />
+            <p>{data.dt_report}</p>
+          </span>
+        </div>
+        <div className={styles.boxActions}>
+          <div>
+            <Button text='Baixar Relatório' className='btnPrimary' icon>
+              <FontAwesomeIcon icon={faArrowDown} />
+            </Button>
+            <Button text='Exportar Relatório' className='btnSecondary' icon>
+              <FontAwesomeIcon icon={faFileCsv} />
+            </Button>
+          </div>
+        </div>
         <div className={styles.boxImgs}>
-          <Slider slides={slides} contain />
+          {/* <Slider slides={slides} contain /> */}
         </div>
         {data.data.map((d) => {
           return (

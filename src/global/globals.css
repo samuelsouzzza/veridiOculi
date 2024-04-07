@@ -24,7 +24,6 @@
 }
 img {
   max-width: 100%;
-  animation: fadeIn 0.3s normal;
 }
 .spanAll {
   grid-column: 1/-1;

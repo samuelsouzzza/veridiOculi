@@ -9,13 +9,20 @@ import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
 import { SelectBox } from '../SelectBox/SelectBox';
+import { useRouter } from 'next/navigation';
 
 export const FormNewAnalysis = () => {
+  const router = useRouter();
   const { modalActions, setModalActions } = UseGlobalContext();
 
   const [selectedImgs, setSelectedImgs] = React.useState<
     IImgsForAnalysis[] | null
   >(null);
+
+  function cleanForm() {
+    setModalActions(null);
+    setSelectedImgs(null);
+  }
 
   function loadImgs(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
@@ -51,9 +58,8 @@ export const FormNewAnalysis = () => {
     }
   }
 
-  function cleanForm() {
-    setModalActions(null);
-    setSelectedImgs(null);
+  function redirect() {
+    router.push('/historic');
   }
 
   function sendForm(e: React.FormEvent<HTMLFormElement>) {
@@ -64,7 +70,7 @@ export const FormNewAnalysis = () => {
         'Suas imagens foram enviadas para análise, acesse a guia "Histórico" para visualizar',
       icon: faCheck,
       type: 'ok',
-      onOk: cleanForm,
+      onOk: redirect,
     });
   }
 
@@ -78,7 +84,7 @@ export const FormNewAnalysis = () => {
           onOk={modalActions?.onOk}
         />
       )}
-      <form className={styles.container}>
+      <form className={styles.container} onSubmit={sendForm}>
         <div className={styles.boxSelect}>
           <SelectBox
             id='speciesSelect'
@@ -98,7 +104,7 @@ export const FormNewAnalysis = () => {
           <Button
             text={`Analisar ${selectedImgs.length} imagem(ens)`}
             className='btnPrimary'
-            onClick={sendForm}
+            // onClick={sendForm}
           />
         )}
       </form>

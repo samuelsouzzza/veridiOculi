@@ -26,6 +26,7 @@ export function HistoricView({ data }: HistoricViewProps) {
             <div className={styles.colHead}>Id</div>
             <div className={styles.colHead}>Data</div>
             <div className={styles.colHead}>Qtd Imagens</div>
+            <div className={styles.colHead}>Status</div>
           </div>
           {historic.map((h, i) => {
             return (
@@ -38,6 +39,7 @@ export function HistoricView({ data }: HistoricViewProps) {
                   <div className={styles.colBody}>{h.id}</div>
                   <div className={styles.colBody}>{h.dt_report}</div>
                   <div className={styles.colBody}>{h.data.length}</div>
+                  <div className={styles.colBody}>{h.status}</div>
                 </div>
               </Link>
             );

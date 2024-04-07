@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-type ButtonProps = React.ComponentProps<'a'> & {
+type ButtonProps = React.ComponentProps<'button'> & {
   text?: string;
   primary?: boolean;
   icon?: boolean;
@@ -15,8 +15,8 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <a {...props}>
+    <button {...props}>
       {icon ? children : text} {icon ? text : false}
-    </a>
+    </button>
   );
 };

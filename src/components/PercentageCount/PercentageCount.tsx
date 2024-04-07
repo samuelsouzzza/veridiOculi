@@ -22,6 +22,8 @@ export default function PercentageCount({ number }: PercentageCountProps) {
   };
 
   React.useEffect(() => {
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -30,7 +32,7 @@ export default function PercentageCount({ number }: PercentageCountProps) {
 
   React.useEffect(() => {
     const end = number;
-    const duration = 1;
+    const duration = 2;
 
     const countUp = new CountUp(element.current as HTMLElement, end, {
       duration: duration,

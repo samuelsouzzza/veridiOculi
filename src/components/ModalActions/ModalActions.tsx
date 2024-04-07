@@ -29,11 +29,7 @@ export const ModalActions = ({
           <FontAwesomeIcon icon={icon} />
           <p>{message}</p>
           {type === 'ok' ? (
-            <Button
-              text='Ok'
-              className='btnPrimary'
-              onClick={() => setModalActions(null)}
-            />
+            <Button text='Ok' className='btnPrimary' onClick={() => onOk()} />
           ) : (
             <div className={styles.boxButtons}>
               <Button
