@@ -24,6 +24,10 @@ export const FormNewAnalysis = () => {
     setSelectedImgs(null);
   }
 
+  React.useEffect(() => {
+    cleanForm();
+  }, []);
+
   function loadImgs(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     const { files } = e.target;
