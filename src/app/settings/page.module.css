@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  margin: 5% 0;
+}
+.view {
+  padding: 0 10%;
+  width: 100%;
+}
+.container ul li {
+  list-style: none;
+  height: 45px;
+  cursor: pointer;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.3s;
+  border-radius: 5px;
+  border-bottom: 1px solid #39a60033;
+}
+.container ul li:hover {
+  background-color: #39a60033;
+}
+.optionBox p {
+  width: 180%;
+}
+.optionBox {
+  display: flex;
+  justify-content: space-between;
+}

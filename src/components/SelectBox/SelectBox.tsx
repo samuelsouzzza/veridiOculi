@@ -5,7 +5,7 @@ import styles from './SelectBox.module.css';
 
 type SelectBoxProps = React.ComponentProps<'select'> & {
   id: string;
-  label: string;
+  label?: string;
   options: string[];
 };
 

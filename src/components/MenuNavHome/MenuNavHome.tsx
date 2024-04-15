@@ -10,7 +10,7 @@ import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
 
 type MenuNavHomeProps = {
-  activeRoute: string;
+  activeRoute?: string;
 };
 
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
