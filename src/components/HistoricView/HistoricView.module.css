@@ -2,9 +2,9 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   background-color: #fff;
-  padding: 2% 10%;
+  grid-area: main;
 }
 .view {
   height: 75vh;

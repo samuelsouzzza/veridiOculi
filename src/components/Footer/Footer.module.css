@@ -1,5 +1,4 @@
 .container {
-  height: 25vh;
   background-color: #39a600;
   width: 100%;
   display: flex;
@@ -7,4 +6,6 @@
   justify-content: center;
   box-shadow: 1px 1px 10px #33333333;
   color: #fff;
+  grid-area: footer;
+  height: 100%;
 }

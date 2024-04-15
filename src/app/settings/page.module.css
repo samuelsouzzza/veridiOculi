@@ -4,7 +4,7 @@
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  margin: 5% 0;
+  grid-area: main;
 }
 .view {
   padding: 0 10%;

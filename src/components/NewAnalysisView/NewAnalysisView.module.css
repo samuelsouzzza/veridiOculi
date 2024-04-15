@@ -4,7 +4,7 @@
   justify-content: center;
   height: 100%;
   background-color: #fff;
-  margin: 5% 0 0 0;
+  grid-area: main;
 }
 .view {
   padding: 1%;
