@@ -9,6 +9,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  grid-area: banner;
 }
 .boxMessage > h1 {
   font-size: 1.5rem;
