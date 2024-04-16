@@ -3,27 +3,28 @@ interface IValidationRule {
   message: string;
 }
 
-interface ValidationType {
+interface IValidationType {
   [key: string]: IValidationRule;
 }
 
-const validationFields: ValidationType = {
+const validationFields: IValidationType = {
   email: {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    message: 'Email inválido pelo Regex',
+    message: 'Inválido',
+  },
+  cpf: {
+    regex: /^(?!000\.?0?0?0\.?0?0?0-?0?0?$)(\d{3}\.?){2}\d{3}-?\d{2}$/,
+    message: 'Inválido',
   },
   password: {
-    regex:
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{7,}$/,
-    message: 'Senha inválida pelo Regex',
+    regex: /^(?=.*[!@#$%^&*()_+{}|:"<>?[\]\;',./]).*$/,
+    message: 'Caractere especial ausente',
   },
 };
 
-export const validationInputs = (type: string, value: string) => {
-//   const rule = new RegExp(validationFields[type]?.regex);
+export const validationInputs = (type: string, value: string): string => {
+  const rule = new RegExp(validationFields[type]?.regex as RegExp);
 
-//   rule.test();
-
-  return;
+  return !rule.test(value) ? validationFields[type]?.message : '';
 };

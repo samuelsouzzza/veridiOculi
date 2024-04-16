@@ -6,19 +6,20 @@
 }
 .container label p {
   display: inline-block;
-  font-size: 0.8rem;
-  color: #da3737;
+  font-size: 0.9rem;
+  color: #ec0707;
+  font-weight: 500;
 }
 .input {
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.15rem;
   padding: 1% 2%;
   background-color: #fff;
   color: #333;
   border: 1px solid #bbb;
   border-radius: 5px;
   background-color: #fff;
-  height: 35px;
+  height: 40px;
   outline: 0;
   transition: 0.5s;
 }
@@ -29,4 +30,8 @@
 .input:hover,
 .input:focus {
   border: 1px solid #39a600;
+}
+.input[type='number']::-webkit-inner-spin-button,
+.input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

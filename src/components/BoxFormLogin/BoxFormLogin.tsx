@@ -25,20 +25,20 @@ export default function BoxFormLogin() {
       <form action='#'>
         <InputText
           label='E-Mail'
-          type='text'
+          type='email'
+          typeValidation='email'
           required
           value={valueEmail}
           setValue={setValueEmail}
-          error=''
+          validate={validationInputs}
         />
-        {validationInputs('email', valueEmail)}
         <InputText
           label='Senha'
           type='password'
+          typeValidation='password'
           required
           value={valuePassword}
           setValue={setValuePassword}
-          error=''
         />
         <div className='spanAll'>
           <Button text='Acessar' className='btnPrimary' onClick={enterLogin} />
