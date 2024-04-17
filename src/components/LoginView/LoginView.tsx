@@ -10,7 +10,7 @@ export default function LoginView() {
       <div className={styles.box}>
         <BoxFormLogin />
         <Image
-          src='/imgs/logoLabelWhite.svg'
+          src='/imgs/logoLabel.svg'
           width={400}
           height={200}
           alt='Logo Veridi Oculi com legenda'

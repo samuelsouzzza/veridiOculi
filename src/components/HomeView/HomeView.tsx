@@ -1,3 +1,4 @@
+'use client';
 import styles from './HomeView.module.css';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import { Slider } from '../Slider/Slider';
@@ -5,8 +6,17 @@ import Image from 'next/image';
 import { CardTeam } from '../CardTeam/CardTeam';
 import { Footer } from '../Footer/Footer';
 import { IMember } from '@/@types/@types';
+import { verifySession } from '@/utils/verifySession';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function HomeView() {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!verifySession().getSession()) router.push('/');
+  }, []);
+
   const imgs = [
     '/imgs/bg-01.svg',
     '/imgs/bg-01.svg',

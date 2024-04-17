@@ -3,6 +3,7 @@ import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import React from 'react';
+import { verifySession } from '@/utils/verifySession';
 
 export const MenuOptions = React.forwardRef<HTMLDivElement>(
   (props: React.ComponentProps<'div'>, ref) => {
@@ -33,7 +34,12 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
             </Link>
           </li>
           <li>
-            <Link className='btnSecondary' style={styleOption} href={'/'}>
+            <Link
+              className='btnSecondary'
+              style={styleOption}
+              href={'/'}
+              onClick={verifySession().cleanSession}
+            >
               <span>Sair</span>
             </Link>
           </li>
