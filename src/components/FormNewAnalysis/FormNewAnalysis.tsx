@@ -42,6 +42,7 @@ export const FormNewAnalysis = () => {
           type: 'ok',
           onOk: cleanForm,
         });
+
         return;
       }
 
@@ -62,10 +63,6 @@ export const FormNewAnalysis = () => {
     }
   }
 
-  function redirect() {
-    router.push('/historic');
-  }
-
   function sendForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -74,7 +71,7 @@ export const FormNewAnalysis = () => {
         'Suas imagens foram enviadas para análise, acesse a guia "Histórico" para visualizar',
       icon: faCheck,
       type: 'ok',
-      onOk: redirect,
+      onOk: () => router.push('/historic'),
     });
   }
 

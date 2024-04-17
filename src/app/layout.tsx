@@ -16,12 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-br'>
-      <GlobalContextProvider>
+    <GlobalContextProvider>
+      <html lang='pt-br'>
         <body>
           <ProvidersNProgress>{children}</ProvidersNProgress>
         </body>
-      </GlobalContextProvider>
-    </html>
+      </html>
+    </GlobalContextProvider>
   );
 }
