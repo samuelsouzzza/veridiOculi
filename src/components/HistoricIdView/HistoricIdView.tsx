@@ -1,3 +1,4 @@
+'use client';
 import styles from './HistoricIdView.module.css';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,60 +13,74 @@ import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Image from 'next/image';
 import AccuracyGraph from '../AccuracyGraph/AccuracyGraph';
 import { Button } from '../Button/Button';
+import React from 'react';
+import { VerifySession } from '@/utils/VerifySession';
+import { ModalActions } from '../ModalActions/ModalActions';
+import { UseGlobalContext } from '@/global/GlobalContext';
 
 type HistoricIdViewProps = {
   data: IReports;
 };
 
 export default function HistoricIdView({ data }: HistoricIdViewProps) {
+  const { getSession } = VerifySession();
+  const { modalActions } = UseGlobalContext();
+
+  React.useEffect(() => {
+    getSession();
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <MenuNavHome activeRoute='historic' />
-      <div className={styles.view}>
-        <Link href={'/historic'} className='linkSimple'>
-          <FontAwesomeIcon icon={faChevronLeft} />
-          Voltar
-        </Link>
-        <div className={styles.boxTitle}>
-          <h1 className='subtitle'>Análise #{data.id}</h1>
-          <span>
-            <FontAwesomeIcon icon={faCalendar} />
-            <p>{data.dt_report}</p>
-          </span>
-        </div>
-        <div className={styles.boxActions}>
-          <div>
-            <Button text='Baixar Relatório' className='btnPrimary' icon>
-              <FontAwesomeIcon icon={faArrowDown} />
-            </Button>
-            <Button text='Exportar Relatório' className='btnSecondary' icon>
-              <FontAwesomeIcon icon={faFileCsv} />
-            </Button>
+    <>
+      {modalActions && <ModalActions />}
+      <div className={styles.container}>
+        <MenuNavHome activeRoute='historic' />
+        <div className={styles.view}>
+          <Link href={'/historic'} className='linkSimple'>
+            <FontAwesomeIcon icon={faChevronLeft} />
+            Voltar
+          </Link>
+          <div className={styles.boxTitle}>
+            <h1 className='subtitle'>Análise #{data.id}</h1>
+            <span>
+              <FontAwesomeIcon icon={faCalendar} />
+              <p>{data.dt_report}</p>
+            </span>
           </div>
-        </div>
-        <div className={styles.boxImgs}>
-          {/* <Slider slides={slides} contain /> */}
-        </div>
-        {data.data.map((d) => {
-          return (
-            <div key={d.id} className={styles.containerItemAnalysis}>
-              <h1 className={styles.speciesName}>{d.species_name}</h1>
-              <div className={styles.boxItem}>
-                <Image
-                  src={d.path}
-                  width={500}
-                  height={300}
-                  alt='Imagem analisada'
-                  className={styles.itemImg}
-                />
-                <div className={styles.boxGraph}>
-                  <AccuracyGraph accuracy={d.accuracy} />
+          <div className={styles.boxActions}>
+            <div>
+              <Button text='Baixar Relatório' className='btnPrimary' icon>
+                <FontAwesomeIcon icon={faArrowDown} />
+              </Button>
+              <Button text='Exportar Relatório' className='btnSecondary' icon>
+                <FontAwesomeIcon icon={faFileCsv} />
+              </Button>
+            </div>
+          </div>
+          <div className={styles.boxImgs}>
+            {/* <Slider slides={slides} contain /> */}
+          </div>
+          {data.data.map((d) => {
+            return (
+              <div key={d.id} className={styles.containerItemAnalysis}>
+                <h1 className={styles.speciesName}>{d.species_name}</h1>
+                <div className={styles.boxItem}>
+                  <Image
+                    src={d.path}
+                    width={500}
+                    height={300}
+                    alt='Imagem analisada'
+                    className={styles.itemImg}
+                  />
+                  <div className={styles.boxGraph}>
+                    <AccuracyGraph accuracy={d.accuracy} />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

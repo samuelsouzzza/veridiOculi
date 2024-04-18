@@ -7,9 +7,11 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { validationInputs } from '@/utils/validationInputs';
+import { UseGlobalContext } from '@/global/GlobalContext';
 
 export default function BoxFormLogin() {
   const router = useRouter();
+  const { setModalActions } = UseGlobalContext();
 
   const [valueEmail, setValueEmail] = React.useState('');
   const [valuePassword, setValuePassword] = React.useState('');
@@ -21,6 +23,7 @@ export default function BoxFormLogin() {
 
   function enterLogin(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
+    setModalActions(null);
     localStorage.setItem('userLogged_vo', JSON.stringify(userLogged));
     router.push('/home');
   }

@@ -6,19 +6,17 @@ import Image from 'next/image';
 import { CardTeam } from '../CardTeam/CardTeam';
 import { Footer } from '../Footer/Footer';
 import { IMember } from '@/@types/@types';
-// import { verifySession } from '@/utils/verifySession';
-import { useRouter } from 'next/navigation';
+import { VerifySession } from '@/utils/VerifySession';
 import React from 'react';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { ModalActions } from '../ModalActions/ModalActions';
-import { faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 export default function HomeView() {
-  const router = useRouter();
-  const { modalActions, setModalActions } = UseGlobalContext();
+  const { modalActions } = UseGlobalContext();
+  const { getSession } = VerifySession();
 
   React.useEffect(() => {
-    // verifySession().getSession();
+    getSession();
   }, []);
 
   const imgs = [
@@ -72,14 +70,7 @@ export default function HomeView() {
 
   return (
     <>
-      {modalActions && (
-        <ModalActions
-          message={modalActions?.message}
-          icon={modalActions?.icon}
-          type={modalActions?.type}
-          onOk={modalActions?.onOk}
-        />
-      )}
+      {modalActions && <ModalActions />}
       <div className={styles.container}>
         <MenuNavHome activeRoute='home' />
         <section className={styles.initial}>

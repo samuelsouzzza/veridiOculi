@@ -1,12 +1,10 @@
 'use client';
 import React from 'react';
-import { ModalActionsProps } from '@/components/ModalActions/ModalActions';
+import { IModalActions } from '@/@types/@types';
 
 type IScreens = {
-  modalActions: ModalActionsProps | null;
-  setModalActions: React.Dispatch<
-    React.SetStateAction<ModalActionsProps | null>
-  >;
+  modalActions: IModalActions | null;
+  setModalActions: React.Dispatch<React.SetStateAction<IModalActions | null>>;
 };
 
 const GlobalContext = React.createContext<IScreens | null>(null);
@@ -20,8 +18,9 @@ export const UseGlobalContext = () => {
 export const GlobalContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
-  const [modalActions, setModalActions] =
-    React.useState<ModalActionsProps | null>(null);
+  const [modalActions, setModalActions] = React.useState<IModalActions | null>(
+    null
+  );
 
   return (
     <GlobalContext.Provider

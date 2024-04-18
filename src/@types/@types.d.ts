@@ -1,3 +1,5 @@
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
+
 export interface IMember {
   id: number;
   profile: string;
@@ -27,4 +29,10 @@ export interface IReports {
       end_Y: number;
     };
   }[];
+}
+export interface IModalActions {
+  icon: IconDefinition;
+  type: 'yes-no' | 'ok';
+  message: string;
+  onOk: () => void | null;
 }

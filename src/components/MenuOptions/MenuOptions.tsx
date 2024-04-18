@@ -3,7 +3,7 @@ import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import React from 'react';
-import { verifySession } from '@/utils/verifySession';
+import { VerifySession } from '@/utils/VerifySession';
 
 export const MenuOptions = React.forwardRef<HTMLDivElement>(
   (props: React.ComponentProps<'div'>, ref) => {
@@ -11,6 +11,8 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
       justifyContent: 'start',
       padding: '0 2%',
     };
+
+    const { cleanSession } = VerifySession();
 
     return (
       <div className={styles.container} ref={ref} {...props}>
@@ -38,7 +40,7 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
               className='btnSecondary'
               style={styleOption}
               href={'/'}
-              onClick={verifySession().cleanSession}
+              onClick={cleanSession}
             >
               <span>Sair</span>
             </Link>
