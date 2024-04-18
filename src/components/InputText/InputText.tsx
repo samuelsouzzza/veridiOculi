@@ -16,7 +16,6 @@ export const InputText = ({
   value,
   setValue,
   validate,
-
   ...props
 }: InputTextProps) => {
   const [message, setMessage] = React.useState<string | null>(null);

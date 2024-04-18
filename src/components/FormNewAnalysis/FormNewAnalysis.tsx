@@ -15,6 +15,7 @@ export const FormNewAnalysis = () => {
   const router = useRouter();
   const { modalActions, setModalActions } = UseGlobalContext();
 
+  const [valueSpeciesName, setValueSpeciesName] = React.useState('');
   const [selectedImgs, setSelectedImgs] = React.useState<
     IImgsForAnalysis[] | null
   >(null);
@@ -63,34 +64,50 @@ export const FormNewAnalysis = () => {
     }
   }
 
+  function prepareData() {
+    const formData = new FormData();
+
+    const data = {
+      species_name: valueSpeciesName,
+      imgs: selectedImgs,
+    };
+
+    formData.append('dataAnalysis', JSON.stringify(data));
+
+    console.log(formData);
+  }
+
   function sendForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    prepareData();
 
     setModalActions({
       message:
         'Suas imagens foram enviadas para análise, acesse a guia "Histórico" para visualizar',
       icon: faCheck,
       type: 'ok',
-      onOk: () => router.push('/historic'),
+      onOk: () => {
+        cleanForm();
+        router.push('/historic');
+      },
     });
   }
 
   return (
     <>
-      {modalActions && (
-        <ModalActions
-          message={modalActions?.message}
-          icon={modalActions?.icon}
-          type={modalActions?.type}
-          onOk={modalActions?.onOk}
-        />
-      )}
-      <form className={styles.container} onSubmit={sendForm}>
+      {modalActions && <ModalActions />}
+      <form
+        className={styles.container}
+        onSubmit={sendForm}
+        encType='multipart/form-data'
+      >
         <div className={styles.boxSelect}>
           <SelectBox
             id='speciesSelect'
             label='Espécie foco'
             options={['Embaúba', 'Pau Brasil', 'Ypê Rosa']}
+            value={valueSpeciesName}
           />
         </div>
         <InputFile

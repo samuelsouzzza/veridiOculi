@@ -24,14 +24,22 @@ export default function BoxFormLogin() {
   function enterLogin(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     setModalActions(null);
+
     localStorage.setItem('userLogged_vo', JSON.stringify(userLogged));
+
+    const data = {
+      email: valueEmail,
+      password: valuePassword,
+    };
+
     router.push('/home');
+    console.log(data);
   }
 
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Entre com a sua conta</h3>
-      <form>
+      <form method='post'>
         <InputText
           label='E-Mail'
           type='email'

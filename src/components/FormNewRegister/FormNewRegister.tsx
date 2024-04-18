@@ -9,36 +9,38 @@ import React from 'react';
 import { validationInputs } from '@/utils/validationInputs';
 
 export const FormNewRegister = () => {
-  function enterRegister(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-
-    alert('Cadastrou');
-  }
-  const [valueName, setValueName] = React.useState('');
-  const [valueSurname, setValueSurname] = React.useState('');
+  const [valueCompleteName, setValueCompleteName] = React.useState('');
   const [valueCpf, setValueCpf] = React.useState('');
   const [valueEmail, setValueEmail] = React.useState('');
   const [valuePassword, setValuePassword] = React.useState('');
   const [valueConfirmPassword, setValueConfirmPassword] = React.useState('');
 
+  function enterRegister(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+
+    const data = {
+      complete_name: valueCompleteName,
+      cpf: valueCpf,
+      email: valueEmail,
+      password: valueConfirmPassword,
+    };
+
+    console.log('Dados enviados', data);
+  }
+
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Crie a sua conta</h3>
-      <form className={styles.form} action={'#'}>
-        <InputText
-          label='Nome'
-          type='text'
-          required
-          value={valueName}
-          setValue={setValueName}
-        />
-        <InputText
-          label='Sobrenome'
-          type='text'
-          required
-          value={valueSurname}
-          setValue={setValueSurname}
-        />
+      <form className={styles.form} method='post'>
+        <div className='spanAll'>
+          <InputText
+            label='Nome completo'
+            type='text'
+            required
+            value={valueCompleteName}
+            setValue={setValueCompleteName}
+          />
+        </div>
         <InputText
           label='CPF'
           type='number'
