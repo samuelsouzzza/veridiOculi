@@ -82,6 +82,15 @@ img {
 .btnPrimary:hover {
   background-color: #39a600cc;
 }
+.btnPrimary:disabled {
+  background-color: #39a60011;
+  box-shadow: 1px 1px 10px 1px #11111111;
+  color: #39a600;
+}
+.btnPrimary:disabled:hover {
+  background-color: #39a60011;
+}
+
 .btnSecondary {
   color: green;
   border: none;

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
 import { validationInputs } from '@/utils/validationInputs';
+import { postUser } from '@/app/actions/postUser';
 
 export const FormNewRegister = () => {
   const [valueCompleteName, setValueCompleteName] = React.useState('');
@@ -15,25 +16,13 @@ export const FormNewRegister = () => {
   const [valuePassword, setValuePassword] = React.useState('');
   const [valueConfirmPassword, setValueConfirmPassword] = React.useState('');
 
-  function enterRegister(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-
-    const data = {
-      complete_name: valueCompleteName,
-      cpf: valueCpf,
-      email: valueEmail,
-      password: valueConfirmPassword,
-    };
-
-    console.log('Dados enviados', data);
-  }
-
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Crie a sua conta</h3>
-      <form className={styles.form} method='post'>
+      <form className={styles.form} action={postUser}>
         <div className='spanAll'>
           <InputText
+            name='txt_complete_name'
             label='Nome completo'
             type='text'
             required
@@ -42,6 +31,7 @@ export const FormNewRegister = () => {
           />
         </div>
         <InputText
+          name='txt_cpf'
           label='CPF'
           type='number'
           required
@@ -51,6 +41,7 @@ export const FormNewRegister = () => {
           validate={validationInputs}
         />
         <InputText
+          name='txt_email'
           label='E-Mail'
           type='text'
           required
@@ -60,6 +51,7 @@ export const FormNewRegister = () => {
           validate={validationInputs}
         />
         <InputText
+          name='txt_password'
           label='Nova senha'
           type='password'
           required
@@ -69,19 +61,15 @@ export const FormNewRegister = () => {
           validate={validationInputs}
         />
         <InputText
+          name='txt_confirm_password'
           label='Confirmar senha'
           type='password'
           required
           value={valueConfirmPassword}
           setValue={setValueConfirmPassword}
-          // compare=
         />
         <div className='spanAll'>
-          <Button
-            text='Cadastrar'
-            className='btnPrimary'
-            onClick={enterRegister}
-          />
+          <Button text='Cadastrar' className='btnPrimary' type='submit' />
           <p>Ou</p>
           <Button icon text='Cadastrar com o Google' className='btnSecondary'>
             <FontAwesomeIcon icon={faGoogle} />

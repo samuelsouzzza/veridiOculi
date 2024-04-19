@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import { useFormStatus } from 'react-dom';
+import { Loading } from '../Loading/Loading';
 
 type ButtonProps = React.ComponentProps<'button'> & {
   text?: string;
@@ -14,9 +16,23 @@ export const Button = ({
   icon,
   ...props
 }: ButtonProps) => {
+  const { pending } = useFormStatus();
+
+  function renderContent(): JSX.Element | string {
+    if (pending) return <Loading />;
+    else if (!pending && icon)
+      return (
+        <>
+          {children}
+          {text}
+        </>
+      );
+    else return text as string;
+  }
+
   return (
-    <button {...props}>
-      {icon ? children : text} {icon ? text : false}
+    <button disabled={pending} {...props}>
+      {renderContent()}
     </button>
   );
 };
