@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { IReports } from '@/@types/@types';
 
 const reports = [
   {
     id: 1345530,
     id_user: 88,
     dt_report: '2024/07/25',
-    status: 'Concluído',
+    status: 'Pendente',
     data: [
       {
         id: 1,
@@ -41,8 +40,9 @@ const reports = [
 
 export async function GET(req: NextRequest, context: any) {
   const id = context.params.id;
+  const report = reports.filter((r) => r.id === +id);
 
-  const report = reports.filter((r) => r.id === id);
+  if (!report) return NextResponse.json({ error: 'Não há dados' });
 
-  return NextResponse.json({ id });
+  return NextResponse.json(report);
 }
