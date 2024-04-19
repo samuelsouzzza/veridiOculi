@@ -15,7 +15,15 @@ export const FormNewAnalysis = () => {
   const router = useRouter();
   const { modalActions, setModalActions } = UseGlobalContext();
 
-  const [valueSpeciesName, setValueSpeciesName] = React.useState('');
+  const speciesOptions = [
+    'Análise automática',
+    'Embaúba',
+    'Pau Brasil',
+    'Ypê Rosa',
+  ];
+  const [valueSpeciesName, setValueSpeciesName] = React.useState(
+    speciesOptions[0]
+  );
   const [selectedImgs, setSelectedImgs] = React.useState<
     IImgsForAnalysis[] | null
   >(null);
@@ -72,9 +80,7 @@ export const FormNewAnalysis = () => {
       imgs: selectedImgs,
     };
 
-    formData.append('dataAnalysis', JSON.stringify(data));
-
-    console.log(formData);
+    console.log(data);
   }
 
   function sendForm(e: React.FormEvent<HTMLFormElement>) {
@@ -106,8 +112,9 @@ export const FormNewAnalysis = () => {
           <SelectBox
             id='speciesSelect'
             label='Espécie foco'
-            options={['Embaúba', 'Pau Brasil', 'Ypê Rosa']}
+            options={speciesOptions}
             value={valueSpeciesName}
+            setValue={setValueSpeciesName}
           />
         </div>
         <InputFile
@@ -122,7 +129,6 @@ export const FormNewAnalysis = () => {
           <Button
             text={`Analisar ${selectedImgs.length} imagem(ens)`}
             className='btnPrimary'
-            // onClick={sendForm}
           />
         )}
       </form>
