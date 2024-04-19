@@ -8,7 +8,9 @@ type PageParams = {
 };
 
 export default async function historicIdPage({ params }: PageParams) {
-  const response = await fetch(`http://localhost:5000/historic/${params.id}`);
+  const response = await fetch(
+    `http://localhost:3000/api/historic/${params.id}`
+  );
   const json = (await response.json()) as IReports[];
 
   return <HistoricIdView data={{ ...json[0], id: params.id }} />;
