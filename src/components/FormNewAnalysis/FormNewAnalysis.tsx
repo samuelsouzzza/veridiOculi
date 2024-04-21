@@ -6,13 +6,11 @@ import { IImgsForAnalysis } from '@/@types/@types';
 import React from 'react';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
 import { SelectBox } from '../SelectBox/SelectBox';
-import { useRouter } from 'next/navigation';
+import { postAnalysis } from '@/app/actions/postAnalysis';
 
 export const FormNewAnalysis = () => {
-  const router = useRouter();
   const { modalActions, setModalActions } = UseGlobalContext();
 
   const speciesOptions = [
@@ -72,44 +70,18 @@ export const FormNewAnalysis = () => {
     }
   }
 
-  function prepareData() {
-    const formData = new FormData();
-
-    const data = {
-      species_name: valueSpeciesName,
-      imgs: selectedImgs,
-    };
-
-    console.log(data);
-  }
-
-  function sendForm(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    prepareData();
-
-    setModalActions({
-      message:
-        'Suas imagens foram enviadas para análise, acesse a guia "Histórico" para visualizar',
-      icon: faCheck,
-      type: 'ok',
-      onOk: () => {
-        cleanForm();
-        router.push('/historic');
-      },
-    });
-  }
-
   return (
     <>
       {modalActions && <ModalActions />}
+      <h1>{valueSpeciesName}</h1>
       <form
         className={styles.container}
-        onSubmit={sendForm}
         encType='multipart/form-data'
+        action={postAnalysis}
       >
         <div className={styles.boxSelect}>
           <SelectBox
+            name='txt_species_name'
             id='speciesSelect'
             label='Espécie foco'
             options={speciesOptions}
@@ -118,6 +90,7 @@ export const FormNewAnalysis = () => {
           />
         </div>
         <InputFile
+          name='txt_imgs_analysis'
           id='idInputImgsNewAnalysis'
           label='Selecione as imagens para análise'
           selectedImgs={selectedImgs ? selectedImgs : null}

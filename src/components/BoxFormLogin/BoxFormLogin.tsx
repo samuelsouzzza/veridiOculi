@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { validationInputs } from '@/utils/validationInputs';
 import { UseGlobalContext } from '@/global/GlobalContext';
+import { postLogin } from '@/app/actions/postLogin';
 
 export default function BoxFormLogin() {
   const router = useRouter();
@@ -21,26 +22,19 @@ export default function BoxFormLogin() {
     email: 'rssamuel17@gmail.com',
   };
 
-  function enterLogin(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
+  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    // e.preventDefault();
     setModalActions(null);
-
     localStorage.setItem('userLogged_vo', JSON.stringify(userLogged));
-
-    const data = {
-      email: valueEmail,
-      password: valuePassword,
-    };
-
     router.push('/home');
-    console.log(data);
   }
 
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Entre com a sua conta</h3>
-      <form method='post'>
+      <form action={postLogin}>
         <InputText
+          name='txt_email'
           label='E-Mail'
           type='email'
           typeValidation='email'
@@ -50,6 +44,7 @@ export default function BoxFormLogin() {
           validate={validationInputs}
         />
         <InputText
+          name='txt_password'
           label='Senha'
           type='password'
           typeValidation='password'
@@ -58,21 +53,26 @@ export default function BoxFormLogin() {
           setValue={setValuePassword}
         />
         <div className='spanAll'>
-          <Button text='Acessar' className='btnPrimary' onClick={enterLogin} />
+          <Button
+            text='Acessar'
+            className='btnPrimary'
+            type='submit'
+            onClick={handleClick}
+          />
           <p>Ou</p>
-          <Button icon text='Continue com o Google' className='btnSecondary'>
-            <FontAwesomeIcon icon={faGoogle} />
-          </Button>
-        </div>
-        <div className={styles.boxLinks}>
-          <a className='linkSimple' href='#'>
-            Esqueci a senha
-          </a>
-          <a className='linkSimple' href='#'>
-            Preciso de ajuda
-          </a>
         </div>
       </form>
+      <Button icon text='Continue com o Google' className='btnSecondary'>
+        <FontAwesomeIcon icon={faGoogle} />
+      </Button>
+      <div className={styles.boxLinks}>
+        <a className='linkSimple' href='#'>
+          Esqueci a senha
+        </a>
+        <a className='linkSimple' href='#'>
+          Preciso de ajuda
+        </a>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+'use server';
+
 export async function postUser(formData: FormData): Promise<void> {
   const newUser = {
     complete_name: formData.get('txt_complete_name') as string,
@@ -6,12 +8,10 @@ export async function postUser(formData: FormData): Promise<void> {
     confirm_password: formData.get('txt_confirm_password') as string,
   };
 
-  console.log(newUser);
-
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log('Esperando...');
-      resolve(); // Resolve a promessa após 3 segundos
-    }, 3000);
+      console.log(newUser);
+      resolve();
+    }, 5000);
   });
 }

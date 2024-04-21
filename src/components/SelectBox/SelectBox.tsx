@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './SelectBox.module.css';
+import { normalizeStr } from '@/utils/normalizeStr';
 
 type SelectBoxProps = React.ComponentProps<'select'> & {
   id: string;
@@ -17,6 +18,7 @@ export const SelectBox = ({
   options,
   value,
   setValue,
+  ...props
 }: SelectBoxProps) => {
   return (
     <div className={styles.container}>
@@ -27,10 +29,11 @@ export const SelectBox = ({
           className={styles.input}
           value={value}
           onChange={({ target }) => setValue(target.value)}
+          {...props}
         >
           {options.map((o, i) => {
             return (
-              <option key={i} value={o.toLowerCase().replaceAll(' ', '')}>
+              <option key={i} value={normalizeStr(o)}>
                 {o}
               </option>
             );

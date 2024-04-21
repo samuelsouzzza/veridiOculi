@@ -5,13 +5,12 @@ import { Loading } from '../Loading/Loading';
 
 type ButtonProps = React.ComponentProps<'button'> & {
   text?: string;
-  primary?: boolean;
   icon?: boolean;
 };
 
 export const Button = ({
   children,
-  primary,
+  type,
   text,
   icon,
   ...props

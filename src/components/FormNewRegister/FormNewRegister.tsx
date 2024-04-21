@@ -71,11 +71,11 @@ export const FormNewRegister = () => {
         <div className='spanAll'>
           <Button text='Cadastrar' className='btnPrimary' type='submit' />
           <p>Ou</p>
-          <Button icon text='Cadastrar com o Google' className='btnSecondary'>
-            <FontAwesomeIcon icon={faGoogle} />
-          </Button>
         </div>
       </form>
+      <Button icon text='Cadastrar com o Google' className='btnSecondary'>
+        <FontAwesomeIcon icon={faGoogle} />
+      </Button>
     </div>
   );
 };
