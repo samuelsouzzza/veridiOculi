@@ -3,7 +3,7 @@ const reports = [
     id: 1345530,
     id_user: 88,
     dt_report: '2024/07/25',
-    status: 'Concluído',
+    status: 'Concluída',
     data: [
       {
         id: 1,
@@ -17,7 +17,6 @@ const reports = [
           start_Y: 1567,
           end_Y: 1811,
         },
-        status: 'pendente',
       },
       {
         id: 2,

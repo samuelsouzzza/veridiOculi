@@ -73,7 +73,6 @@ export const FormNewAnalysis = () => {
   return (
     <>
       {modalActions && <ModalActions />}
-      <h1>{valueSpeciesName}</h1>
       <form
         className={styles.container}
         encType='multipart/form-data'

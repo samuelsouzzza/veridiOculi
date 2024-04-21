@@ -16,10 +16,19 @@ export const FormNewRegister = () => {
   const [valuePassword, setValuePassword] = React.useState('');
   const [valueConfirmPassword, setValueConfirmPassword] = React.useState('');
 
+  async function formSended(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const thisForm = new FormData(e.currentTarget);
+    const response = await postUser(thisForm);
+
+    console.log(response);
+  }
+
   return (
     <div className={styles.container}>
       <h3 className='subtitle'>Crie a sua conta</h3>
-      <form className={styles.form} action={postUser}>
+      <form className={styles.form} onSubmit={formSended}>
         <div className='spanAll'>
           <InputText
             name='txt_complete_name'
