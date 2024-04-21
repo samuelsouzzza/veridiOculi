@@ -7,7 +7,7 @@ import ProvidersNProgress from '../global/NProgress';
 export const metadata: Metadata = {
   title: 'Veridi Oculi',
   description: 'Análises de imageamento aéreo',
-  icons: '/logo.ico',
+  icons: '/assets/logo.ico',
 };
 
 export default function RootLayout({

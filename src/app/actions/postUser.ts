@@ -1,19 +1,33 @@
 'use server';
 
-interface INewUser {
-  complete_name: string;
-  cpf: number;
-  email: string;
-  confirm_password: string;
-}
+import { IFeedback, IUser } from '@/@types/@types';
 
-export async function postUser(formData: FormData): Promise<INewUser> {
-  const newUser = {
-    complete_name: formData.get('txt_complete_name') as string,
-    cpf: Number(formData.get('txt_cpf')),
-    email: formData.get('txt_email') as string,
-    confirm_password: formData.get('txt_confirm_password') as string,
+export async function postUser(
+  formData: FormData
+): Promise<IFeedback | undefined> {
+  const newUser: IUser = {
+    complete_name_user: formData.get('txt_complete_name') as string,
+    email_user: formData.get('txt_email') as string,
+    cpf_user: formData.get('txt_cpf') as string,
+    password_user: formData.get('txt_confirm_password') as string,
+    premium_user: false as boolean,
   };
 
-  return newUser;
+  try {
+    const response = await fetch(`http:/127.0.0.1:3333/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    if (!response.ok) throw new Error('Não foi possível criar o usuário!');
+
+    return (await response.json()) as IFeedback;
+  } catch (err: unknown) {
+    if (err instanceof Error)
+      return { ok: false, message: err.message } as IFeedback;
+    console.log(err);
+  }
 }

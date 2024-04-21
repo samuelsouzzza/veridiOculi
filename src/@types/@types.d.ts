@@ -36,3 +36,15 @@ export interface IModalActions {
   message: string;
   onOk: () => void | null;
 }
+export interface IUser {
+  id_user?: number;
+  complete_name_user: string;
+  email_user: string;
+  cpf_user: string;
+  password_user: string;
+  premium_user: boolean;
+}
+export interface IFeedback {
+  ok: boolean;
+  message: string;
+}
