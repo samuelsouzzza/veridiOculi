@@ -22,9 +22,11 @@ export async function postUser(
       body: JSON.stringify(newUser),
     });
 
-    if (!response.ok) throw new Error('Não foi possível criar o usuário!');
+    const feedback = (await response.json()) as IFeedback;
 
-    return (await response.json()) as IFeedback;
+    if (!feedback.ok) throw new Error(feedback.message);
+
+    return feedback;
   } catch (err: unknown) {
     if (err instanceof Error)
       return { ok: false, message: err.message } as IFeedback;

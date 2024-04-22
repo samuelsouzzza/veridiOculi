@@ -12,7 +12,6 @@ import { UseGlobalContext } from '@/global/GlobalContext';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { redirect } from 'next/dist/server/api-utils';
 import { redirectPath } from '@/app/actions/redirectPath';
 
 export const FormNewRegister = () => {
@@ -23,6 +22,10 @@ export const FormNewRegister = () => {
   const [valueConfirmPassword, setValueConfirmPassword] = React.useState('');
 
   const { modalActions, setModalActions } = UseGlobalContext();
+
+  React.useEffect(() => {
+    setModalActions(null);
+  }, []);
 
   async function formSended(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
