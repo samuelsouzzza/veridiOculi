@@ -18,12 +18,25 @@ const validationFields: IValidationType = {
     message: 'Inválido',
   },
   password: {
+    // 1 Caractere espcial,
     regex: /^(?=.*[!@#$%^&*()_+{}|:"<>?[\]\;',./]).*$/,
     message: 'Caractere especial ausente',
   },
+  confirmPassword: {
+    message: 'Senhas não estão iguais',
+  },
 };
 
-export const validationInputs = (type: string, value: string): string => {
+export const validationInputs = (
+  type: string,
+  value: string,
+  confirmValue?: string
+): string => {
+  if (type === 'confirmPassword')
+    return value !== confirmValue && value.length >= 1
+      ? validationFields[type].message
+      : '';
+
   const rule = new RegExp(validationFields[type]?.regex as RegExp);
 
   return !rule.test(value) ? validationFields[type]?.message : '';

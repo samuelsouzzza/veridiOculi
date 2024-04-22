@@ -4,11 +4,23 @@
   flex-direction: column;
   margin: 1% 0;
 }
+.container label div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
 .container label p {
-  display: inline-block;
-  font-size: 0.9rem;
-  color: #ec0707;
+  font-size: 0.8rem;
+  margin-left: 1%;
   font-weight: 500;
+}
+.invalid {
+  color: #ec0707;
+}
+.valid > svg {
+  color: #39a600;
+  font-size: 0.8rem;
 }
 .input {
   width: 100%;

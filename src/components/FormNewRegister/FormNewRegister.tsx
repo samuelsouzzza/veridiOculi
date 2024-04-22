@@ -31,16 +31,31 @@ export const FormNewRegister = () => {
     e.preventDefault();
 
     const thisForm = new FormData(e.currentTarget);
-    const response = await postUser(thisForm);
 
-    setModalActions({
-      icon: response?.ok ? faCheck : faExclamation,
-      type: 'ok',
-      message: response?.message as string,
-      onOk: () => {
-        response?.ok ? redirectPath('/login') : setModalActions(null);
-      },
-    });
+    const isEmailValid = validationInputs('email', valueEmail);
+    const isCpfValid = validationInputs('cpf', valueCpf);
+    const isPasswordValid = validationInputs('password', valuePassword);
+
+    if (!isEmailValid && !isCpfValid && !isPasswordValid) {
+      const response = await postUser(thisForm);
+
+      setModalActions({
+        icon: response?.ok ? faCheck : faExclamation,
+        type: 'ok',
+        message: response?.message as string,
+        onOk: () => {
+          response?.ok ? redirectPath('/login') : setModalActions(null);
+        },
+      });
+    } else
+      setModalActions({
+        icon: faExclamation,
+        type: 'ok',
+        message: 'Valide os campos antes de enviar o formulário',
+        onOk: () => {
+          setModalActions(null);
+        },
+      });
   }
 
   return (
@@ -96,6 +111,9 @@ export const FormNewRegister = () => {
             required
             value={valueConfirmPassword}
             setValue={setValueConfirmPassword}
+            confirmValue={valuePassword}
+            typeValidation='confirmPassword'
+            validate={validationInputs}
           />
           <div className='spanAll'>
             <Button text='Cadastrar' className='btnPrimary' type='submit' />
