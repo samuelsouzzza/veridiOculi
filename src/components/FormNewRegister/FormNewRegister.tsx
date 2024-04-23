@@ -32,11 +32,23 @@ export const FormNewRegister = () => {
 
     const thisForm = new FormData(e.currentTarget);
 
-    const isEmailValid = validationInputs('email', valueEmail);
-    const isCpfValid = validationInputs('cpf', valueCpf);
-    const isPasswordValid = validationInputs('password', valuePassword);
+    const isCompleteNameInvalid = validationInputs('name', valueCompleteName);
+    const isEmailInvalid = validationInputs('email', valueEmail);
+    const isCpfInvalid = validationInputs('cpf', valueCpf);
+    const isPasswordInvalid = validationInputs('password', valuePassword);
+    const isConfirmPasswordInvalid = validationInputs(
+      'confirmPassword',
+      valuePassword,
+      valueConfirmPassword
+    );
 
-    if (!isEmailValid && !isCpfValid && !isPasswordValid) {
+    if (
+      !isCompleteNameInvalid &&
+      !isEmailInvalid &&
+      !isCpfInvalid &&
+      !isPasswordInvalid &&
+      !isConfirmPasswordInvalid
+    ) {
       const response = await postUser(thisForm);
 
       setModalActions({
@@ -51,7 +63,7 @@ export const FormNewRegister = () => {
       setModalActions({
         icon: faExclamation,
         type: 'ok',
-        message: 'Valide os campos antes de enviar o formulário',
+        message: 'Preencha os campos corretamente antes de enviar o formulário',
         onOk: () => {
           setModalActions(null);
         },
@@ -70,7 +82,7 @@ export const FormNewRegister = () => {
               label='Nome completo *'
               type='text'
               maxLength={50}
-              required
+              // required
               value={valueCompleteName}
               setValue={setValueCompleteName}
               typeValidation='name'
@@ -82,7 +94,7 @@ export const FormNewRegister = () => {
             name='txt_cpf'
             label='CPF *'
             type='text'
-            required
+            // required
             maxLength={14}
             value={valueCpf}
             setValue={setValueCpf}
@@ -95,7 +107,7 @@ export const FormNewRegister = () => {
             label='E-Mail *'
             type='text'
             maxLength={50}
-            required
+            // required
             value={valueEmail}
             setValue={setValueEmail}
             typeValidation='email'
@@ -107,7 +119,7 @@ export const FormNewRegister = () => {
             label='Nova senha *'
             type='password'
             maxLength={10}
-            required
+            // required
             value={valuePassword}
             setValue={setValuePassword}
             typeValidation='password'
@@ -119,7 +131,7 @@ export const FormNewRegister = () => {
             label='Confirmar senha *'
             type='password'
             maxLength={10}
-            required
+            // required
             value={valueConfirmPassword}
             setValue={setValueConfirmPassword}
             confirmValue={valuePassword}

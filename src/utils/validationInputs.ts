@@ -1,3 +1,4 @@
+import { applyMask } from './applyMask';
 interface IValidationRule {
   regex?: RegExp;
   minLength?: number;
@@ -23,12 +24,12 @@ const validationFields: IValidationType = {
     message: 'Inválido',
   },
   password: {
-    // 6 dígitos e aractere espcial,
+    // 6 dígitos e caractere especial,
     regex: /^(?=.*[!@#$%^&*()_+}{|":?><,./;'[\]\\=-])\S{6,}$/,
     message: 'Inválido',
   },
   confirmPassword: {
-    message: 'Senhas não estão iguais',
+    message: 'Senhas não são iguais',
   },
 };
 
@@ -36,20 +37,26 @@ export const validationInputs = (
   type: string,
   value: string,
   confirmValue?: string
-): string => {
+): string | null => {
   if (type === 'name') {
     const minLength = validationFields[type]?.minLength;
     if (minLength !== undefined && minLength !== null) {
-      return !(value.length >= minLength) ? validationFields[type].message : '';
+      return value.length >= minLength ? null : validationFields[type].message;
     }
   }
+
+  if (type === 'cpf') {
+    const numericChars = value.replace(/\D/g, '');
+    return applyMask('cpf', numericChars)
+      ? null
+      : validationFields[type]?.message;
+  }
+
   if (type === 'confirmPassword') {
-    return value !== confirmValue && value.length >= 1
-      ? validationFields[type].message
-      : '';
+    if (value?.length >= 3)
+      return value === confirmValue ? null : validationFields[type]?.message;
   }
 
   const rule = new RegExp(validationFields[type]?.regex as RegExp);
-
-  return !rule.test(value) ? validationFields[type]?.message : '';
+  return rule.test(value) ? null : validationFields[type]?.message;
 };

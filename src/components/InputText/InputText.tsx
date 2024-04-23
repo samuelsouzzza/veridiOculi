@@ -13,7 +13,11 @@ type InputTextProps = React.ComponentProps<'input'> & {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   confirmValue?: string;
-  validate?: (type: string, value: string, confirmValue?: string) => string;
+  validate?: (
+    type: string,
+    value: string,
+    confirmValue?: string
+  ) => string | null;
 };
 
 export const InputText = ({
@@ -30,7 +34,7 @@ export const InputText = ({
     string | null
   >(null);
 
-  const [viewPassword, setViewPassword] = React.useState(true);
+  const [viewPassword, setViewPassword] = React.useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value);
@@ -39,12 +43,14 @@ export const InputText = ({
   React.useEffect(() => {
     if (validate && typeValidation) {
       if (typeValidation === 'confirmPassword') {
-        setValidationMessage(validate('confirmPassword', value, confirmValue));
+        setValidationMessage(validate(typeValidation, value, confirmValue));
+        return;
       }
       if (typeValidation === 'cpf') {
         const numericChars = value.replace(/\D/g, '');
-
         setValue(applyMask('cpf', numericChars));
+        setValidationMessage(validate(typeValidation, value));
+        return;
       }
       setValidationMessage(validate(typeValidation, value));
     }

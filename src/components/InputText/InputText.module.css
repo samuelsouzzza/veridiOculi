@@ -57,8 +57,9 @@
 .input + svg {
   color: #333333;
   position: absolute;
-  right: 3%;
+  right: 5%;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .input svg path {
