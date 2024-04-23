@@ -67,46 +67,53 @@ export const FormNewRegister = () => {
           <div className='spanAll'>
             <InputText
               name='txt_complete_name'
-              label='Nome completo'
+              label='Nome completo *'
               type='text'
               required
               value={valueCompleteName}
               setValue={setValueCompleteName}
+              typeValidation='name'
+              validate={validationInputs}
+              placeholder='Samuel Ribeiro de Souza'
             />
           </div>
           <InputText
             name='txt_cpf'
-            label='CPF'
-            type='number'
+            label='CPF *'
+            type='text'
             required
+            maxLength={14}
             value={valueCpf}
             setValue={setValueCpf}
             typeValidation='cpf'
             validate={validationInputs}
+            placeholder='999.999.999-99'
           />
           <InputText
             name='txt_email'
-            label='E-Mail'
+            label='E-Mail *'
             type='text'
             required
             value={valueEmail}
             setValue={setValueEmail}
             typeValidation='email'
             validate={validationInputs}
+            placeholder='samuel.souza@gmail.com'
           />
           <InputText
             name='txt_password'
-            label='Nova senha'
+            label='Nova senha *'
             type='password'
             required
             value={valuePassword}
             setValue={setValuePassword}
             typeValidation='password'
             validate={validationInputs}
+            placeholder='6 dígitos e caractere especial'
           />
           <InputText
             name='txt_confirm_password'
-            label='Confirmar senha'
+            label='Confirmar senha *'
             type='password'
             required
             value={valueConfirmPassword}
@@ -114,12 +121,14 @@ export const FormNewRegister = () => {
             confirmValue={valuePassword}
             typeValidation='confirmPassword'
             validate={validationInputs}
+            placeholder='Idêntica à nova senha'
           />
           <div className='spanAll'>
             <Button text='Cadastrar' className='btnPrimary' type='submit' />
             <p>Ou</p>
           </div>
         </form>
+
         <Button icon text='Cadastrar com o Google' className='btnSecondary'>
           <FontAwesomeIcon icon={faGoogle} />
         </Button>

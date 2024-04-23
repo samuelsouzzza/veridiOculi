@@ -2,11 +2,12 @@
 import React from 'react';
 import styles from './InputText.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { applyMask } from '@/utils/applyMask';
 
 type InputTextProps = React.ComponentProps<'input'> & {
   label?: string;
-  typeValidation?: 'email' | 'cpf' | 'password' | 'confirmPassword';
+  typeValidation?: 'name' | 'email' | 'cpf' | 'password' | 'confirmPassword';
   value: string;
   confirmValue?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -31,10 +32,13 @@ export const InputText = ({
   }
 
   React.useEffect(() => {
-    if (validate && typeValidation)
+    if (validate && typeValidation) {
       if (typeValidation === 'confirmPassword') {
         setValidationMessage(validate(typeValidation, value, confirmValue));
+      } else if (typeValidation === 'cpf') {
+        setValue(applyMask('cpf', value));
       } else setValidationMessage(validate(typeValidation, value));
+    }
   }, [value, confirmValue]);
 
   React.useEffect(() => setValidationMessage(null), []);
@@ -45,7 +49,7 @@ export const InputText = ({
         <div>
           {label}
           <p className={validationMessage ? styles.invalid : styles.valid}>
-            {value.length >= 3 && !validationMessage ? (
+            {value.length >= 1 && !validationMessage ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
               validationMessage

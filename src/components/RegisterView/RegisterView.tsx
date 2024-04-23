@@ -1,6 +1,6 @@
 import styles from './RegisterView.module.css';
 import { MenuNavLogin } from '@/components/MenuNavLogin/MenuNavLogin';
-import { FormNewRegister } from '@/components/FormNewRegister/FormNewRegister';
+import { FormNewRegister } from '../FormNewRegister/FormNewRegister';
 
 export default function RegisterView() {
   return (

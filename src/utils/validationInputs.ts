@@ -1,5 +1,6 @@
 interface IValidationRule {
   regex?: RegExp;
+  minLength?: number;
   message: string;
 }
 
@@ -8,6 +9,10 @@ interface IValidationType {
 }
 
 const validationFields: IValidationType = {
+  name: {
+    minLength: 10,
+    message: 'Mínimo 10 dígitos',
+  },
   email: {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -18,9 +23,9 @@ const validationFields: IValidationType = {
     message: 'Inválido',
   },
   password: {
-    // 1 Caractere espcial,
-    regex: /^(?=.*[!@#$%^&*()_+{}|:"<>?[\]\;',./]).*$/,
-    message: 'Caractere especial ausente',
+    // 6 dígitos e aractere espcial,
+    regex: /^(?=.*[!@#$%^&*()_+}{|":?><,./;'[\]\\=-])\S{6,}$/,
+    message: 'Inválido',
   },
   confirmPassword: {
     message: 'Senhas não estão iguais',
@@ -32,6 +37,13 @@ export const validationInputs = (
   value: string,
   confirmValue?: string
 ): string => {
+  if (type === 'name') {
+    const minLength = validationFields[type]?.minLength;
+    if (minLength !== undefined && minLength !== null) {
+      return !(value.length >= minLength) ? validationFields[type].message : '';
+    }
+  }
+
   if (type === 'confirmPassword')
     return value !== confirmValue && value.length >= 1
       ? validationFields[type].message
