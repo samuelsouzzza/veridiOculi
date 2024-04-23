@@ -10,7 +10,11 @@
   position: fixed;
   padding: 1%;
 }
-.container > ul {
+.container ul {
   text-decoration: none;
   list-style: none;
+}
+
+.container ul li span {
+  padding: 5%;
 }

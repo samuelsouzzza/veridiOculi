@@ -45,13 +45,6 @@ export const validationInputs = (
     }
   }
 
-  if (type === 'cpf') {
-    const numericChars = value.replace(/\D/g, '');
-    return applyMask('cpf', numericChars)
-      ? null
-      : validationFields[type]?.message;
-  }
-
   if (type === 'confirmPassword') {
     if (value?.length >= 3)
       return value === confirmValue ? null : validationFields[type]?.message;
