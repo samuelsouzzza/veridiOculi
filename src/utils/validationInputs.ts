@@ -43,11 +43,11 @@ export const validationInputs = (
       return !(value.length >= minLength) ? validationFields[type].message : '';
     }
   }
-
-  if (type === 'confirmPassword')
+  if (type === 'confirmPassword') {
     return value !== confirmValue && value.length >= 1
       ? validationFields[type].message
       : '';
+  }
 
   const rule = new RegExp(validationFields[type]?.regex as RegExp);
 

@@ -69,6 +69,7 @@ export const FormNewRegister = () => {
               name='txt_complete_name'
               label='Nome completo *'
               type='text'
+              maxLength={50}
               required
               value={valueCompleteName}
               setValue={setValueCompleteName}
@@ -93,6 +94,7 @@ export const FormNewRegister = () => {
             name='txt_email'
             label='E-Mail *'
             type='text'
+            maxLength={50}
             required
             value={valueEmail}
             setValue={setValueEmail}
@@ -104,6 +106,7 @@ export const FormNewRegister = () => {
             name='txt_password'
             label='Nova senha *'
             type='password'
+            maxLength={10}
             required
             value={valuePassword}
             setValue={setValuePassword}
@@ -115,6 +118,7 @@ export const FormNewRegister = () => {
             name='txt_confirm_password'
             label='Confirmar senha *'
             type='password'
+            maxLength={10}
             required
             value={valueConfirmPassword}
             setValue={setValueConfirmPassword}

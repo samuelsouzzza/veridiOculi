@@ -3,19 +3,22 @@ import React from 'react';
 import styles from './InputText.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { applyMask } from '@/utils/applyMask';
 
 type InputTextProps = React.ComponentProps<'input'> & {
   label?: string;
+  type: string;
   typeValidation?: 'name' | 'email' | 'cpf' | 'password' | 'confirmPassword';
   value: string;
-  confirmValue?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  confirmValue?: string;
   validate?: (type: string, value: string, confirmValue?: string) => string;
 };
 
 export const InputText = ({
   label,
+  type,
   typeValidation,
   value,
   confirmValue,
@@ -27,6 +30,8 @@ export const InputText = ({
     string | null
   >(null);
 
+  const [viewPassword, setViewPassword] = React.useState(true);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value);
   }
@@ -34,12 +39,14 @@ export const InputText = ({
   React.useEffect(() => {
     if (validate && typeValidation) {
       if (typeValidation === 'confirmPassword') {
-        setValidationMessage(validate(typeValidation, value, confirmValue));
-      } else if (typeValidation === 'cpf') {
+        setValidationMessage(validate('confirmPassword', value, confirmValue));
+      }
+      if (typeValidation === 'cpf') {
         const numericChars = value.replace(/\D/g, '');
 
         setValue(applyMask('cpf', numericChars));
-      } else setValidationMessage(validate(typeValidation, value));
+      }
+      setValidationMessage(validate(typeValidation, value));
     }
   }, [value, confirmValue]);
 
@@ -58,14 +65,23 @@ export const InputText = ({
             )}
           </p>
         </div>
-        <input
-          className={styles.input}
-          id={label}
-          value={value}
-          onChange={handleChange}
-          onBlur={handleChange}
-          {...props}
-        />
+        <div className={styles.boxInput}>
+          <input
+            type={viewPassword ? 'text' : type}
+            className={styles.input}
+            id={label}
+            value={value}
+            onChange={handleChange}
+            onBlur={handleChange}
+            {...props}
+          />
+          {type === 'password' && (
+            <FontAwesomeIcon
+              icon={viewPassword ? faEye : faEyeSlash}
+              onClick={() => setViewPassword(!viewPassword)}
+            />
+          )}
+        </div>
       </label>
     </div>
   );
