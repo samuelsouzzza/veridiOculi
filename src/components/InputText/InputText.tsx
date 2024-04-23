@@ -36,7 +36,9 @@ export const InputText = ({
       if (typeValidation === 'confirmPassword') {
         setValidationMessage(validate(typeValidation, value, confirmValue));
       } else if (typeValidation === 'cpf') {
-        setValue(applyMask('cpf', value));
+        const numericChars = value.replace(/\D/g, '');
+
+        setValue(applyMask('cpf', numericChars));
       } else setValidationMessage(validate(typeValidation, value));
     }
   }, [value, confirmValue]);
