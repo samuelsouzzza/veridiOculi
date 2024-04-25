@@ -71,7 +71,7 @@ export const InputFile = ({
                 height={300}
                 priority
               />
-              <p>{img.raw?.name}</p>{' '}
+              <p>{img.raw?.name}</p>
               {dimensions && (
                 <>
                   <p>

@@ -9,9 +9,13 @@
   font-weight: 700;
 }
 .input {
-  border: 1px solid #3aa60066;
+  border: 1px solid var(--color-04);
   height: 35px;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
+}
+.input:hover {
+  background-color: var(--color-04);
 }

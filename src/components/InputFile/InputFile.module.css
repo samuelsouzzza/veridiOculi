@@ -13,19 +13,24 @@
   border-radius: 5px;
   height: auto;
   padding: 2%;
-  border: 1px solid #39a60044;
+  border: 1px solid var(--color-04);
   cursor: pointer;
   transition: 0.3s;
   gap: 5% 0;
   font-weight: bold;
 }
 .container > label:hover {
-  background-color: #39a60033;
-  box-shadow: 1px 1px 3px 1px #39a60033;
+  background-color: var(--color-04);
+  box-shadow: 1px 1px 3px 1px var(--color-04);
+  color: var(--color-04);
 }
 .container > label > svg {
   font-size: 5rem;
-  color: #39a60066;
+  color: var(--color-03);
+}
+
+.container > label > svg path {
+  color: var(--color-04);
 }
 .file {
   display: none;
@@ -62,7 +67,7 @@
   text-overflow: ellipsis;
 }
 .resolution {
-  color: #39a600;
+  color: var(--primary-color);
   font-weight: 900;
 }
 .delImg {
@@ -71,7 +76,6 @@
   top: -5%;
   right: -5%;
   background-color: #ccc;
-  color: #fff;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -81,6 +85,9 @@
   aspect-ratio: 1/1;
   cursor: pointer;
   transition: 0.5s;
+}
+.delImg > svg path {
+  color: #fff;
 }
 .delImg:hover {
   scale: 1.1;

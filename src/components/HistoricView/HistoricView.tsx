@@ -36,7 +36,7 @@ export function HistoricView({ data }: HistoricViewProps) {
             <div className={styles.rowHead} onClick={reverseHistoric}>
               <div className={styles.colHead}>Id</div>
               <div className={styles.colHead}>Data</div>
-              <div className={styles.colHead}>Qtd Imagens</div>
+              <div className={styles.colHead}>Imagens</div>
               <div className={styles.colHead}>Status</div>
             </div>
             {historic.map((h, i) => {

@@ -41,7 +41,7 @@
   transition: 0.3s;
 }
 .boxButtons > button:hover {
-  background-color: #92e3a9aa;
+  background-color: var(--color-04);
   transform: scale(1.1);
 }
 .image {
@@ -64,4 +64,7 @@
 }
 .count > svg {
   cursor: pointer;
+}
+.count > svg path {
+  color: #fff;
 }

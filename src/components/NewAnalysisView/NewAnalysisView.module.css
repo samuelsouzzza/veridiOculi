@@ -28,6 +28,8 @@
   text-align: right;
 }
 .labelPlan > svg {
-  margin: 0 0.5%;
-  color: #39a600;
+  margin: 0 0.5% 0 0;
+}
+.labelPlan > svg path {
+  color: var(--primary-color);
 }

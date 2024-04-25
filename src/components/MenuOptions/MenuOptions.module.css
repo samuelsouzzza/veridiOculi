@@ -3,7 +3,8 @@
   height: auto;
   min-width: 200px;
   width: auto;
-  box-shadow: 1px 1px 10px 1px #33333333;
+  box-shadow: var(--shadow-03);
+  backdrop-filter: var(--blur);
   border-radius: 5px;
   top: 80px;
   right: 2%;
@@ -17,4 +18,5 @@
 
 .container ul li span {
   padding: 5%;
+  color: var(--primary-color);
 }

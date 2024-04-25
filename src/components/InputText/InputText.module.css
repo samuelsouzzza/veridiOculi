@@ -16,10 +16,10 @@
   font-weight: 500;
 }
 .invalid {
-  color: #ec0707;
+  color: var(--invalid);
 }
 .valid > svg {
-  color: #39a600;
+  color: var(--primary-color);
   font-size: 0.8rem;
 }
 .boxInput {
@@ -29,11 +29,9 @@
   width: 100%;
   font-size: 1.15rem;
   padding: 1% 2%;
-  background-color: #fff;
   color: #333;
   border: 1px solid #bbb;
   border-radius: 5px;
-  background-color: #fff;
   height: 40px;
   outline: 0;
   transition: 0.5s;
@@ -42,13 +40,12 @@
   color: #666;
   font-size: 0.85rem;
 }
-.input:hover,
 .input:focus {
-  border: 2px solid #39a600;
+  border: 2px solid var(--primary-color);
 }
-.input:focus {
-  border: 2px solid #39a60099;
-  box-shadow: 1px 1px 3px 1px #39a60033;
+.input:hover {
+  border: 2px solid var(--primary-color);
+  box-shadow: 1px 1px 3px 1px var(--color-04);
 }
 .input[type='number']::-webkit-inner-spin-button,
 .input[type='number']::-webkit-outer-spin-button {
@@ -62,6 +59,5 @@
   color: #333333;
   position: absolute;
   right: 5%;
-  background-color: #fff;
   cursor: pointer;
 }

@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --font-color: #000;
+  --primary-color: #39a600;
+  --secondary-color: #3aa6002a;
+  --color-03: #39a600cc;
+  --color-04: #39a60044;
+  --bg-01: #fff;
+  --bg-02: #ffffff11;
+  --shadow-02: 1px 1px 3px 1px var(--color-03);
+  --shadow-03: 1px 1px 3px 1px #33333333;
+  --blur: blur(10px);
+  --invalid: #ec0707;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
   font-style: normal;
+  color: var(--font-color);
   font-variation-settings: 'wdth' 100;
-  accent-color: #39a600;
+  accent-color: var(--primary-color);
+  outline: 1;
 }
 *::-webkit-scrollbar {
   width: 10px;
@@ -30,6 +46,7 @@ body {
     'footer footer footer';
   grid-template-rows: minmax(25%, 100%) auto min-content;
   grid-template-columns: 1fr 10fr 1fr;
+  background-color: var(--bg-01);
 }
 img {
   max-width: 100%;
@@ -46,15 +63,21 @@ img {
 .linkSimple {
   text-decoration: none;
   color: #333;
-  transition: 0.5s;
+  transition: 0.3s;
   width: auto;
   text-align: left;
 }
 .linkSimple:hover {
-  color: #39a600;
+  color: var(--primary-color);
 }
 .linkSimple > svg {
   margin-right: 1%;
+}
+.linkSimple > svg path {
+  transition: 0.3s;
+}
+.linkSimple:hover > svg path {
+  color: var(--primary-color);
 }
 .btnPrimary,
 .btnSecondary {
@@ -72,34 +95,39 @@ img {
   gap: 2%;
   margin: 2% 0;
 }
-
 .btnPrimary {
-  background-color: #39a600;
+  background-color: var(--primary-color);
   color: #fff;
-  border: #39a600;
-  box-shadow: 1px 1px 10px 1px #3aa60066;
+  border: var(--primary-color);
+  box-shadow: var(--shadow-02);
+}
+.btnPrimary svg path {
+  color: #fff;
 }
 .btnPrimary:hover {
-  background-color: #39a600cc;
+  background-color: var(--color-03);
 }
 .btnPrimary:disabled {
-  background-color: #39a60011;
-  box-shadow: 1px 1px 10px 1px #11111111;
-  color: #39a600;
+  background-color: var(--color-03);
+  box-shadow: var(--shadow-01);
+  color: var(--primary-color);
 }
 .btnPrimary:disabled:hover {
   background-color: #39a60011;
 }
 
 .btnSecondary {
-  color: green;
+  color: var(--primary-color);
   border: none;
 }
+.btnSecondary svg path {
+  color: var(--primary-color);
+}
 .btnSecondary:hover {
-  background-color: #3aa6002a;
+  background-color: var(--secondary-color);
 }
 .btnSecondary.active {
-  background-color: #3aa6002a;
+  background-color: var(--secondary-color);
 }
 .title,
 .subtitle {
