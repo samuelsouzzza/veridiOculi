@@ -42,32 +42,33 @@ export const FormNewRegister = () => {
       valueConfirmPassword
     );
 
-    if (
-      !isCompleteNameInvalid &&
-      !isEmailInvalid &&
-      !isCpfInvalid &&
-      !isPasswordInvalid &&
-      !isConfirmPasswordInvalid
-    ) {
-      const response = await postUser(thisForm);
+    // if (
+    //   !isCompleteNameInvalid &&
+    //   !isEmailInvalid &&
+    //   !isCpfInvalid &&
+    //   !isPasswordInvalid &&
+    //   !isConfirmPasswordInvalid
+    // ) {
+    const response = await postUser(thisForm);
 
-      setModalActions({
-        icon: response?.ok ? faCheck : faExclamation,
-        type: 'ok',
-        message: response?.message as string,
-        onOk: () => {
-          response?.ok ? redirectPath('/login') : setModalActions(null);
-        },
-      });
-    } else
-      setModalActions({
-        icon: faExclamation,
-        type: 'ok',
-        message: 'Preencha os campos corretamente antes de enviar o formulário',
-        onOk: () => {
-          setModalActions(null);
-        },
-      });
+    setModalActions({
+      icon: response?.ok ? faCheck : faExclamation,
+      type: 'ok',
+      message: response?.message as string,
+      onOk: () => {
+        response?.ok ? redirectPath('/login') : setModalActions(null);
+      },
+    });
+    // } else
+    //   setModalActions({
+    //     icon: faExclamation,
+    //     type: 'ok',
+    //     message: 'Preencha os campos corretamente antes de enviar o formulário',
+    //     onOk: () => {
+    //       setModalActions(null);
+    //     },
+    //   });
+    // }
   }
 
   return (

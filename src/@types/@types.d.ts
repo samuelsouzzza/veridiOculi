@@ -42,6 +42,7 @@ export interface IUser {
   email_user: string;
   cpf_user: string;
   password_user: string;
+  confirm_password_user: string;
   premium_user: boolean;
 }
 export interface IFeedback {

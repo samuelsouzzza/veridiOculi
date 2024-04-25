@@ -7,9 +7,10 @@ export async function postUser(
 ): Promise<IFeedback | undefined> {
   const newUser: IUser = {
     complete_name_user: formData.get('txt_complete_name') as string,
-    email_user: formData.get('txt_email') as string,
     cpf_user: formData.get('txt_cpf') as string,
-    password_user: formData.get('txt_confirm_password') as string,
+    email_user: formData.get('txt_email') as string,
+    password_user: formData.get('txt_password') as string,
+    confirm_password_user: formData.get('txt_confirm_password') as string,
     premium_user: false as boolean,
   };
 
