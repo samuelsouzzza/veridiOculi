@@ -1,6 +1,7 @@
 'use server';
 
 import { IFeedback, IUser } from '@/@types/@types';
+import { hashPassword } from '@/utils/hashPassword';
 
 export async function postUser(
   formData: FormData
@@ -9,8 +10,7 @@ export async function postUser(
     complete_name_user: formData.get('txt_complete_name') as string,
     cpf_user: formData.get('txt_cpf') as string,
     email_user: formData.get('txt_email') as string,
-    password_user: formData.get('txt_password') as string,
-    confirm_password_user: formData.get('txt_confirm_password') as string,
+    password_user: hashPassword(formData.get('txt_confirm_password') as string),
     premium_user: false as boolean,
   };
 
@@ -31,6 +31,5 @@ export async function postUser(
   } catch (err: unknown) {
     if (err instanceof Error)
       return { ok: false, message: err.message } as IFeedback;
-    console.log(err);
   }
 }
