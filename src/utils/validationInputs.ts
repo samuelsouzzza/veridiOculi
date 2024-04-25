@@ -48,6 +48,8 @@ export const validationInputs = (
   if (type === 'confirmPassword') {
     if (value?.length >= 3)
       return value === confirmValue ? null : validationFields[type]?.message;
+
+    return ' ';
   }
 
   const rule = new RegExp(validationFields[type]?.regex as RegExp);
