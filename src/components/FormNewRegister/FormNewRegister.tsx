@@ -42,33 +42,32 @@ export const FormNewRegister = () => {
       valueConfirmPassword
     );
 
-    // if (
-    //   !isCompleteNameInvalid &&
-    //   !isEmailInvalid &&
-    //   !isCpfInvalid &&
-    //   !isPasswordInvalid &&
-    //   !isConfirmPasswordInvalid
-    // ) {
-    const response = await postUser(thisForm);
+    if (
+      !isCompleteNameInvalid &&
+      !isEmailInvalid &&
+      !isCpfInvalid &&
+      !isPasswordInvalid &&
+      !isConfirmPasswordInvalid
+    ) {
+      const response = await postUser(thisForm);
 
-    setModalActions({
-      icon: response?.ok ? faCheck : faExclamation,
-      type: 'ok',
-      message: response?.message as string,
-      onOk: () => {
-        response?.ok ? redirectPath('/login') : setModalActions(null);
-      },
-    });
-    // } else
-    //   setModalActions({
-    //     icon: faExclamation,
-    //     type: 'ok',
-    //     message: 'Preencha os campos corretamente antes de enviar o formulário',
-    //     onOk: () => {
-    //       setModalActions(null);
-    //     },
-    //   });
-    // }
+      setModalActions({
+        icon: response?.ok ? faCheck : faExclamation,
+        type: 'ok',
+        message: response?.message as string,
+        onOk: () => {
+          response?.ok ? redirectPath('/login') : setModalActions(null);
+        },
+      });
+    } else
+      setModalActions({
+        icon: faExclamation,
+        type: 'ok',
+        message: 'Valide todos os campos antes de enviar o formulário.',
+        onOk: () => {
+          setModalActions(null);
+        },
+      });
   }
 
   return (
@@ -83,7 +82,7 @@ export const FormNewRegister = () => {
               label='Nome completo *'
               type='text'
               maxLength={50}
-              // required
+              required
               value={valueCompleteName}
               setValue={setValueCompleteName}
               typeValidation='name'
@@ -95,8 +94,8 @@ export const FormNewRegister = () => {
             name='txt_cpf'
             label='CPF *'
             type='text'
-            // required
             maxLength={14}
+            required
             value={valueCpf}
             setValue={setValueCpf}
             typeValidation='cpf'
@@ -108,7 +107,7 @@ export const FormNewRegister = () => {
             label='E-Mail *'
             type='text'
             maxLength={50}
-            // required
+            required
             value={valueEmail}
             setValue={setValueEmail}
             typeValidation='email'
@@ -119,8 +118,8 @@ export const FormNewRegister = () => {
             name='txt_password'
             label='Nova senha *'
             type='password'
-            maxLength={10}
-            // required
+            maxLength={15}
+            required
             value={valuePassword}
             setValue={setValuePassword}
             typeValidation='password'
@@ -131,8 +130,8 @@ export const FormNewRegister = () => {
             name='txt_confirm_password'
             label='Confirmar senha *'
             type='password'
-            maxLength={10}
-            // required
+            maxLength={15}
+            required
             value={valueConfirmPassword}
             setValue={setValueConfirmPassword}
             confirmValue={valuePassword}
@@ -145,7 +144,6 @@ export const FormNewRegister = () => {
             <p>Ou</p>
           </div>
         </form>
-
         <Button icon text='Cadastrar com o Google' className='btnSecondary'>
           <FontAwesomeIcon icon={faGoogle} />
         </Button>

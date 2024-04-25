@@ -14,7 +14,7 @@ type InputTextProps = React.ComponentProps<'input'> & {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   confirmValue?: string;
   validate?: (
-    type: string,
+    type: 'name' | 'cpf' | 'email' | 'password' | 'confirmPassword',
     value: string,
     confirmValue?: string
   ) => string | null;

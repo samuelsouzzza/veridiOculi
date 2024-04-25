@@ -34,7 +34,7 @@ const validationFields: IValidationType = {
 };
 
 export const validationInputs = (
-  type: string,
+  type: 'name' | 'cpf' | 'email' | 'password' | 'confirmPassword',
   value: string,
   confirmValue?: string
 ): string | null => {
