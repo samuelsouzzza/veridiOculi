@@ -19,8 +19,10 @@
   color: var(--invalid);
 }
 .valid > svg {
-  color: var(--primary-color);
   font-size: 0.8rem;
+}
+.valid > svg path {
+  color: var(--primary-color);
 }
 .boxInput {
   position: relative;

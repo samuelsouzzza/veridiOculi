@@ -14,8 +14,8 @@
   width: 300px;
   height: auto;
   border-radius: 5px;
-  background-color: #f8f8ff;
-  box-shadow: 1px 1px 5px 3px #0000000d;
+  background-color: var(--bg-01);
+  box-shadow: var(--shadow-03);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,9 @@
 }
 .container > svg {
   font-size: 2.5rem;
-  color: #39a600;
+}
+.container > svg path {
+  color: var(--primary-color);
 }
 .container > p {
   text-align: center;
