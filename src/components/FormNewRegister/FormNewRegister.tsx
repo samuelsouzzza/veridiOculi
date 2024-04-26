@@ -39,6 +39,12 @@ export const FormNewRegister = () => {
 
   const formData = new FormData();
 
+  formData.append('txt_complete_name', valueCompleteName);
+  formData.append('txt_cpf', valueCpf);
+  formData.append('txt_email', valueEmail);
+  formData.append('txt_password', valuePassword);
+  formData.append('txt_confirm_password', valueConfirmPassword);
+
   async function isValidFiels() {
     const feedback = await postUser(formData);
 
@@ -49,12 +55,6 @@ export const FormNewRegister = () => {
       !isPasswordInvalid &&
       !isConfirmPasswordInvalid
     ) {
-      formData.append('txt_complete_name', valueCompleteName);
-      formData.append('txt_cpf', valueCpf);
-      formData.append('txt_email', valueEmail);
-      formData.append('txt_password', valuePassword);
-      formData.append('txt_confirm_password', valueConfirmPassword);
-
       setModalActions({
         icon: feedback?.ok ? faCheck : faExclamation,
         type: 'ok',
@@ -74,12 +74,6 @@ export const FormNewRegister = () => {
       });
     }
   }
-
-  formData.append('txt_complete_name', valueCompleteName);
-  formData.append('txt_cpf', valueCpf);
-  formData.append('txt_email', valueEmail);
-  formData.append('txt_password', valuePassword);
-  formData.append('txt_confirm_password', valueConfirmPassword);
 
   return (
     <>
