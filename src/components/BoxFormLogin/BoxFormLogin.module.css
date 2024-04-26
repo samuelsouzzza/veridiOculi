@@ -1,10 +1,11 @@
 .container {
-  background-color: #fff;
+  background-color: var(--bg-02);
+  backdrop-filter: var(--blur);
+  box-shadow: var(--shadow-03);
   border-radius: 5px;
   width: 35%;
   padding: 2%;
   height: auto;
-  box-shadow: 1px 1px 10px 1px #33333333;
 }
 .form {
   display: grid;

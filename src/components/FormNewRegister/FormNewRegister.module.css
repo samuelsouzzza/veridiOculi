@@ -1,12 +1,12 @@
 .container {
-  background-color: #ffffff11;
-  backdrop-filter: blur(10px);
+  background-color: var(--bg-02);
+  backdrop-filter: var(--blur);
+  box-shadow: var(--shadow-03);
   border-radius: 5px;
   width: 45%;
   height: 100vh;
   padding: 2%;
   height: auto;
-  box-shadow: 1px 1px 10px 1px #33333333;
 }
 .form {
   display: grid;
@@ -14,6 +14,6 @@
   align-items: center;
   justify-content: center;
   gap: 0 2%;
-  color: #666;
+  color: #333;
   height: auto;
 }

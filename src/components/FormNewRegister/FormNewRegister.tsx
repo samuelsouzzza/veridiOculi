@@ -27,20 +27,20 @@ export const FormNewRegister = () => {
     setModalActions(null);
   }, []);
 
-  async function formSended(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const isCompleteNameInvalid = validationInputs('name', valueCompleteName);
+  const isEmailInvalid = validationInputs('email', valueEmail);
+  const isCpfInvalid = validationInputs('cpf', valueCpf);
+  const isPasswordInvalid = validationInputs('password', valuePassword);
+  const isConfirmPasswordInvalid = validationInputs(
+    'confirmPassword',
+    valuePassword,
+    valueConfirmPassword
+  );
 
-    const thisForm = new FormData(e.currentTarget);
+  const formData = new FormData();
 
-    const isCompleteNameInvalid = validationInputs('name', valueCompleteName);
-    const isEmailInvalid = validationInputs('email', valueEmail);
-    const isCpfInvalid = validationInputs('cpf', valueCpf);
-    const isPasswordInvalid = validationInputs('password', valuePassword);
-    const isConfirmPasswordInvalid = validationInputs(
-      'confirmPassword',
-      valuePassword,
-      valueConfirmPassword
-    );
+  async function isValidFiels() {
+    const feedback = await postUser(formData);
 
     if (
       !isCompleteNameInvalid &&
@@ -49,17 +49,21 @@ export const FormNewRegister = () => {
       !isPasswordInvalid &&
       !isConfirmPasswordInvalid
     ) {
-      const response = await postUser(thisForm);
+      formData.append('txt_complete_name', valueCompleteName);
+      formData.append('txt_cpf', valueCpf);
+      formData.append('txt_email', valueEmail);
+      formData.append('txt_password', valuePassword);
+      formData.append('txt_confirm_password', valueConfirmPassword);
 
       setModalActions({
-        icon: response?.ok ? faCheck : faExclamation,
+        icon: feedback?.ok ? faCheck : faExclamation,
         type: 'ok',
-        message: response?.message as string,
+        message: feedback?.message as string,
         onOk: () => {
-          response?.ok ? redirectPath('/login') : setModalActions(null);
+          feedback?.ok ? redirectPath('/login') : setModalActions(null);
         },
       });
-    } else
+    } else {
       setModalActions({
         icon: faExclamation,
         type: 'ok',
@@ -68,14 +72,27 @@ export const FormNewRegister = () => {
           setModalActions(null);
         },
       });
+    }
   }
+
+  formData.append('txt_complete_name', valueCompleteName);
+  formData.append('txt_cpf', valueCpf);
+  formData.append('txt_email', valueEmail);
+  formData.append('txt_password', valuePassword);
+  formData.append('txt_confirm_password', valueConfirmPassword);
 
   return (
     <>
       {modalActions && <ModalActions />}
       <div className={styles.container}>
         <h3 className='subtitle'>Crie a sua conta</h3>
-        <form className={styles.form} onSubmit={formSended} action={postUser}>
+        <form
+          className={styles.form}
+          action={() => {
+            isValidFiels();
+            postUser(formData);
+          }}
+        >
           <div className='spanAll'>
             <InputText
               name='txt_complete_name'

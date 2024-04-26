@@ -3,9 +3,7 @@
 import { IFeedback, IUser } from '@/@types/@types';
 import { hashPassword } from '@/utils/hashPassword';
 
-export async function postUser(
-  formData: FormData
-): Promise<IFeedback | undefined> {
+export async function postUser(formData: FormData): Promise<IFeedback | void> {
   const newUser: IUser = {
     complete_name_user: formData.get('txt_complete_name') as string,
     cpf_user: formData.get('txt_cpf') as string,
@@ -22,9 +20,7 @@ export async function postUser(
       },
       body: JSON.stringify(newUser),
     });
-
     const feedback = (await response.json()) as IFeedback;
-
     if (!feedback.ok) throw new Error(feedback.message);
 
     return feedback;

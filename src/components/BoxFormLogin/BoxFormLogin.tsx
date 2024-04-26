@@ -23,7 +23,7 @@ export default function BoxFormLogin() {
   };
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    // e.preventDefault();
+    e.preventDefault();
     setModalActions(null);
     localStorage.setItem('userLogged_vo', JSON.stringify(userLogged));
     router.push('/home');

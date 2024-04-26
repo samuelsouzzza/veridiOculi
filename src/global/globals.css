@@ -110,10 +110,11 @@ img {
 .btnPrimary:disabled {
   background-color: var(--color-03);
   box-shadow: var(--shadow-01);
-  color: var(--primary-color);
+  color: #fff;
 }
-.btnPrimary:disabled:hover {
+.btnPrimary:disabled {
   background-color: #39a60011;
+  cursor: auto;
 }
 
 .btnSecondary {
