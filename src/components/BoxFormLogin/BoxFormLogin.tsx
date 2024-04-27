@@ -27,18 +27,17 @@ export default function BoxFormLogin() {
 
   async function isValidFiels() {
     const feedback = await postLogin(formData);
-    console.log(feedback);
 
     if (!isEmailInvalid) {
-      // setModalActions({
-      //   icon: feedback?.ok ? faCheck : faExclamation,
-      //   type: 'ok',
-      //   message: feedback?.message as string,
-      //   onOk: () => {
-      //     feedback?.ok ? redirectPath('/home') : setModalActions(null);
-      //   },
-      // });
-      redirectPath('/home');
+      setModalActions({
+        icon: feedback?.ok ? faCheck : faExclamation,
+        type: 'ok',
+        message: feedback?.message as string,
+        onOk: () => {
+          feedback?.ok ? redirectPath('/home') : setModalActions(null);
+        },
+      });
+      // redirectPath('/home');
     } else {
       setModalActions({
         icon: faExclamation,

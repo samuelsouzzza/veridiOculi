@@ -1,11 +1,10 @@
 'use server';
-import { hashPassword } from '@/utils/hashPassword';
 import { IFeedback } from '@/@types/@types';
 
 export async function postLogin(formData: FormData): Promise<IFeedback | void> {
   const user = {
     email_user: formData.get('txt_email') as string,
-    password_user: hashPassword(formData.get('txt_password') as string),
+    password_user: formData.get('txt_password') as string,
   };
 
   try {

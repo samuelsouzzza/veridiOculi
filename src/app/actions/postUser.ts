@@ -1,14 +1,17 @@
 'use server';
 
 import { IFeedback, IUser } from '@/@types/@types';
-import { hashPassword } from '@/utils/hashPassword';
+import bcrypt from 'bcrypt';
 
 export async function postUser(formData: FormData): Promise<IFeedback | void> {
   const newUser: IUser = {
     complete_name_user: formData.get('txt_complete_name') as string,
     cpf_user: formData.get('txt_cpf') as string,
     email_user: formData.get('txt_email') as string,
-    password_user: hashPassword(formData.get('txt_confirm_password') as string),
+    password_user: bcrypt.hashSync(
+      formData.get('txt_confirm_password') as string,
+      10
+    ),
     premium_user: false as boolean,
   };
 
