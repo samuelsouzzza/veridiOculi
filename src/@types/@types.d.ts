@@ -48,4 +48,5 @@ export interface IUser {
 export interface IFeedback {
   ok: boolean;
   message: string;
+  token?: string;
 }

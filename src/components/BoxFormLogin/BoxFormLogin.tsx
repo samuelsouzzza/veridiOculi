@@ -19,7 +19,6 @@ export default function BoxFormLogin() {
   const { modalActions, setModalActions } = UseGlobalContext();
 
   const isEmailInvalid = validationInputs('email', valueEmail);
-  const isPasswordInvalid = validationInputs('password', valuePassword);
 
   const formData = new FormData();
   formData.append('txt_email', valueEmail);
