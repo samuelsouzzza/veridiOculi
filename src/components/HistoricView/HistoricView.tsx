@@ -4,7 +4,6 @@ import { IReports } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Link from 'next/link';
 import React from 'react';
-import { VerifySession } from '@/utils/VerifySession';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { ModalActions } from '../ModalActions/ModalActions';
 
@@ -14,12 +13,8 @@ type HistoricViewProps = {
 
 export function HistoricView({ data }: HistoricViewProps) {
   const [historic, setHistoric] = React.useState<IReports[]>(data);
-  const { getSession } = VerifySession();
-  const { modalActions } = UseGlobalContext();
 
-  React.useEffect(() => {
-    getSession();
-  }, []);
+  const { modalActions } = UseGlobalContext();
 
   function reverseHistoric() {
     setHistoric((historic) => historic.toReversed());
@@ -45,7 +40,7 @@ export function HistoricView({ data }: HistoricViewProps) {
                   key={h.id}
                   href={`historic/${h.id}`}
                   className={styles.linkRow}
-                  onClick={getSession}
+                  // onClick={getSession}
                 >
                   <div className={styles.rowBody}>
                     <div className={styles.colBody}>{h.id}</div>

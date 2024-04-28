@@ -11,6 +11,7 @@ import { postLogin } from '@/app/actions/postLogin';
 import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { redirectPath } from '@/app/actions/redirectPath';
 import { ModalActions } from '../ModalActions/ModalActions';
+import Image from 'next/image';
 
 export default function BoxFormLogin() {
   const [valueEmail, setValueEmail] = React.useState('');
@@ -90,6 +91,12 @@ export default function BoxFormLogin() {
           <a className='linkSimple' href='#'>
             Esqueci a senha
           </a>
+          <Image
+            src='https://jwt.io/img/badge-compatible.svg'
+            width={100}
+            height={30}
+            alt='Autenticação com JWT'
+          />
           <a className='linkSimple' href='#'>
             Preciso de ajuda
           </a>

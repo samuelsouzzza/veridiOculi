@@ -6,17 +6,14 @@ import Image from 'next/image';
 import { CardTeam } from '../CardTeam/CardTeam';
 import { Footer } from '../Footer/Footer';
 import { IMember } from '@/@types/@types';
-import { VerifySession } from '@/utils/VerifySession';
 import React from 'react';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { ModalActions } from '../ModalActions/ModalActions';
 
 export default function HomeView() {
-  const { modalActions } = UseGlobalContext();
-  const { getSession } = VerifySession();
-
+  const { modalActions, setModalActions } = UseGlobalContext();
   React.useEffect(() => {
-    getSession();
+    setModalActions(null);
   }, []);
 
   const imgs = [

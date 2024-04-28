@@ -14,7 +14,6 @@ import Image from 'next/image';
 import AccuracyGraph from '../AccuracyGraph/AccuracyGraph';
 import { Button } from '../Button/Button';
 import React from 'react';
-import { VerifySession } from '@/utils/VerifySession';
 import { ModalActions } from '../ModalActions/ModalActions';
 import { UseGlobalContext } from '@/global/GlobalContext';
 
@@ -23,12 +22,7 @@ type HistoricIdViewProps = {
 };
 
 export default function HistoricIdView({ data }: HistoricIdViewProps) {
-  const { getSession } = VerifySession();
   const { modalActions } = UseGlobalContext();
-
-  React.useEffect(() => {
-    getSession();
-  }, []);
 
   return (
     <>

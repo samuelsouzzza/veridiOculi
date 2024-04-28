@@ -6,16 +6,10 @@ import { faGratipay } from '@fortawesome/free-brands-svg-icons';
 import styles from './NewAnalysisView.module.css';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { ModalActions } from '../ModalActions/ModalActions';
-import { VerifySession } from '@/utils/VerifySession';
 import React from 'react';
 
 export default function NewAnalysisView() {
   const { modalActions } = UseGlobalContext();
-  const { getSession } = VerifySession();
-
-  React.useEffect(() => {
-    getSession();
-  }, []);
 
   return (
     <>

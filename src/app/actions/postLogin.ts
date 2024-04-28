@@ -1,5 +1,6 @@
 'use server';
 import { IFeedback } from '@/@types/@types';
+import { cookies } from 'next/headers';
 
 export async function postLogin(formData: FormData): Promise<IFeedback | void> {
   const user = {
@@ -16,7 +17,14 @@ export async function postLogin(formData: FormData): Promise<IFeedback | void> {
       body: JSON.stringify(user),
     });
     const feedback = (await response.json()) as IFeedback;
+
     if (!feedback.ok) throw new Error(feedback.message);
+
+    cookies().set('token', feedback.token as string, {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'lax',
+    });
 
     return feedback;
   } catch (err: unknown) {
