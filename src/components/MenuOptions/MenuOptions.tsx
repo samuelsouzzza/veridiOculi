@@ -18,7 +18,7 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
             <Link
               className='btnSecondary'
               style={styleOption}
-              href={'/myaccount'}
+              href={'/my-account'}
             >
               <span>Meu perfil</span>
             </Link>
