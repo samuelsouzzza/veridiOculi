@@ -89,7 +89,7 @@ export const FormNewAnalysis = () => {
           />
         </div>
         <InputFile
-          name='txt_imgs_analysis'
+          name='imgs_analysis'
           id='idInputImgsNewAnalysis'
           label='Selecione as imagens para análise'
           selectedImgs={selectedImgs ? selectedImgs : null}
