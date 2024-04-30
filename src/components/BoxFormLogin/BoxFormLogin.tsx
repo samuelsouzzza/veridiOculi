@@ -12,6 +12,7 @@ import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { redirectPath } from '@/app/actions/redirectPath';
 import { ModalActions } from '../ModalActions/ModalActions';
 import Image from 'next/image';
+import { IFeedback } from '@/@types/@types';
 
 export default function BoxFormLogin() {
   const [valueEmail, setValueEmail] = React.useState('');
@@ -26,7 +27,7 @@ export default function BoxFormLogin() {
   formData.append('txt_password', valuePassword);
 
   async function isValidFiels() {
-    const feedback = await postLogin(formData);
+    const feedback: IFeedback | void = await postLogin(formData);
 
     if (!isEmailInvalid) {
       setModalActions({
@@ -34,10 +35,14 @@ export default function BoxFormLogin() {
         type: 'ok',
         message: feedback?.message as string,
         onOk: () => {
-          feedback?.ok ? redirectPath('/home') : setModalActions(null);
+          feedback?.ok ? redirectPath('/') : setModalActions(null);
         },
       });
-      // redirectPath('/home');
+
+      sessionStorage.setItem(
+        'userLogged',
+        JSON.stringify(feedback?.userLogged)
+      );
     } else {
       setModalActions({
         icon: faExclamation,

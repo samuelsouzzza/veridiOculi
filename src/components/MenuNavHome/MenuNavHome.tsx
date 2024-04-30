@@ -8,12 +8,18 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
+import { UseGlobalContext } from '@/global/GlobalContext';
+import { IUserLogged } from '@/@types/@types';
 
 type MenuNavHomeProps = {
   activeRoute?: string;
 };
 
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
+  const userLogged = JSON.parse(
+    sessionStorage.getItem('userLogged') as string
+  ) as IUserLogged;
+
   const [active, setActive] = React.useState(activeRoute);
   const [showOptions, setShowOptions] = React.useState(false);
 
@@ -53,32 +59,52 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
         </Link>
       </div>
       <div className={styles.box}>
-        <Link
-          href={'/new-analysis'}
-          className={`btnSecondary ${
-            active === 'new-analysis' ? 'active' : ''
-          }`}
-          onClick={() => handleActive('new-analysis')}
-        >
-          <FontAwesomeIcon icon={faPlus} /> Nova Análise
-        </Link>
-        <Link
-          href={'/historic'}
-          className={`btnSecondary ${active === 'historic' ? 'active' : ''}`}
-          onClick={() => handleActive('historic')}
-        >
-          <FontAwesomeIcon icon={faClockRotateLeft} />
-          Histórico
-        </Link>
+        {userLogged ? (
+          <>
+            <Link
+              href={'/new-analysis'}
+              className={`btnSecondary ${
+                active === 'new-analysis' ? 'active' : ''
+              }`}
+              onClick={() => handleActive('new-analysis')}
+            >
+              <FontAwesomeIcon icon={faPlus} /> Nova Análise
+            </Link>
+            <Link
+              href={'/historic'}
+              className={`btnSecondary ${
+                active === 'historic' ? 'active' : ''
+              }`}
+              onClick={() => handleActive('historic')}
+            >
+              <FontAwesomeIcon icon={faClockRotateLeft} />
+              Histórico
+            </Link>
+          </>
+        ) : (
+          <div className={styles.box}>
+            <Link className='btnSecondary' href={'#'}>
+              Ver Planos
+            </Link>
+            <Link className='btnSecondary' href={'/register'}>
+              Cadastrar
+            </Link>
+            <Link className='btnPrimary' href={'/login'}>
+              Entrar
+            </Link>
+          </div>
+        )}
+        {userLogged && (
+          <Button
+            icon
+            text={`${userLogged.complete_name_user.split(' ')[0]}`}
+            className='btnSecondary'
+            onClick={() => setShowOptions(true)}
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </Button>
+        )}
 
-        <Button
-          icon
-          text='Minha conta'
-          className='btnSecondary'
-          onClick={() => setShowOptions(true)}
-        >
-          <FontAwesomeIcon icon={faUser} />
-        </Button>
         {showOptions && <MenuOptions ref={refMenu} />}
       </div>
     </div>

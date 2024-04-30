@@ -1,4 +1,5 @@
 'use client';
+import { redirectPath } from '@/app/actions/redirectPath';
 import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
@@ -10,6 +11,10 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
       justifyContent: 'start',
       padding: '0 2%',
     };
+
+    function cleanSession() {
+      sessionStorage.removeItem('userLogged');
+    }
 
     return (
       <div className={styles.container} ref={ref} {...props}>
@@ -37,7 +42,7 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
               className='btnSecondary'
               style={styleOption}
               href={'/'}
-              // onClick={cleanSession}
+              onClick={cleanSession}
             >
               <span>Sair</span>
             </Link>
