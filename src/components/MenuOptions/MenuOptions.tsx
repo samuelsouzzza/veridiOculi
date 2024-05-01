@@ -4,6 +4,8 @@ import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import React from 'react';
+import { cookies } from 'next/headers';
+import { clearCookie } from '@/app/actions/clearCookie';
 
 export const MenuOptions = React.forwardRef<HTMLDivElement>(
   (props: React.ComponentProps<'div'>, ref) => {
@@ -12,8 +14,10 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
       padding: '0 2%',
     };
 
-    function cleanSession() {
-      sessionStorage.removeItem('userLogged');
+    async function cleanSession() {
+      redirectPath('/');
+      clearCookie();
+      localStorage.removeItem('userLogged');
     }
 
     return (

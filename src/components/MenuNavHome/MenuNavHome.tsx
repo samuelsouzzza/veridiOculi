@@ -1,4 +1,3 @@
-'use client';
 import styles from './MenuNavHome.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,25 +7,20 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
-import { UseGlobalContext } from '@/global/GlobalContext';
-import { IUserLogged } from '@/@types/@types';
 
 type MenuNavHomeProps = {
   activeRoute?: string;
 };
 
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
-  const userLogged = JSON.parse(
-    sessionStorage.getItem('userLogged') as string
-  ) as IUserLogged;
-
   const [active, setActive] = React.useState(activeRoute);
   const [showOptions, setShowOptions] = React.useState(false);
+
+  const userLogged = JSON.parse(localStorage.getItem('userLogged') as string);
 
   const refMenu = React.useRef<HTMLDivElement>(null);
 
   function handleActive(tab: string) {
-    if (tab === active) return;
     setActive(tab);
   }
 

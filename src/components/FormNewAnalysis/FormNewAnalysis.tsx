@@ -5,10 +5,11 @@ import { Button } from '../Button/Button';
 import { IImgsForAnalysis } from '@/@types/@types';
 import React from 'react';
 import { UseGlobalContext } from '@/global/GlobalContext';
-import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { ModalActions } from '../ModalActions/ModalActions';
 import { SelectBox } from '../SelectBox/SelectBox';
 import { postAnalysis } from '@/app/actions/postAnalysis';
+import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { redirectPath } from '@/app/actions/redirectPath';
 
 export const FormNewAnalysis = () => {
   const { modalActions, setModalActions } = UseGlobalContext();
@@ -70,17 +71,38 @@ export const FormNewAnalysis = () => {
     }
   }
 
+  const formData = new FormData();
+  formData.append('target_species_name', valueSpeciesName);
+  formData.append('imgs_analysis', JSON.stringify(selectedImgs));
+
+  async function sendAnalysis(formData: FormData) {
+    try {
+      const feedback = await postAnalysis(formData);
+
+      setModalActions({
+        icon: feedback?.ok ? faCheck : faExclamation,
+        type: 'ok',
+        message: feedback?.message as string,
+        onOk: () => {
+          feedback?.ok ? redirectPath('historic') : setModalActions(null);
+        },
+      });
+    } catch {}
+  }
+
   return (
     <>
       {modalActions && <ModalActions />}
       <form
         className={styles.container}
-        encType='multipart/form-data'
-        action={postAnalysis}
+        // encType='multipart/form-data'
+        action={() => {
+          sendAnalysis(formData);
+        }}
       >
         <div className={styles.boxSelect}>
           <SelectBox
-            name='txt_species_name'
+            name='target_species_name'
             id='speciesSelect'
             label='Espécie foco'
             options={speciesOptions}

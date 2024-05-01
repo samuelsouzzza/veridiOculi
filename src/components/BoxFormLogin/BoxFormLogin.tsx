@@ -39,10 +39,7 @@ export default function BoxFormLogin() {
         },
       });
 
-      sessionStorage.setItem(
-        'userLogged',
-        JSON.stringify(feedback?.userLogged)
-      );
+      localStorage.setItem('userLogged', JSON.stringify(feedback?.userLogged));
     } else {
       setModalActions({
         icon: faExclamation,
