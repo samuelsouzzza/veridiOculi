@@ -95,10 +95,8 @@ export const FormNewAnalysis = () => {
       {modalActions && <ModalActions />}
       <form
         className={styles.container}
-        // encType='multipart/form-data'
-        action={() => {
-          sendAnalysis(formData);
-        }}
+        encType='multipart/form-data'
+        action={postAnalysis}
       >
         <div className={styles.boxSelect}>
           <SelectBox
