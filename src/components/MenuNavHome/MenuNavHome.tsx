@@ -7,6 +7,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
+import { getToken } from '@/app/actions/getToken';
 
 type MenuNavHomeProps = {
   activeRoute?: string;
@@ -15,10 +16,20 @@ type MenuNavHomeProps = {
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
   const [active, setActive] = React.useState(activeRoute);
   const [showOptions, setShowOptions] = React.useState(false);
-
-  const userLogged = JSON.parse(localStorage.getItem('userLogged') as string);
+  const [hasLogged, setHasLogged] = React.useState<
+    Promise<void> | string | undefined
+  >(verifyLogin());
 
   const refMenu = React.useRef<HTMLDivElement>(null);
+
+  async function verifyLogin() {
+    const TOKEN = await getToken();
+    setHasLogged(TOKEN);
+  }
+
+  React.useEffect(() => {
+    verifyLogin();
+  }, []);
 
   function handleActive(tab: string) {
     setActive(tab);
@@ -53,7 +64,7 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
         </Link>
       </div>
       <div className={styles.box}>
-        {userLogged ? (
+        {hasLogged ? (
           <>
             <Link
               href={'/new-analysis'}
@@ -88,10 +99,10 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
             </Link>
           </div>
         )}
-        {userLogged && (
+        {hasLogged && (
           <Button
             icon
-            text={`${userLogged.complete_name_user.split(' ')[0]}`}
+            text={`Logado`}
             className='btnSecondary'
             onClick={() => setShowOptions(true)}
           >

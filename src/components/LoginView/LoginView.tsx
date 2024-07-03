@@ -23,6 +23,9 @@ export default function LoginView() {
           width={400}
           height={200}
           alt='Logo Veridi Oculi com legenda'
+          priority
+          placeholder='blur'
+          blurDataURL='/imgs/logoLabel.svg'
         />
       </div>
     </div>

@@ -4,8 +4,7 @@ import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import React from 'react';
-import { cookies } from 'next/headers';
-import { clearCookie } from '@/app/actions/clearCookie';
+import { clearToken } from '@/app/actions/clearToken';
 
 export const MenuOptions = React.forwardRef<HTMLDivElement>(
   (props: React.ComponentProps<'div'>, ref) => {
@@ -15,9 +14,8 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
     };
 
     async function cleanSession() {
-      redirectPath('/');
-      clearCookie();
-      localStorage.removeItem('userLogged');
+      clearToken();
+      window.location.reload();
     }
 
     return (
@@ -42,14 +40,19 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
             </Link>
           </li>
           <li>
-            <Link
+            {/* <Link
               className='btnSecondary'
               style={styleOption}
               href={'/'}
               onClick={cleanSession}
+            > */}
+            <span
+              onClick={cleanSession}
+              className={styles.btnLogout + ' btnSecondary'}
             >
-              <span>Sair</span>
-            </Link>
+              <p>Sair</p>
+            </span>
+            {/* </Link> */}
           </li>
         </ul>
       </div>

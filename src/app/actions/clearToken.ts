@@ -2,6 +2,6 @@
 
 import { cookies } from 'next/headers';
 
-export const clearCookie = async () => {
+export const clearToken = async () => {
   cookies().delete('token');
 };

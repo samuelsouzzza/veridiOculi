@@ -26,9 +26,7 @@ export default function BoxFormLogin() {
   formData.append('txt_email', valueEmail);
   formData.append('txt_password', valuePassword);
 
-  async function isValidFiels() {
-    const feedback: IFeedback | void = await postLogin(formData);
-
+  async function handleFeedback(feedback: IFeedback) {
     if (!isEmailInvalid) {
       setModalActions({
         icon: feedback?.ok ? faCheck : faExclamation,
@@ -58,10 +56,9 @@ export default function BoxFormLogin() {
       <div className={styles.container}>
         <h3 className='subtitle'>Entre com a sua conta</h3>
         <form
-          action={() => {
-            isValidFiels();
-            postLogin(formData);
-          }}
+          action={async (formData) =>
+            handleFeedback((await postLogin(formData)) as IFeedback)
+          }
         >
           <InputText
             name='txt_email'

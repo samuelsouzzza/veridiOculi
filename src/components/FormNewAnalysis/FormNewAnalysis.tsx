@@ -10,6 +10,7 @@ import { SelectBox } from '../SelectBox/SelectBox';
 import { postAnalysis } from '@/app/actions/postAnalysis';
 import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { redirectPath } from '@/app/actions/redirectPath';
+import { IFeedback } from '@/@types/@types';
 
 export const FormNewAnalysis = () => {
   const { modalActions, setModalActions } = UseGlobalContext();
@@ -71,23 +72,15 @@ export const FormNewAnalysis = () => {
     }
   }
 
-  const formData = new FormData();
-  formData.append('target_species_name', valueSpeciesName);
-  formData.append('imgs_analysis', JSON.stringify(selectedImgs));
-
-  async function sendAnalysis(formData: FormData) {
-    try {
-      const feedback = await postAnalysis(formData);
-
-      setModalActions({
-        icon: feedback?.ok ? faCheck : faExclamation,
-        type: 'ok',
-        message: feedback?.message as string,
-        onOk: () => {
-          feedback?.ok ? redirectPath('historic') : setModalActions(null);
-        },
-      });
-    } catch {}
+  async function handleFeedback(feedback: IFeedback) {
+    setModalActions({
+      icon: feedback?.ok ? faCheck : faExclamation,
+      type: 'ok',
+      message: feedback?.message as string,
+      onOk: () => {
+        feedback?.ok ? redirectPath('historic') : setModalActions(null);
+      },
+    });
   }
 
   return (
@@ -96,7 +89,9 @@ export const FormNewAnalysis = () => {
       <form
         className={styles.container}
         encType='multipart/form-data'
-        action={postAnalysis}
+        action={async (formData) =>
+          handleFeedback((await postAnalysis(formData)) as IFeedback)
+        }
       >
         <div className={styles.boxSelect}>
           <SelectBox

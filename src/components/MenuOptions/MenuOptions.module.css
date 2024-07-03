@@ -20,3 +20,11 @@
   padding: 5%;
   color: var(--primary-color);
 }
+.btnLogout {
+  justify-content: flex-start;
+}
+.btnLogout p {
+  text-align: start;
+  padding: 0 2%;
+  color: var(--invalid);
+}
