@@ -1,8 +1,12 @@
+'use client';
 import styles from './page.module.css';
 import { MenuNavHome } from '@/components/MenuNavHome/MenuNavHome';
 import { SelectBox } from '@/components/SelectBox/SelectBox';
+import React from 'react';
 
 export default function settingsPage() {
+  const [theme, setTheme] = React.useState('Claro');
+
   return (
     <>
       <MenuNavHome />
@@ -14,8 +18,9 @@ export default function settingsPage() {
               <p>Alterar tema</p>
               <SelectBox
                 id='selectTheme'
-                label=''
                 options={['Claro', 'Escuro']}
+                value={theme}
+                setValue={setTheme}
               />
             </li>
             <li>Tour pelo aplicativo</li>

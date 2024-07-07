@@ -1,5 +1,4 @@
 'use client';
-import { redirectPath } from '@/app/actions/redirectPath';
 import styles from './MenuOptions.module.css';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
@@ -8,6 +7,7 @@ import { clearToken } from '@/app/actions/clearToken';
 
 export const MenuOptions = React.forwardRef<HTMLDivElement>(
   (props: React.ComponentProps<'div'>, ref) => {
+
     const styleOption: CSSProperties = {
       justifyContent: 'start',
       padding: '0 2%',
@@ -15,6 +15,7 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
 
     async function cleanSession() {
       clearToken();
+      localStorage.removeItem('userLogged');
       window.location.reload();
     }
 
@@ -40,19 +41,12 @@ export const MenuOptions = React.forwardRef<HTMLDivElement>(
             </Link>
           </li>
           <li>
-            {/* <Link
-              className='btnSecondary'
-              style={styleOption}
-              href={'/'}
-              onClick={cleanSession}
-            > */}
             <span
               onClick={cleanSession}
               className={styles.btnLogout + ' btnSecondary'}
             >
               <p>Sair</p>
             </span>
-            {/* </Link> */}
           </li>
         </ul>
       </div>

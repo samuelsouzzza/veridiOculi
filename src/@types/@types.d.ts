@@ -10,6 +10,24 @@ export interface IUser {
   premium_user: boolean;
 }
 
+export interface IAnalysis {
+  id_analysis: number;
+  target_species_name_analysis: string;
+  date_analysis: string;
+  status_analysis: string;
+  id_user: number;
+  data_analysis: IImages[];
+}
+
+export interface IImages {
+  id_image: number;
+  original_path_image: string;
+  ia_path_image: string;
+  species_name_image: string;
+  accuracy_image: number;
+  id_analysis: number;
+}
+
 export interface IMember {
   id: number;
   profile: string;
@@ -37,4 +55,9 @@ export interface IFeedback {
   message: string;
   userLogged?: IUserLogged;
   token?: string;
+  data: IAnalysis[] | IImages[];
+}
+export interface IDetailsAnalysis {
+  analysis: IAnalysis[];
+  images: IImages[];
 }

@@ -33,7 +33,7 @@ export const SelectBox = ({
         >
           {options.map((o, i) => {
             return (
-              <option key={i} value={normalizeStr(o)}>
+              <option key={i} value={o}>
                 {o}
               </option>
             );

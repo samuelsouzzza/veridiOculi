@@ -88,7 +88,6 @@ export const FormNewAnalysis = () => {
       {modalActions && <ModalActions />}
       <form
         className={styles.container}
-        encType='multipart/form-data'
         action={async (formData) =>
           handleFeedback((await postAnalysis(formData)) as IFeedback)
         }

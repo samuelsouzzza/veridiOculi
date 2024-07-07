@@ -6,12 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UseGlobalContext } from '@/global/GlobalContext';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-// export type ModalActionsProps = React.ComponentProps<'div'> & {
-// icon: IconDefinition;
-// message: string;
-// type: 'yes-no' | 'ok';
-// onOk: () => void | null;
-// };
 
 export const ModalActions = () => {
   const { modalActions, setModalActions } = UseGlobalContext();

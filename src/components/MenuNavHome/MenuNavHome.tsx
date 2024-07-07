@@ -1,3 +1,4 @@
+'use client';
 import styles from './MenuNavHome.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,6 +9,7 @@ import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
 import { getToken } from '@/app/actions/getToken';
+import { IUserLogged } from '@/@types/@types';
 
 type MenuNavHomeProps = {
   activeRoute?: string;
@@ -16,9 +18,13 @@ type MenuNavHomeProps = {
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
   const [active, setActive] = React.useState(activeRoute);
   const [showOptions, setShowOptions] = React.useState(false);
-  const [hasLogged, setHasLogged] = React.useState<
-    Promise<void> | string | undefined
-  >(verifyLogin());
+  const [hasLogged, setHasLogged] = React.useState<string | undefined>(
+    undefined
+  );
+  const [userLogged, setUserLogged] = React.useState<IUserLogged | undefined>(
+    JSON.parse(localStorage.getItem('userLogged') as string)
+    // 'oi'
+  );
 
   const refMenu = React.useRef<HTMLDivElement>(null);
 
@@ -102,7 +108,7 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
         {hasLogged && (
           <Button
             icon
-            text={`Logado`}
+            text={`${userLogged?.complete_name_user.split(' ')[0]}`}
             className='btnSecondary'
             onClick={() => setShowOptions(true)}
           >

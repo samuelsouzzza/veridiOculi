@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getToken } from './app/actions/getToken';
 
-export const middleware = (req: NextRequest) => {
-  const token = req.cookies.get('token')?.value;
-  if (!token) return NextResponse.redirect(new URL('/login', req.url));
+export const middleware = async (req: NextRequest) => {
+  if (!(await getToken()))
+    return NextResponse.redirect(new URL('/login', req.url));
 
   NextResponse.next();
 };

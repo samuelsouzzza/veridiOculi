@@ -8,7 +8,7 @@ import {
   faFileCsv,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
-import { IReports } from '@/@types/@types';
+import { IDetailsAnalysis, IImages } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Image from 'next/image';
 import AccuracyGraph from '../AccuracyGraph/AccuracyGraph';
@@ -18,7 +18,7 @@ import { ModalActions } from '../ModalActions/ModalActions';
 import { UseGlobalContext } from '@/global/GlobalContext';
 
 type HistoricIdViewProps = {
-  data: IReports;
+  data: IDetailsAnalysis;
 };
 
 export default function HistoricIdView({ data }: HistoricIdViewProps) {
@@ -35,10 +35,12 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
             Voltar
           </Link>
           <div className={styles.boxTitle}>
-            <h1 className='subtitle'>Análise #{data.id}</h1>
+            <h1 className='subtitle'>
+              Análise #{data.analysis[0].id_analysis}
+            </h1>
             <span>
               <FontAwesomeIcon icon={faCalendar} />
-              <p>{data.dt_report}</p>
+              <p>{data.analysis[0].date_analysis}</p>
             </span>
           </div>
           <div className={styles.boxActions}>
@@ -51,23 +53,21 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
               </Button>
             </div>
           </div>
-          <div className={styles.boxImgs}>
-            {/* <Slider slides={slides} contain /> */}
-          </div>
-          {data.data.map((d) => {
+          <div className={styles.boxImgs}></div>
+          {data?.images?.map((d) => {
             return (
-              <div key={d.id} className={styles.containerItemAnalysis}>
-                <h1 className={styles.speciesName}>{d.species_name}</h1>
+              <div key={d.id_analysis} className={styles.containerItemAnalysis}>
+                <h1 className={styles.speciesName}>{d.species_name_image}</h1>
                 <div className={styles.boxItem}>
                   <Image
-                    src={d.path}
-                    width={500}
+                    src={`http://localhost:3333/${d.ia_path_image}`}
+                    width={800}
                     height={300}
                     alt='Imagem analisada'
                     className={styles.itemImg}
                   />
                   <div className={styles.boxGraph}>
-                    <AccuracyGraph accuracy={d.accuracy} />
+                    <AccuracyGraph accuracy={d.accuracy_image} />
                   </div>
                 </div>
               </div>

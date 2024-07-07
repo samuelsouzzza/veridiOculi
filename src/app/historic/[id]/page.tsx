@@ -1,4 +1,4 @@
-import { IReports } from '@/@types/@types';
+import { IDetailsAnalysis } from '@/@types/@types';
 import HistoricIdView from '@/components/HistoricIdView/HistoricIdView';
 
 type PageParams = {
@@ -8,10 +8,8 @@ type PageParams = {
 };
 
 export default async function historicIdPage({ params }: PageParams) {
-  const response = await fetch(
-    `http://localhost:3000/api/historic/${params.id}`
-  );
-  const json = (await response.json()) as IReports[];
+  const response = await fetch(`http://localhost:3333/images/${params.id}`);
+  const json = (await response.json()) as IDetailsAnalysis;
 
-  return <HistoricIdView data={{ ...json[0], id: params.id }} />;
+  return <HistoricIdView data={json} />;
 }
