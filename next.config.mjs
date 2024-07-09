@@ -9,6 +9,14 @@ const nextConfig = {
         pathname: '/tmp_upload/**',
       },
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 

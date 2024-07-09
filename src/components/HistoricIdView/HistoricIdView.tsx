@@ -60,7 +60,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
                 <h1 className={styles.speciesName}>{d.species_name_image}</h1>
                 <div className={styles.boxItem}>
                   <Image
-                    src={`http://localhost:3333/${d.ia_path_image}`}
+                    src={`${d.ia_path_image}`}
                     width={800}
                     height={300}
                     alt='Imagem analisada'

@@ -18,19 +18,17 @@ type MenuNavHomeProps = {
 export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
   const [active, setActive] = React.useState(activeRoute);
   const [showOptions, setShowOptions] = React.useState(false);
-  const [hasLogged, setHasLogged] = React.useState<string | undefined>(
-    undefined
-  );
   const [userLogged, setUserLogged] = React.useState<IUserLogged | undefined>(
-    JSON.parse(localStorage.getItem('userLogged') as string)
-    // 'oi'
+    undefined
   );
 
   const refMenu = React.useRef<HTMLDivElement>(null);
 
   async function verifyLogin() {
     const TOKEN = await getToken();
-    setHasLogged(TOKEN);
+
+    if (TOKEN)
+      setUserLogged(JSON.parse(localStorage.getItem('userLogged') as string));
   }
 
   React.useEffect(() => {
@@ -70,7 +68,7 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
         </Link>
       </div>
       <div className={styles.box}>
-        {hasLogged ? (
+        {userLogged ? (
           <>
             <Link
               href={'/new-analysis'}
@@ -105,7 +103,7 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
             </Link>
           </div>
         )}
-        {hasLogged && (
+        {userLogged && (
           <Button
             icon
             text={`${userLogged?.complete_name_user.split(' ')[0]}`}

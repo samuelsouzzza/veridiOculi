@@ -31,21 +31,18 @@ export const HistoricView = ({ data }: HistoricViewProps) => {
             <div className={styles.rowHead} onClick={reverseHistoric}>
               <div className={styles.colHead}>Id</div>
               <div className={styles.colHead}>Data</div>
-              {/* <div className={styles.colHead}>Imagens</div> */}
               <div className={styles.colHead}>Status</div>
             </div>
-            {historic?.map((h, i) => {
+            {historic?.map((h) => {
               return (
                 <Link
                   key={h.id_analysis}
                   href={`historic/${h.id_analysis}`}
                   className={styles.linkRow}
-                  // onClick={getSession}
                 >
                   <div className={styles.rowBody}>
                     <div className={styles.colBody}>{h.id_analysis}</div>
                     <div className={styles.colBody}>{h.date_analysis}</div>
-                    {/* <div className={styles.colBody}>{h}</div> */}
                     <div className={styles.colBody}>{h.status_analysis}</div>
                   </div>
                 </Link>
