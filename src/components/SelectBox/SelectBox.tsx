@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './SelectBox.module.css';
-import { normalizeStr } from '@/utils/normalizeStr';
 
 type SelectBoxProps = React.ComponentProps<'select'> & {
   id: string;

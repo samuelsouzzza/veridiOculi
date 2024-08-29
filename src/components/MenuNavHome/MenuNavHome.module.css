@@ -2,7 +2,8 @@
   position: fixed;
   top: 0;
   z-index: 2;
-  background-color: var(--bg-02);
+  /* background-color: var(--bg-02); */
+  background-color: #fff;
   backdrop-filter: var(--blur);
   box-shadow: var(--shadow-01);
   width: 100%;
@@ -25,4 +26,14 @@
 .boxLogo {
   height: 100%;
   padding: 0 2%;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 0 5%;
+  }
+  .container svg {
+    margin: 0 5% 0 0;
+    font-size: 1.5rem;
+  }
 }

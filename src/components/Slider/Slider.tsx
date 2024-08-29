@@ -93,8 +93,10 @@ export const Slider = ({ slides, autoPlay, contain }: SliderProps) => {
                 // src={`http://localhost:3000/${slide}`}
                 src={`${slide}`}
                 alt='Imagem da publicação'
-                width={500}
-                height={500}
+                width={1080}
+                height={720}
+                quality={100}
+                priority
                 style={{ objectFit: contain ? 'contain' : 'cover' }}
               />
             </div>

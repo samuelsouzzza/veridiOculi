@@ -5,7 +5,11 @@ import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus,
+  faClockRotateLeft,
+  faBars,
+} from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
 import { getToken } from '@/app/actions/getToken';
@@ -55,18 +59,17 @@ export const MenuNavHome = ({ activeRoute }: MenuNavHomeProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.boxLogo}>
-        <Link href={'/home'}>
+        <Link href={'/'}>
           <Image
             src='/imgs/logoLabel.svg'
             alt='Logo Veridi Oculi'
             width={220}
             height={70}
-            sizes='100vh'
-            quality={80}
             priority
           />
         </Link>
       </div>
+
       <div className={styles.box}>
         {userLogged ? (
           <>

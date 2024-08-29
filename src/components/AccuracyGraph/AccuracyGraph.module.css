@@ -9,7 +9,19 @@
 .graph {
   max-width: 200px;
 }
-.boxGraph > p {
+.boxGraph p {
   font-size: 5rem;
   color: #39a600;
+}
+
+@media only screen and (max-width: 600px) {
+  .boxGraph {
+    max-height: 100px;
+  }
+  .boxGraph p {
+    font-size: 2.5rem;
+  }
+  .graph {
+    max-width: 100px;
+  }
 }

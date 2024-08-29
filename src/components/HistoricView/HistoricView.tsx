@@ -1,6 +1,6 @@
 'use client';
 import styles from './HistoricView.module.css';
-import { IAnalysis, IFeedback } from '@/@types/@types';
+import { IAnalysis } from '@/@types/@types';
 import { MenuNavHome } from '../MenuNavHome/MenuNavHome';
 import Link from 'next/link';
 import React from 'react';

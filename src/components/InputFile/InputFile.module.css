@@ -49,6 +49,9 @@
   margin: 1% 0;
   color: #333;
 }
+.previewContainer p {
+  text-align: center;
+}
 .boxImg {
   position: relative;
   margin: 2%;
@@ -73,8 +76,8 @@
 .delImg {
   border: 1px solid #33333333;
   position: absolute;
-  top: -5%;
-  right: -5%;
+  top: -4%;
+  right: -4%;
   background-color: #ccc;
   font-weight: bold;
   display: flex;
@@ -99,4 +102,10 @@
   border: 1px solid #ccc;
   object-fit: contain;
   border-radius: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+  .statsFiles {
+    margin: 3% 0;
+  }
 }

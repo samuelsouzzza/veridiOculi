@@ -2,7 +2,8 @@
   position: fixed;
   top: 0;
   z-index: 2;
-  background-color: var(--bg-02);
+  /* background-color: var(--bg-02); */
+  background-color: #fff;
   box-shadow: var(--shadow-01);
   backdrop-filter: var(--blur);
   width: 100%;

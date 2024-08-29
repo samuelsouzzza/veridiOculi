@@ -17,10 +17,10 @@ export default function HomeView() {
   }, []);
 
   const imgs = [
-    '/imgs/bg-01.svg',
-    '/imgs/bg-01.svg',
-    '/imgs/bg-01.svg',
-    '/imgs/bg-01.svg',
+    '/imgs/slides/slide02.jpg',
+    '/imgs/slides/slide01.jpg',
+    '/imgs/slides/slide03.jpg',
+    '/imgs/slides/slide04.jpg',
   ];
   const members: IMember[] = [
     {
@@ -73,12 +73,12 @@ export default function HomeView() {
         <section className={styles.initial}>
           <Slider slides={imgs} autoPlay />
         </section>
-        <section className={styles.about}>
+        {/* <section className={styles.about}>
           <div className={styles.boxAbout}>
             <Image
               src={'/imgs/logo.png'}
               width={50}
-              height={60}
+              height={50}
               alt='Logo da Veridi Oculi'
             />
             <h1 className='title'>O Veridi Oculi</h1>
@@ -153,7 +153,7 @@ export default function HomeView() {
             </p>
           </div>
         </section>
-        <Footer />
+        <Footer /> */}
       </div>
     </>
   );

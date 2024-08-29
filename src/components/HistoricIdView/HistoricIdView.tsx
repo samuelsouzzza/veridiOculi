@@ -64,6 +64,7 @@ export default function HistoricIdView({ data }: HistoricIdViewProps) {
                     width={800}
                     height={300}
                     alt='Imagem analisada'
+                    priority
                     className={styles.itemImg}
                   />
                   <div className={styles.boxGraph}>

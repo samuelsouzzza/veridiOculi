@@ -1,4 +1,3 @@
-import { applyMask } from './applyMask';
 interface IValidationRule {
   regex?: RegExp;
   minLength?: number;
